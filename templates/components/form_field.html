@@ -1,0 +1,47 @@
+{% load i18n %}
+<!-- Reusable form field component with Tailwind styling -->
+<div class="mb-4">
+    {% if field.label %}
+        <label for="{{ field.id_for_label }}" class="form-label">
+            {{ field.label }}
+            {% if field.field.required %}
+                <span class="text-red-500">*</span>
+            {% endif %}
+        </label>
+    {% endif %}
+    
+    <!-- Field Input -->
+    {% if field.field.widget.input_type == 'checkbox' %}
+        <div class="flex items-center">
+            {{ field|add_class:"mr-2" }}
+            {% if field.label %}
+                <label for="{{ field.id_for_label }}" class="text-sm text-gray-700">
+                    {{ field.label }}
+                    {% if field.field.required %}
+                        <span class="text-red-500">*</span>
+                    {% endif %}
+                </label>
+            {% endif %}
+        </div>
+    {% elif field.field.widget.input_type == 'select' %}
+        {{ field|add_class:"form-input" }}
+    {% elif field.field.widget.input_type == 'textarea' %}
+        {{ field|add_class:"form-input min-h-[100px] resize-y" }}
+    {% else %}
+        {{ field|add_class:"form-input" }}
+    {% endif %}
+    
+    <!-- Help Text -->
+    {% if field.help_text %}
+        <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
+    {% endif %}
+    
+    <!-- Field Errors -->
+    {% if field.errors %}
+        <div class="mt-1">
+            {% for error in field.errors %}
+                <p class="text-sm text-red-600">{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ product.name }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumb -->
+    <nav class="mb-6 text-sm">
+        <ol class="flex items-center space-x-2 text-gray-600">
+            <li><a href="{% url 'home' %}" class="hover:text-blue-600">{% trans "首頁" %}</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li><a href="{% url 'products:product_list' %}" class="hover:text-blue-600">{% trans "商品" %}</a></li>
+            {% if product.category %}
+            <li><span class="mx-2">/</span></li>
+            <li><a href="{% url 'products:product_list' %}?category={{ product.category.slug }}" class="hover:text-blue-600">{{ product.category.name }}</a></li>
+            {% endif %}
+            <li><span class="mx-2">/</span></li>
+            <li class="text-gray-900 font-medium">{{ product.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <!-- Product Images -->
+        <div>
+            {% if product.images.all %}
+            <div class="mb-4">
+                <img id="mainImage" src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="w-full rounded-lg shadow-lg">
+            </div>
+            {% if product.images.count > 1 %}
+            <div class="grid grid-cols-4 gap-2">
+                {% for image in product.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ product.name }}" class="w-full aspect-square object-cover rounded cursor-pointer border-2 hover:border-blue-500 transition" onclick="document.getElementById('mainImage').src = this.src">
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
+                <svg class="w-32 h-32 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Product Info -->
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ product.name }}</h1>
+            
+            {% if product.category %}
+            <div class="mb-4">
+                <a href="{% url 'products:product_list' %}?category={{ product.category.slug }}" class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition">
+                    {{ product.category.name }}
+                </a>
+            </div>
+            {% endif %}
+
+            <!-- Price -->
+            <div class="mb-6">
+                {% if product.is_on_sale %}
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-4xl font-bold text-red-600">NT$ {{ product.sale_price|floatformat:0 }}</span>
+                    <span class="text-2xl text-gray-400 line-through">NT$ {{ product.price|floatformat:0 }}</span>
+                    <span class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded">
+                        {% trans "省" %} {{ product.discount_percentage }}%
+                    </span>
+                </div>
+                <p class="text-sm text-gray-600">{% trans "您節省了" %} NT$ {{ product.price|add:"-"|add:product.sale_price|floatformat:0 }}</p>
+                {% else %}
+                <span class="text-4xl font-bold text-gray-900">NT$ {{ product.price|floatformat:0 }}</span>
+                {% endif %}
+            </div>
+
+            <!-- Stock Status -->
+            <div class="mb-6">
+                {% if product.is_in_stock %}
+                    {% if product.is_low_stock %}
+                    <p class="text-orange-600 font-medium">⚠️ {% trans "庫存剩餘" %} {{ product.stock }} {% trans "件" %}</p>
+                    {% else %}
+                    <p class="text-green-600 font-medium">✓ {% trans "庫存充足" %}</p>
+                    {% endif %}
+                {% else %}
+                <p class="text-red-600 font-medium">✗ {% trans "目前缺貨" %}</p>
+                {% endif %}
+            </div>
+
+            <!-- Variants -->
+            {% if product.variants.all %}
+            <div class="mb-6">
+                <h3 class="font-semibold text-gray-900 mb-3">{% trans "選擇規格" %}:</h3>
+                <div class="flex flex-wrap gap-2">
+                    {% for variant in product.variants.all %}
+                    <button class="variant-btn border-2 border-gray-300 px-4 py-2 rounded-lg hover:border-blue-500 transition {% if not variant.is_available %}opacity-50 cursor-not-allowed{% endif %}" data-variant-id="{{ variant.id }}" {% if not variant.is_available %}disabled{% endif %}>
+                        {{ variant.name }}
+                        {% if variant.price_adjustment > 0 %}
+                        <span class="text-sm text-gray-600">+NT$ {{ variant.price_adjustment|floatformat:0 }}</span>
+                        {% endif %}
+                    </button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Quantity -->
+            <div class="mb-6">
+                <label for="quantity" class="block font-semibold text-gray-900 mb-2">{% trans "數量" %}:</label>
+                <div class="flex items-center gap-2">
+                    <button class="qty-btn w-10 h-10 rounded border border-gray-300 flex items-center justify-center hover:bg-gray-100" onclick="decrementQty()">-</button>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ product.stock }}" class="w-20 text-center border border-gray-300 rounded px-3 py-2">
+                    <button class="qty-btn w-10 h-10 rounded border border-gray-300 flex items-center justify-center hover:bg-gray-100" onclick="incrementQty()">+</button>
+                </div>
+            </div>
+
+            <!-- Add to Cart Button -->
+            {% if product.is_in_stock %}
+            <button type="button" onclick="addToCart()" class="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition mb-3">
+                🛒 {% trans "加入購物車" %}
+            </button>
+            <button type="button" class="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition">
+                💳 {% trans "直接購買" %}
+            </button>
+            {% else %}
+            <button type="button" class="w-full bg-gray-400 text-white py-4 rounded-lg font-semibold text-lg cursor-not-allowed" disabled>
+                {% trans "目前缺貨" %}
+            </button>
+            {% endif %}
+
+            <!-- Product Details -->
+            <div class="mt-8 border-t pt-6">
+                <h3 class="font-semibold text-gray-900 mb-3">{% trans "商品資訊" %}:</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li><strong>{% trans "商品編號" %}:</strong> {{ product.sku }}</li>
+                    {% if product.weight %}
+                    <li><strong>{% trans "重量" %}:</strong> {{ product.weight }} kg</li>
+                    {% endif %}
+                    <li><strong>{% trans "上架日期" %}:</strong> {{ product.published_at|date:"Y-m-d" }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Description -->
+    <div class="bg-white rounded-lg shadow p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">{% trans "商品描述" %}</h2>
+        <div class="prose max-w-none text-gray-700 whitespace-pre-line">
+            {{ product.description }}
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    {% if related_products %}
+    <div class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">{% trans "相關商品" %}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for related in related_products %}
+            <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition">
+                <a href="{% url 'products:product_detail' related.slug %}">
+                    {% if related.images.first %}
+                    <div class="aspect-square overflow-hidden bg-gray-100">
+                        <img src="{{ related.images.first.image.url }}" alt="{{ related.name }}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    {% else %}
+                    <div class="aspect-square bg-gray-200"></div>
+                    {% endif %}
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2 line-clamp-2">{{ related.name }}</h3>
+                        <div class="text-gray-900 font-bold">
+                            {% if related.is_on_sale %}
+                            <span class="text-red-600">NT$ {{ related.sale_price|floatformat:0 }}</span>
+                            <span class="text-gray-400 line-through text-sm ml-2">NT$ {{ related.price|floatformat:0 }}</span>
+                            {% else %}
+                            NT$ {{ related.price|floatformat:0 }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    let selectedVariant = null;
+
+    // Variant selection
+    document.querySelectorAll('.variant-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (this.disabled) return;
+            
+            document.querySelectorAll('.variant-btn').forEach(b => {
+                b.classList.remove('border-blue-500', 'bg-blue-50');
+                b.classList.add('border-gray-300');
+            });
+            
+            this.classList.remove('border-gray-300');
+            this.classList.add('border-blue-500', 'bg-blue-50');
+            
+            selectedVariant = this.dataset.variantId;
+        });
+    });
+
+    function incrementQty() {
+        const input = document.getElementById('quantity');
+        const max = parseInt(input.max) || 999;
+        if (parseInt(input.value) < max) {
+            input.value = parseInt(input.value) + 1;
+        }
+    }
+
+    function decrementQty() {
+        const input = document.getElementById('quantity');
+        if (parseInt(input.value) > 1) {
+            input.value = parseInt(input.value) - 1;
+        }
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function addToCart() {
+        const quantity = document.getElementById('quantity').value;
+        const productId = {{ product.id }};
+        const csrftoken = getCookie('csrftoken');
+        
+        const data = {
+            product_id: productId,
+            variant_id: selectedVariant,
+            quantity: parseInt(quantity)
+        };
+        
+        fetch('/cart/add/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update cart count in navbar
+                const cartBadge = document.querySelector('.cart-count-badge');
+                if (cartBadge) {
+                    cartBadge.textContent = data.cart_count;
+                }
+                
+                // Show success message
+                alert('✅ ' + data.message);
+                
+                // Optional: redirect to cart
+                if (confirm('{% trans "前往購物車查看？" %}')) {
+                    window.location.href = '/cart/';
+                }
+            } else {
+                alert('❌ ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('{% trans "加入購物車失敗，請重試" %}');
+        });
+    }
+
+    // Load cart count on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        fetch('/cart/count/')
+            .then(response => response.json())
+            .then(data => {
+                const cartBadge = document.querySelector('.cart-count-badge');
+                if (cartBadge) {
+                    cartBadge.textContent = data.cart_count;
+                }
+            })
+            .catch(error => console.error('Error loading cart count:', error));
+    });
+</script>
+{% endblock %}

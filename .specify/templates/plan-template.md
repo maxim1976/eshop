@@ -47,7 +47,35 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**Security-First Compliance**:
+- [ ] Authentication/authorization implemented before user features
+- [ ] All inputs validated and sanitized
+- [ ] PCI DSS compliance considerations for payment handling
+- [ ] Environment variables used for secrets
+
+**API-First Architecture**:
+- [ ] Business logic exposed through REST APIs first
+- [ ] API contracts defined before UI implementation
+- [ ] Consistent HTTP status codes and error handling
+- [ ] API documentation and testing strategy defined
+
+**Component-Driven UI**:
+- [ ] Reusable components with Tailwind CSS utilities
+- [ ] Design system consistency maintained
+- [ ] Component documentation and prop interfaces
+- [ ] No custom CSS without justification
+
+**Test-Driven Development**:
+- [ ] Critical user journeys have integration tests
+- [ ] API endpoints have contract tests
+- [ ] TDD workflow planned for implementation
+- [ ] Test coverage strategy defined
+
+**Performance & Scalability**:
+- [ ] Page load time targets under 3 seconds
+- [ ] Database optimization and indexing planned
+- [ ] Image optimization and CDN strategy
+- [ ] Caching strategy at multiple layers
 
 ## Project Structure
 

@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans "個人資料" %} - EShop{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-8">
+    <!-- Profile Header -->
+    <div class="bg-white shadow rounded-lg mb-6">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <div class="flex items-center">
+                <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h1 class="text-2xl font-bold text-gray-900">
+                        {% trans "個人資料" %}
+                    </h1>
+                    <p class="text-sm text-gray-600">
+                        {% trans "管理您的帳戶信息和偏好設定" %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Main Profile Information -->
+        <div class="lg:col-span-2">
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-medium text-gray-900">
+                        {% trans "基本信息" %}
+                    </h2>
+                </div>
+                <div class="px-6 py-4">
+                    <!-- Messages -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="mb-4 {% if message.tags == 'success' %}bg-green-50 border border-green-200 text-green-700{% elif message.tags == 'error' %}bg-red-50 border border-red-200 text-red-700{% else %}bg-blue-50 border border-blue-200 text-blue-700{% endif %} px-4 py-3 rounded-md">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="post" action="{% url 'auth:profile-form' %}" class="space-y-6">
+                        {% csrf_token %}
+                        
+                        <!-- Email (Read-only) -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">
+                                {% trans "電子郵件地址" %}
+                            </label>
+                            <div class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-gray-900">
+                                {{ user.email }}
+                            </div>
+                            <p class="mt-1 text-sm text-gray-500">
+                                {% trans "電子郵件地址無法更改" %}
+                            </p>
+                        </div>
+
+                        <!-- First Name -->
+                        <div>
+                            <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1">
+                                {% trans "名字" %}
+                            </label>
+                            <input type="text" name="first_name" id="first_name" value="{{ user.first_name }}" 
+                                   class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Last Name -->
+                        <div>
+                            <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1">
+                                {% trans "姓氏" %}
+                            </label>
+                            <input type="text" name="last_name" id="last_name" value="{{ user.last_name }}" 
+                                   class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Language Preference -->
+                        <div>
+                            <label for="preferred_language" class="block text-sm font-medium text-gray-700 mb-1">
+                                {% trans "偏好語言" %}
+                            </label>
+                            <select name="preferred_language" id="preferred_language" 
+                                    class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <option value="zh-hant" {% if user.preferred_language == 'zh-hant' %}selected{% endif %}>
+                                    {% trans "繁體中文" %}
+                                </option>
+                                <option value="en" {% if user.preferred_language == 'en' %}selected{% endif %}>
+                                    {% trans "English" %}
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- Save Button -->
+                        <div class="pt-4">
+                            <button type="submit" class="w-full sm:w-auto inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                                {% trans "保存更改" %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+            <!-- Account Status -->
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">
+                        {% trans "帳戶狀態" %}
+                    </h3>
+                </div>
+                <div class="px-6 py-4 space-y-4">
+                    <!-- Email Confirmation Status -->
+                    <div class="flex items-center">
+                        {% if user.is_email_confirmed %}
+                            <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="ml-2 text-sm text-gray-900">{% trans "電子郵件已確認" %}</span>
+                        {% else %}
+                            <svg class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="ml-2 text-sm text-gray-900">{% trans "等待電子郵件確認" %}</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Account Active Status -->
+                    <div class="flex items-center">
+                        {% if user.is_active %}
+                            <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="ml-2 text-sm text-gray-900">{% trans "帳戶已啟用" %}</span>
+                        {% else %}
+                            <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="ml-2 text-sm text-gray-900">{% trans "帳戶未啟用" %}</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Join Date -->
+                    <div class="text-sm text-gray-600">
+                        <span class="font-medium">{% trans "加入日期" %}:</span><br>
+                        {{ user.date_joined|date:"Y年n月j日" }}
+                    </div>
+
+                    <!-- Last Login -->
+                    {% if user.last_login %}
+                        <div class="text-sm text-gray-600">
+                            <span class="font-medium">{% trans "最後登入" %}:</span><br>
+                            {{ user.last_login|date:"Y年n月j日 H:i" }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Security Actions -->
+            <div class="bg-white shadow rounded-lg">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">
+                        {% trans "安全設定" %}
+                    </h3>
+                </div>
+                <div class="px-6 py-4 space-y-3">
+                    <a href="{% url 'auth:password-reset-form' %}" 
+                       class="block w-full text-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                        {% trans "更改密碼" %}
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDPA Information -->
+            {% if user.pdpa_consent %}
+                <div class="bg-white shadow rounded-lg">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900">
+                            {% trans "隱私權資訊" %}
+                        </h3>
+                    </div>
+                    <div class="px-6 py-4 space-y-3">
+                        <div class="text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <svg class="h-4 w-4 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-2">{% trans "已同意個人資料保護法條款" %}</span>
+                            </div>
+                            {% if user.pdpa_consent_date %}
+                                <p class="mt-2 text-xs">
+                                    {% trans "同意日期" %}: {{ user.pdpa_consent_date|date:"Y年n月j日 H:i" }}
+                                </p>
+                            {% endif %}
+                        </div>
+                        <div class="pt-2">
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-500">
+                                {% trans "查看隱私政策" %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+/**
+ * EShop Logo Optimization CSS
+ * Handles responsive logo display, fallbacks, and performance optimization
+ */
+
+/* Base logo styles */
+.eshop-logo {
+    max-height: 40px;
+    height: auto;
+    width: auto;
+    transition: all 0.3s ease;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.eshop-logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Responsive logo sizes */
+.logo-small .eshop-logo {
+    max-height: 24px;
+}
+
+.logo-medium .eshop-logo {
+    max-height: 32px;
+}
+
+.logo-large .eshop-logo {
+    max-height: 48px;
+}
+
+/* Loading state */
+.eshop-logo[loading] {
+    opacity: 0.5;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Error state - hide broken image */
+.eshop-logo:not([src]),
+.eshop-logo[src=""],
+.eshop-logo[alt]:after {
+    display: none;
+}
+
+/* Fallback text styling */
+.logo-fallback {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.025em;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .eshop-logo {
+        filter: contrast(1.2);
+    }
+    
+    .logo-fallback {
+        background: none;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        background-clip: initial;
+        color: #1d4ed8;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .eshop-logo {
+        filter: brightness(0.9);
+    }
+    
+    .logo-fallback {
+        background: linear-gradient(45deg, #60a5fa, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+/* Print styles */
+@media print {
+    .eshop-logo {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        max-height: 20px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .eshop-logo,
+    .eshop-logo:hover {
+        transition: none;
+        transform: none;
+        animation: none;
+    }
+}

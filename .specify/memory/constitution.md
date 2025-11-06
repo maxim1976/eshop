@@ -1,50 +1,52 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: [template] → 1.0.0
+- New constitution for Django + Tailwind CSS e-commerce platform
+- Added principles: Security-First, API-First, Component-Driven UI, Test-Driven Development, Performance & Scalability
+- Added sections: Security Requirements, Development Workflow
+- Templates requiring updates: ✅ updated
+- Follow-up TODOs: None
+-->
+
+# EShop Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Security-First (NON-NEGOTIABLE)
+Security MUST be implemented from day one, not retrofitted. All user data, payments, and personal information MUST be protected using industry-standard practices. Authentication and authorization MUST be implemented before any user-facing features. All inputs MUST be validated and sanitized. PCI DSS compliance considerations MUST guide payment handling design.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+**Rationale**: E-commerce platforms handle sensitive customer data, payment information, and financial transactions. Security breaches can result in regulatory violations, financial losses, and complete loss of customer trust.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. API-First Architecture
+All business logic MUST be exposed through well-documented REST APIs before any UI implementation. APIs MUST follow consistent patterns, use proper HTTP status codes, and include comprehensive error handling. API contracts MUST be defined and tested independently of frontend implementations.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+**Rationale**: API-first approach enables multiple frontends (web, mobile, admin), third-party integrations, and easier testing. It enforces separation of concerns and enables scalable architecture.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. Component-Driven UI Development
+Frontend MUST be built using reusable, composable components with Tailwind CSS utility classes. Components MUST be documented with usage examples and prop interfaces. Design system consistency MUST be maintained through shared component library. No custom CSS outside of Tailwind utilities without explicit justification.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Rationale**: Component-driven development ensures UI consistency, reduces code duplication, improves maintainability, and enables rapid feature development through reusable building blocks.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Test-Driven Development (NON-NEGOTIABLE)
+TDD mandatory: Tests written → User approved → Tests fail → Then implement. Red-Green-Refactor cycle strictly enforced. All critical user journeys (registration, login, checkout, payment) MUST have comprehensive integration tests. API endpoints MUST have contract tests before implementation.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**Rationale**: E-commerce applications require high reliability. Bugs in checkout, payment, or inventory management directly impact revenue. TDD ensures robust, reliable code from the start.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Performance & Scalability
+Page load times MUST be under 3 seconds on 3G connections. Database queries MUST be optimized with proper indexing and query analysis. Image optimization and CDN usage MUST be implemented for product images. Caching strategies MUST be implemented at multiple layers (database, application, CDN).
+
+**Rationale**: Performance directly impacts conversion rates in e-commerce. Slow sites lose customers and revenue. Scalability planning prevents costly refactoring as the business grows.
+
+## Security Requirements
+
+All authentication MUST use Django's built-in authentication with proper session management. Password policies MUST enforce strong passwords with complexity requirements. All forms MUST include CSRF protection. SQL injection protection MUST be ensured through Django ORM usage (no raw SQL without review). All file uploads MUST be validated and stored securely. Environment variables MUST be used for all secrets and configuration.
+
+## Development Workflow
+
+All features MUST follow the specification → clarification → planning → tasks → implementation workflow. Code reviews MUST verify security practices, test coverage, and performance considerations. Database migrations MUST be reviewed for data integrity and rollback safety. Production deployments MUST include health checks and rollback procedures.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices and guidelines. All feature specifications, technical plans, and code reviews MUST verify compliance with these principles. Any violations MUST be justified with explicit documentation of risks and mitigation strategies. Amendments to this constitution require explicit approval and migration plan for existing code.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-01-27 | **Last Amended**: 2025-01-27

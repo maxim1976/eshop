@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "商品列表" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar -->
+        <aside class="lg:w-64 flex-shrink-0">
+            <div class="bg-white rounded-lg shadow p-6 sticky top-4">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">{% trans "商品分類" %}</h2>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="{% url 'products:product_list' %}" class="block py-2 px-3 rounded hover:bg-gray-100 {% if not current_category %}bg-blue-50 text-blue-600 font-medium{% endif %}">
+                            {% trans "全部商品" %}
+                        </a>
+                    </li>
+                    {% for category in categories %}
+                    <li>
+                        <a href="{% url 'products:product_list' %}?category={{ category.slug }}" class="block py-2 px-3 rounded hover:bg-gray-100 {% if current_category.id == category.id %}bg-blue-50 text-blue-600 font-medium{% endif %}">
+                            {{ category.name }}
+                        </a>
+                        {% if category.children.all %}
+                        <ul class="ml-4 mt-1 space-y-1">
+                            {% for child in category.children.all %}
+                            <li>
+                                <a href="{% url 'products:product_list' %}?category={{ child.slug }}" class="block py-1 px-3 text-sm rounded hover:bg-gray-100 {% if current_category.id == child.id %}bg-blue-50 text-blue-600 font-medium{% endif %}">
+                                    {{ child.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1">
+            <!-- Header -->
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                    {% if current_category %}
+                        {{ current_category.name }}
+                    {% elif query %}
+                        {% trans "搜尋結果" %}: "{{ query }}"
+                    {% else %}
+                        {% trans "所有商品" %}
+                    {% endif %}
+                </h1>
+                <p class="text-gray-600">
+                    {% blocktrans count counter=page_obj.paginator.count %}找到 {{ counter }} 項商品{% plural %}找到 {{ counter }} 項商品{% endblocktrans %}
+                </p>
+            </div>
+
+            <!-- Sorting and Filters -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <form method="get" class="flex items-center gap-2">
+                    {% if current_category %}
+                    <input type="hidden" name="category" value="{{ current_category.slug }}">
+                    {% endif %}
+                    {% if query %}
+                    <input type="hidden" name="q" value="{{ query }}">
+                    {% endif %}
+                    <label for="sort" class="text-sm text-gray-600">{% trans "排序方式" %}:</label>
+                    <select name="sort" id="sort" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" onchange="this.form.submit()">
+                        <option value="-created_at" {% if sort_by == '-created_at' %}selected{% endif %}>{% trans "最新上架" %}</option>
+                        <option value="price" {% if sort_by == 'price' %}selected{% endif %}>{% trans "價格：低到高" %}</option>
+                        <option value="-price" {% if sort_by == '-price' %}selected{% endif %}>{% trans "價格：高到低" %}</option>
+                        <option value="name" {% if sort_by == 'name' %}selected{% endif %}>{% trans "名稱：A-Z" %}</option>
+                        <option value="-name" {% if sort_by == '-name' %}selected{% endif %}>{% trans "名稱：Z-A" %}</option>
+                    </select>
+                </form>
+
+                <!-- Search Form -->
+                <form method="get" class="flex items-center gap-2">
+                    {% if current_category %}
+                    <input type="hidden" name="category" value="{{ current_category.slug }}">
+                    {% endif %}
+                    <input type="text" name="q" value="{{ query }}" placeholder="{% trans '搜尋商品...' %}" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                        {% trans "搜尋" %}
+                    </button>
+                </form>
+            </div>
+
+            <!-- Product Grid -->
+            {% if products %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {% for product in products %}
+                <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition group">
+                    <a href="{% url 'products:product_detail' product.slug %}" class="block">
+                        {% if product.images.first %}
+                        <div class="aspect-square overflow-hidden bg-gray-100">
+                            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        </div>
+                        {% else %}
+                        <div class="aspect-square bg-gray-200 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        {% endif %}
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition">
+                                {{ product.name }}
+                            </h3>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    {% if product.is_on_sale %}
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-red-600 font-bold text-xl">NT$ {{ product.sale_price|floatformat:0 }}</span>
+                                        <span class="text-gray-400 line-through text-sm">NT$ {{ product.price|floatformat:0 }}</span>
+                                    </div>
+                                    {% else %}
+                                    <span class="text-gray-900 font-bold text-xl">NT$ {{ product.price|floatformat:0 }}</span>
+                                    {% endif %}
+                                </div>
+                                {% if product.is_on_sale %}
+                                <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                                    -{{ product.discount_percentage }}%
+                                </span>
+                                {% endif %}
+                            </div>
+                            {% if not product.is_in_stock %}
+                            <p class="text-red-500 text-sm mt-2 font-medium">{% trans "缺貨中" %}</p>
+                            {% elif product.is_low_stock %}
+                            <p class="text-orange-500 text-sm mt-2">{% trans "庫存不足" %}</p>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+            <div class="flex justify-center items-center gap-2">
+                {% if page_obj.has_previous %}
+                <a href="?page=1{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "首頁" %}</a>
+                <a href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "上一頁" %}</a>
+                {% endif %}
+
+                <span class="px-4 py-2 text-gray-700">
+                    {% trans "第" %} {{ page_obj.number }} {% trans "頁，共" %} {{ page_obj.paginator.num_pages }} {% trans "頁" %}
+                </span>
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "下一頁" %}</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "末頁" %}</a>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% else %}
+            <div class="text-center py-12">
+                <svg class="w-24 h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">{% trans "找不到商品" %}</h3>
+                <p class="text-gray-500">{% trans "請嘗試其他搜尋關鍵字或瀏覽其他分類" %}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
