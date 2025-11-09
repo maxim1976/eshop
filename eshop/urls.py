@@ -26,8 +26,8 @@ def health_check(request):
     return JsonResponse({'status': 'healthy', 'service': 'eshop'})
 
 def home_view(request):
-    """Home page view with featured products."""
-    from products.models import Product
+    """Home page view with featured products and categories."""
+    from products.models import Product, Category
     
     # Get featured products
     featured_products = Product.objects.filter(
@@ -35,8 +35,14 @@ def home_view(request):
         is_featured=True
     ).select_related('category').prefetch_related('images')[:6]
     
+    # Get categories for display
+    categories = Category.objects.filter(
+        is_active=True
+    ).order_by('display_order', 'name')[:6]
+    
     context = {
         'featured_products': featured_products,
+        'categories': categories,
     }
     return render(request, 'home.html', context)
 

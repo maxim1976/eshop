@@ -1,0 +1,3154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-08 13:49+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\authentication\forms.py:18 .\authentication\forms.py:119
+#: .\authentication\forms.py:189 .\authentication\models.py:54
+#: .\templates\authentication\login.html:45
+#: .\templates\authentication\password_reset.html:72
+#: .\templates\authentication\profile.html:55
+#: .\templates\authentication\register.html:45
+msgid "電子郵件地址"
+msgstr ""
+
+#: .\authentication\forms.py:20 .\authentication\forms.py:121
+msgid "請輸入您的電子郵件地址"
+msgstr ""
+
+#: .\authentication\forms.py:23 .\authentication\serializers.py:37
+msgid "用於登入和接收通知的電子郵件地址"
+msgstr ""
+
+#: .\authentication\forms.py:27 .\templates\authentication\profile.html:68
+#: .\templates\authentication\register.html:60
+msgid "名字"
+msgstr ""
+
+#: .\authentication\forms.py:31
+msgid "請輸入您的名字"
+msgstr ""
+
+#: .\authentication\forms.py:37 .\templates\authentication\profile.html:77
+#: .\templates\authentication\register.html:75
+msgid "姓氏"
+msgstr ""
+
+#: .\authentication\forms.py:41
+msgid "請輸入您的姓氏"
+msgstr ""
+
+#: .\authentication\forms.py:47 .\authentication\models.py:61
+#: .\templates\authentication\profile.html:86
+#: .\templates\authentication\register.html:123
+msgid "偏好語言"
+msgstr ""
+
+#: .\authentication\forms.py:49 .\authentication\models.py:64
+#: .\authentication\models.py:317 .\templates\authentication\profile.html:91
+msgid "繁體中文"
+msgstr ""
+
+#: .\authentication\forms.py:50 .\authentication\models.py:65
+#: .\authentication\models.py:318 .\templates\authentication\profile.html:94
+msgid "English"
+msgstr ""
+
+#: .\authentication\forms.py:56
+msgid "選擇您偏好的介面語言"
+msgstr ""
+
+#: .\authentication\forms.py:60
+msgid "我同意個人資料保護法條款"
+msgstr ""
+
+#: .\authentication\forms.py:62
+msgid "您必須同意我們的個人資料保護法條款才能創建帳戶"
+msgstr ""
+
+#: .\authentication\forms.py:64 .\authentication\serializers.py:27
+msgid "必須同意個人資料保護法條款才能註冊"
+msgstr ""
+
+#: .\authentication\forms.py:77
+msgid "請輸入密碼"
+msgstr ""
+
+#: .\authentication\forms.py:80 .\authentication\forms.py:218
+#: .\authentication\serializers.py:19
+#: .\templates\authentication\password_reset_confirm.html:100
+#: .\templates\authentication\register.html:94
+msgid "密碼必須至少8個字符，包含字母和數字"
+msgstr ""
+
+#: .\authentication\forms.py:83
+msgid "請再次輸入密碼"
+msgstr ""
+
+#: .\authentication\forms.py:95
+msgid "此電子郵件地址已被使用"
+msgstr ""
+
+#: .\authentication\forms.py:128 .\templates\authentication\login.html:60
+#: .\templates\authentication\register.html:90
+msgid "密碼"
+msgstr ""
+
+#: .\authentication\forms.py:130
+msgid "請輸入您的密碼"
+msgstr ""
+
+#: .\authentication\forms.py:136 .\templates\authentication\login.html:77
+msgid "記住我（7天）"
+msgstr ""
+
+#: .\authentication\forms.py:138
+msgid "保持登入狀態7天"
+msgstr ""
+
+#: .\authentication\forms.py:156 .\authentication\forms.py:172
+#: .\authentication\serializers.py:105 .\authentication\serializers.py:118
+msgid "電子郵件或密碼錯誤"
+msgstr ""
+
+#: .\authentication\forms.py:161
+msgid "請先確認您的電子郵件地址才能登入。請檢查您的收件箱中的確認郵件。"
+msgstr ""
+
+#: .\authentication\forms.py:174
+msgid "此帳戶已被停用"
+msgstr ""
+
+#: .\authentication\forms.py:191
+#: .\templates\authentication\password_reset.html:76
+msgid "請輸入您註冊時使用的電子郵件地址"
+msgstr ""
+
+#: .\authentication\forms.py:195
+msgid "我們將向此電子郵件地址發送重設密碼的連結"
+msgstr ""
+
+#: .\authentication\forms.py:212
+#: .\templates\authentication\password_reset_confirm.html:96
+msgid "新密碼"
+msgstr ""
+
+#: .\authentication\forms.py:214
+msgid "請輸入新密碼"
+msgstr ""
+
+#: .\authentication\forms.py:222
+#: .\templates\authentication\password_reset_confirm.html:114
+msgid "確認新密碼"
+msgstr ""
+
+#: .\authentication\forms.py:224
+msgid "請再次輸入新密碼"
+msgstr ""
+
+#: .\authentication\forms.py:236
+msgid "兩次輸入的密碼不符"
+msgstr ""
+
+#: .\authentication\models.py:22
+msgid "電子郵件地址是必需的"
+msgstr ""
+
+#: .\authentication\models.py:39
+msgid "超級用戶必須設置 is_staff=True"
+msgstr ""
+
+#: .\authentication\models.py:41
+msgid "超級用戶必須設置 is_superuser=True"
+msgstr ""
+
+#: .\authentication\models.py:56
+msgid "用於登入的電子郵件地址"
+msgstr ""
+
+#: .\authentication\models.py:68
+msgid "使用者介面和電子郵件的偏好語言"
+msgstr ""
+
+#: .\authentication\models.py:72 .\templates\authentication\profile.html:126
+msgid "電子郵件已確認"
+msgstr ""
+
+#: .\authentication\models.py:74
+msgid "用戶是否已確認其電子郵件地址"
+msgstr ""
+
+#: .\authentication\models.py:78
+msgid "PDPA同意"
+msgstr ""
+
+#: .\authentication\models.py:80
+msgid "用戶是否同意個人資料保護法條款"
+msgstr ""
+
+#: .\authentication\models.py:84
+msgid "PDPA同意日期"
+msgstr ""
+
+#: .\authentication\models.py:87
+msgid "用戶同意PDPA條款的日期和時間"
+msgstr ""
+
+#: .\authentication\models.py:92
+msgid "帳戶啟用"
+msgstr ""
+
+#: .\authentication\models.py:94
+msgid "帳戶是否已啟用（需要電子郵件確認）"
+msgstr ""
+
+#: .\authentication\models.py:104 .\authentication\models.py:105
+#: .\authentication\models.py:135 .\authentication\models.py:199
+#: .\authentication\models.py:309
+msgid "用戶"
+msgstr ""
+
+#: .\authentication\models.py:140
+msgid "確認令牌"
+msgstr ""
+
+#: .\authentication\models.py:144
+msgid "用於電子郵件確認的唯一令牌"
+msgstr ""
+
+#: .\authentication\models.py:148
+msgid "確認的電子郵件"
+msgstr ""
+
+#: .\authentication\models.py:149
+msgid "正在確認的電子郵件地址"
+msgstr ""
+
+#: .\authentication\models.py:153 .\authentication\models.py:212
+#: .\authentication\models.py:343
+msgid "創建時間"
+msgstr ""
+
+#: .\authentication\models.py:158 .\authentication\models.py:217
+msgid "過期時間"
+msgstr ""
+
+#: .\authentication\models.py:159 .\authentication\models.py:218
+msgid "令牌過期的日期和時間"
+msgstr ""
+
+#: .\authentication\models.py:163 .\authentication\models.py:222
+msgid "已使用"
+msgstr ""
+
+#: .\authentication\models.py:165 .\authentication\models.py:224
+msgid "令牌是否已被使用"
+msgstr ""
+
+#: .\authentication\models.py:169 .\authentication\models.py:170
+msgid "電子郵件確認令牌"
+msgstr ""
+
+#: .\authentication\models.py:204
+msgid "重設令牌"
+msgstr ""
+
+#: .\authentication\models.py:208
+msgid "用於密碼重設的唯一令牌"
+msgstr ""
+
+#: .\authentication\models.py:228 .\authentication\models.py:266
+msgid "IP地址"
+msgstr ""
+
+#: .\authentication\models.py:229
+msgid "發出重設請求的IP地址"
+msgstr ""
+
+#: .\authentication\models.py:233 .\authentication\models.py:234
+msgid "密碼重設令牌"
+msgstr ""
+
+#: .\authentication\models.py:261
+msgid "嘗試的電子郵件"
+msgstr ""
+
+#: .\authentication\models.py:262
+msgid "嘗試登入的電子郵件地址"
+msgstr ""
+
+#: .\authentication\models.py:267
+msgid "發出登入嘗試的IP地址"
+msgstr ""
+
+#: .\authentication\models.py:271
+msgid "嘗試時間"
+msgstr ""
+
+#: .\authentication\models.py:276
+msgid "成功"
+msgstr ""
+
+#: .\authentication\models.py:278
+msgid "登入嘗試是否成功"
+msgstr ""
+
+#: .\authentication\models.py:282
+msgid "用戶代理"
+msgstr ""
+
+#: .\authentication\models.py:284
+msgid "發出請求的瀏覽器用戶代理字符串"
+msgstr ""
+
+#: .\authentication\models.py:288 .\authentication\models.py:289
+msgid "登入嘗試"
+msgstr ""
+
+#: .\authentication\models.py:314
+msgid "語言"
+msgstr ""
+
+#: .\authentication\models.py:324
+msgid "時區"
+msgstr ""
+
+#: .\authentication\models.py:327
+msgid "用戶的時區設定"
+msgstr ""
+
+#: .\authentication\models.py:331
+msgid "電子郵件通知"
+msgstr ""
+
+#: .\authentication\models.py:333
+msgid "是否接收電子郵件通知"
+msgstr ""
+
+#: .\authentication\models.py:337
+msgid "行銷電子郵件"
+msgstr ""
+
+#: .\authentication\models.py:339
+msgid "是否接收行銷電子郵件"
+msgstr ""
+
+#: .\authentication\models.py:348
+msgid "更新時間"
+msgstr ""
+
+#: .\authentication\models.py:353 .\authentication\models.py:354
+msgid "用戶偏好設定"
+msgstr ""
+
+#: .\authentication\serializers.py:23
+msgid "確認密碼必須與密碼相符"
+msgstr ""
+
+#: .\authentication\serializers.py:38
+msgid "用戶的名字"
+msgstr ""
+
+#: .\authentication\serializers.py:39
+msgid "用戶的姓氏"
+msgstr ""
+
+#: .\authentication\serializers.py:40
+msgid "偏好的介面語言"
+msgstr ""
+
+#: .\authentication\serializers.py:47
+msgid "必須同意個人資料保護法條款才能創建帳戶"
+msgstr ""
+
+#: .\authentication\serializers.py:55
+msgid "確認密碼與密碼不符"
+msgstr ""
+
+#: .\authentication\serializers.py:83 .\authentication\serializers.py:131
+msgid "註冊時使用的電子郵件地址"
+msgstr ""
+
+#: .\authentication\serializers.py:87
+msgid "帳戶密碼"
+msgstr ""
+
+#: .\authentication\serializers.py:91
+msgid "是否延長登入會話期限至7天"
+msgstr ""
+
+#: .\authentication\serializers.py:111
+msgid "請先確認您的電子郵件地址才能登入"
+msgstr ""
+
+#: .\authentication\serializers.py:144
+msgid "從重設密碼電子郵件中獲取的令牌"
+msgstr ""
+
+#: .\authentication\serializers.py:149
+msgid "新密碼必須至少8個字符，包含字母和數字"
+msgstr ""
+
+#: .\authentication\serializers.py:153
+msgid "確認新密碼必須與新密碼相符"
+msgstr ""
+
+#: .\authentication\serializers.py:165
+msgid "確認密碼與新密碼不符"
+msgstr ""
+
+#: .\authentication\serializers.py:173
+msgid "無效或已過期的重設連結"
+msgstr ""
+
+#: .\authentication\serializers.py:179
+msgid "重設連結已過期，請重新申請密碼重設"
+msgstr ""
+
+#: .\authentication\serializers.py:191
+msgid "從確認電子郵件中獲取的令牌"
+msgstr ""
+
+#: .\authentication\serializers.py:203 .\authentication\views.py:364
+msgid "無效或已過期的確認連結"
+msgstr ""
+
+#: .\authentication\serializers.py:209
+msgid "確認連結已過期，請重新申請電子郵件確認"
+msgstr ""
+
+#: .\authentication\validators.py:22
+msgid "密碼必須包含字母和數字。"
+msgstr ""
+
+#: .\authentication\validators.py:27
+msgid "您的密碼必須包含至少一個字母和一個數字。"
+msgstr ""
+
+#: .\authentication\views.py:51
+msgid "註冊成功，請檢查您的電子郵件以確認帳戶"
+msgstr ""
+
+#: .\authentication\views.py:61
+msgid "註冊失敗"
+msgstr ""
+
+#: .\authentication\views.py:107
+msgid "登入嘗試次數過多，請15分鐘後再試"
+msgstr ""
+
+#: .\authentication\views.py:135
+msgid "登入成功"
+msgstr ""
+
+#: .\authentication\views.py:148
+msgid "登入失敗"
+msgstr ""
+
+#: .\authentication\views.py:202
+msgid "已成功登出"
+msgstr ""
+
+#: .\authentication\views.py:238
+msgid "如果該電子郵件存在於我們的系統中，您將收到重設密碼的連結"
+msgstr ""
+
+#: .\authentication\views.py:243
+msgid "密碼重設請求失敗"
+msgstr ""
+
+#: .\authentication\views.py:308
+msgid "密碼重設成功，請使用新密碼登入"
+msgstr ""
+
+#: .\authentication\views.py:313
+msgid "密碼重設失敗"
+msgstr ""
+
+#: .\authentication\views.py:340 .\authentication\views.py:362
+#: .\authentication\views.py:370
+#: .\templates\authentication\email_confirm_error.html:4
+msgid "電子郵件確認失敗"
+msgstr ""
+
+#: .\authentication\views.py:342
+msgid "確認連結已過期"
+msgstr ""
+
+#: .\authentication\views.py:356
+msgid "電子郵件確認成功，您的帳戶現已啟用"
+msgstr ""
+
+#: .\authentication\views.py:432
+msgid "註冊成功！請檢查您的電子郵件以確認帳戶。"
+msgstr ""
+
+#: .\authentication\views.py:468
+msgid "登入成功！歡迎回來。"
+msgstr ""
+
+#: .\authentication\views.py:487
+msgid "已成功登出。"
+msgstr ""
+
+#: .\authentication\views.py:525
+msgid "如果該電子郵件存在於我們的系統中，您將收到重設密碼的連結。"
+msgstr ""
+
+#: .\authentication\views.py:547
+msgid "密碼重設連結已過期。請重新申請。"
+msgstr ""
+
+#: .\authentication\views.py:562
+msgid "密碼重設成功！請使用新密碼登入。"
+msgstr ""
+
+#: .\authentication\views.py:573
+msgid "無效或已過期的密碼重設連結。"
+msgstr ""
+
+#: .\authentication\views.py:598
+msgid "個人資料已更新。"
+msgstr ""
+
+#: .\authentication\views.py:621
+msgid "電子郵件確認連結已過期。請重新註冊或聯繫客服。"
+msgstr ""
+
+#: .\authentication\views.py:632
+msgid "電子郵件確認成功！您的帳戶現已啟用，可以登入了。"
+msgstr ""
+
+#: .\authentication\views.py:639
+msgid "無效或已過期的確認連結。請確認您使用的是最新的確認郵件。"
+msgstr ""
+
+#: .\cart\models.py:24 .\orders\models.py:72 .\payments\admin.py:129
+#: .\payments\models.py:68
+msgid "使用者 / User"
+msgstr ""
+
+#: .\cart\models.py:25
+msgid "購物車所有者（登入用戶）/ Cart owner (authenticated user)"
+msgstr ""
+
+#: .\cart\models.py:29
+msgid "會話金鑰 / Session Key"
+msgstr ""
+
+#: .\cart\models.py:34
+msgid "訪客的會話標識 / Guest session identifier"
+msgstr ""
+
+#: .\cart\models.py:38 .\products\models.py:106 .\products\models.py:313
+#: .\products\models.py:516
+msgid "創建時間 / Created At"
+msgstr ""
+
+#: .\cart\models.py:43 .\cart\models.py:167 .\orders\models.py:199
+#: .\orders\models.py:297 .\orders\models.py:377 .\payments\models.py:223
+#: .\products\models.py:110 .\products\models.py:317 .\products\models.py:520
+msgid "更新時間 / Updated At"
+msgstr ""
+
+#: .\cart\models.py:48 .\templates\cart\cart.html:4
+#: .\templates\cart\cart.html:9
+msgid "購物車 / Shopping Cart"
+msgstr ""
+
+#: .\cart\models.py:49
+msgid "購物車 / Shopping Carts"
+msgstr ""
+
+#: .\cart\models.py:127 .\templates\orders\checkout.html:14
+msgid "購物車 / Cart"
+msgstr ""
+
+#: .\cart\models.py:133 .\products\models.py:341 .\products\models.py:397
+#: .\products\models.py:466
+msgid "產品 / Product"
+msgstr ""
+
+#: .\cart\models.py:141 .\products\models.py:525
+msgid "產品規格 / Product Variant"
+msgstr ""
+
+#: .\cart\models.py:142
+msgid "產品變體（如有）/ Product variant (if any)"
+msgstr ""
+
+#: .\cart\models.py:146 .\orders\models.py:278
+#: .\templates\orders\order_detail.html:66
+msgid "數量 / Quantity"
+msgstr ""
+
+#: .\cart\models.py:149
+msgid "購買數量 / Purchase quantity"
+msgstr ""
+
+#: .\cart\models.py:155
+msgid "加入時價格（新台幣）/ Price at Addition (NT$)"
+msgstr ""
+
+#: .\cart\models.py:158
+msgid "商品加入購物車時的價格 / Product price when added to cart"
+msgstr ""
+
+#: .\cart\models.py:162
+msgid "加入時間 / Added At"
+msgstr ""
+
+#: .\cart\models.py:172
+msgid "購物車商品 / Cart Item"
+msgstr ""
+
+#: .\cart\models.py:173
+msgid "購物車商品 / Cart Items"
+msgstr ""
+
+#: .\cart\models.py:333
+msgid "商品目前缺貨 / Product currently out of stock"
+msgstr ""
+
+#: .\cart\models.py:338
+msgid "庫存不足 / Insufficient stock"
+msgstr ""
+
+#: .\cart\models.py:344
+msgid "庫存剩餘 / Stock remaining"
+msgstr ""
+
+#: .\cart\models.py:349
+msgid "庫存充足 / In stock"
+msgstr ""
+
+#: .\cart\views.py:46
+msgid "此規格目前缺貨"
+msgstr ""
+
+#: .\cart\views.py:54 .\cart\views.py:130
+msgid "庫存不足，目前剩餘 {} 件"
+msgstr ""
+
+#: .\cart\views.py:74
+msgid "購物車數量已達庫存上限"
+msgstr ""
+
+#: .\cart\views.py:85
+msgid "已加入購物車"
+msgstr ""
+
+#: .\cart\views.py:94 .\cart\views.py:101
+msgid "商品不存在"
+msgstr ""
+
+#: .\cart\views.py:119
+msgid "數量必須大於 0"
+msgstr ""
+
+#: .\cart\views.py:143
+msgid "已更新數量"
+msgstr ""
+
+#: .\cart\views.py:172
+msgid "已從購物車移除 {}"
+msgstr ""
+
+#: .\cart\views.py:217 .\cart\views.py:220
+msgid "購物車已清空"
+msgstr ""
+
+#: .\orders\apps.py:8
+msgid "訂單管理"
+msgstr ""
+
+#: .\orders\forms.py:18 .\orders\models.py:117 .\orders\models.py:328
+msgid "收件人姓名 / Recipient Name"
+msgstr ""
+
+#: .\orders\forms.py:22
+msgid "請輸入收件人姓名 / Enter recipient name"
+msgstr ""
+
+#: .\orders\forms.py:27 .\orders\models.py:124
+msgid "收件人電話 / Recipient Phone"
+msgstr ""
+
+#: .\orders\forms.py:32
+msgid "請輸入有效的電話號碼 / Please enter a valid phone number"
+msgstr ""
+
+#: .\orders\forms.py:37
+msgid "例如: 0912-345-678 / e.g. 0912-345-678"
+msgstr ""
+
+#: .\orders\forms.py:43 .\orders\models.py:132 .\orders\models.py:343
+msgid "郵遞區號 / Postal Code"
+msgstr ""
+
+#: .\orders\forms.py:48
+msgid "請輸入有效的郵遞區號 / Please enter a valid postal code"
+msgstr ""
+
+#: .\orders\forms.py:53
+msgid "例如: 10048 / e.g. 10048"
+msgstr ""
+
+#: .\orders\forms.py:58 .\orders\models.py:139 .\orders\models.py:350
+msgid "縣市 / City"
+msgstr ""
+
+#: .\orders\forms.py:62
+msgid "例如: 台北市 / e.g. Taipei City"
+msgstr ""
+
+#: .\orders\forms.py:67 .\orders\models.py:146 .\orders\models.py:357
+msgid "區域 / District"
+msgstr ""
+
+#: .\orders\forms.py:71
+msgid "例如: 中正區 / e.g. Zhongzheng District"
+msgstr ""
+
+#: .\orders\forms.py:76 .\orders\models.py:153 .\orders\models.py:364
+msgid "詳細地址 / Detailed Address"
+msgstr ""
+
+#: .\orders\forms.py:80
+msgid "例如: 重慶南路一段122號 / e.g. No.122, Sec.1, Chongqing S. Rd."
+msgstr ""
+
+#: .\orders\forms.py:86 .\orders\models.py:108
+#: .\templates\orders\checkout.html:108
+#: .\templates\orders\order_detail.html:102
+msgid "配送方式 / Shipping Method"
+msgstr ""
+
+#: .\orders\forms.py:96 .\orders\models.py:92 .\payments\models.py:73
+#: .\templates\orders\checkout.html:160
+#: .\templates\orders\order_detail.html:115
+#: .\templates\payments\ecpay_redirect.html:49
+#: .\templates\payments\payment_result.html:70
+#: .\templates\payments\payment_status.html:74
+msgid "付款方式 / Payment Method"
+msgstr ""
+
+#: .\orders\forms.py:106 .\templates\orders\checkout.html:199
+#: .\templates\orders\order_detail.html:141
+msgid "備註 / Notes"
+msgstr ""
+
+#: .\orders\forms.py:111
+msgid "有任何特別需求請在此註明 / Please specify any special requirements"
+msgstr ""
+
+#: .\orders\forms.py:136
+msgid ""
+"收件人姓名至少需要2個字元 / Recipient name must be at least 2 characters"
+msgstr ""
+
+#: .\orders\forms.py:145
+msgid ""
+"電話號碼只能包含數字和符號 / Phone number can only contain digits and symbols"
+msgstr ""
+
+#: .\orders\forms.py:148
+msgid "電話號碼長度不正確 / Phone number length is incorrect"
+msgstr ""
+
+#: .\orders\forms.py:155
+msgid "郵遞區號只能包含數字 / Postal code can only contain digits"
+msgstr ""
+
+#: .\orders\forms.py:166
+msgid "宅配需要提供詳細地址 / Home delivery requires detailed address"
+msgstr ""
+
+#: .\orders\models.py:22 .\payments\models.py:391
+msgid "待處理 / Pending"
+msgstr ""
+
+#: .\orders\models.py:23 .\payments\models.py:38 .\payments\models.py:392
+#: .\templates\payments\payment_status.html:40
+msgid "處理中 / Processing"
+msgstr ""
+
+#: .\orders\models.py:24
+msgid "已出貨 / Shipped"
+msgstr ""
+
+#: .\orders\models.py:25
+msgid "已送達 / Delivered"
+msgstr ""
+
+#: .\orders\models.py:26 .\payments\models.py:41 .\payments\models.py:395
+msgid "已取消 / Cancelled"
+msgstr ""
+
+#: .\orders\models.py:27 .\orders\models.py:35 .\payments\models.py:42
+msgid "已退款 / Refunded"
+msgstr ""
+
+#: .\orders\models.py:32 .\payments\models.py:37
+msgid "待付款 / Pending"
+msgstr ""
+
+#: .\orders\models.py:33 .\payments\models.py:39
+msgid "已付款 / Paid"
+msgstr ""
+
+#: .\orders\models.py:34 .\payments\models.py:40
+msgid "付款失敗 / Failed"
+msgstr ""
+
+#: .\orders\models.py:40 .\payments\models.py:25
+msgid "信用卡 / Credit Card"
+msgstr ""
+
+#: .\orders\models.py:41
+msgid "ATM 轉帳 / ATM Transfer"
+msgstr ""
+
+#: .\orders\models.py:42
+msgid "超商代碼 / CVS Code"
+msgstr ""
+
+#: .\orders\models.py:50 .\templates\orders\checkout.html:120
+msgid "宅配 / Home Delivery"
+msgstr ""
+
+#: .\orders\models.py:51 .\templates\orders\checkout.html:122
+msgid "7-11 取貨 / 7-11 Pickup"
+msgstr ""
+
+#: .\orders\models.py:52 .\templates\orders\checkout.html:124
+msgid "全家取貨 / FamilyMart Pickup"
+msgstr ""
+
+#: .\orders\models.py:53
+msgid "萊爾富取貨 / Hi-Life Pickup"
+msgstr ""
+
+#: .\orders\models.py:54
+msgid "OK超商取貨 / OK Mart Pickup"
+msgstr ""
+
+#: .\orders\models.py:59 .\templates\orders\order_detail.html:154
+#: .\templates\payments\ecpay_redirect.html:37
+#: .\templates\payments\payment_result.html:62
+#: .\templates\payments\payment_selection.html:22
+#: .\templates\payments\payment_status.html:70
+msgid "訂單編號 / Order Number"
+msgstr ""
+
+#: .\orders\models.py:63 .\payments\models.py:52
+msgid "系統自動生成 / Auto-generated"
+msgstr ""
+
+#: .\orders\models.py:77
+msgid "訂單狀態 / Order Status"
+msgstr ""
+
+#: .\orders\models.py:84 .\payments\models.py:80
+#: .\templates\orders\order_detail.html:119
+#: .\templates\payments\payment_status.html:4
+#: .\templates\payments\payment_status.html:12
+msgid "付款狀態 / Payment Status"
+msgstr ""
+
+#: .\orders\models.py:100 .\payments\models.py:141
+msgid "交易編號 / Transaction ID"
+msgstr ""
+
+#: .\orders\models.py:161 .\templates\cart\cart.html:150
+#: .\templates\orders\checkout.html:250
+#: .\templates\orders\order_detail.html:165
+#: .\templates\payments\payment_selection.html:26
+msgid "商品小計 / Subtotal"
+msgstr ""
+
+#: .\orders\models.py:168
+msgid "運費 / Shipping Fee"
+msgstr ""
+
+#: .\orders\models.py:175
+msgid "總金額 / Total Amount"
+msgstr ""
+
+#: .\orders\models.py:183
+msgid "客戶備註 / Customer Notes"
+msgstr ""
+
+#: .\orders\models.py:188
+msgid "管理員備註 / Admin Notes"
+msgstr ""
+
+#: .\orders\models.py:194 .\orders\models.py:292 .\orders\models.py:372
+#: .\payments\models.py:218 .\payments\models.py:367 .\payments\models.py:448
+#: .\templates\payments\payment_status.html:82
+msgid "建立時間 / Created At"
+msgstr ""
+
+#: .\orders\models.py:204 .\orders\models.py:243 .\orders\models.py:323
+#: .\payments\admin.py:118 .\payments\models.py:59
+msgid "訂單 / Order"
+msgstr ""
+
+#: .\orders\models.py:205
+msgid "訂單 / Orders"
+msgstr ""
+
+#: .\orders\models.py:230 .\orders\models.py:391
+msgid "未提供地址 / No address provided"
+msgstr ""
+
+#: .\orders\models.py:250
+msgid "商品 / Product"
+msgstr ""
+
+#: .\orders\models.py:258 .\templates\cart\cart.html:47
+#: .\templates\orders\order_detail.html:58
+msgid "規格 / Variant"
+msgstr ""
+
+#: .\orders\models.py:263
+msgid "商品名稱 / Product Name"
+msgstr ""
+
+#: .\orders\models.py:270 .\templates\cart\cart.html:56
+msgid "商品編號 / SKU"
+msgstr ""
+
+#: .\orders\models.py:283
+msgid "購買時價格 / Price at Purchase"
+msgstr ""
+
+#: .\orders\models.py:287 .\payments\models.py:91 .\payments\models.py:416
+msgid "新台幣 (NT$) / New Taiwan Dollar"
+msgstr ""
+
+#: .\orders\models.py:302
+msgid "訂單項目 / Order Item"
+msgstr ""
+
+#: .\orders\models.py:303
+msgid "訂單項目 / Order Items"
+msgstr ""
+
+#: .\orders\models.py:335 .\templates\orders\order_detail.html:94
+msgid "電話 / Phone"
+msgstr ""
+
+#: .\orders\models.py:382 .\templates\orders\order_detail.html:98
+msgid "配送地址 / Shipping Address"
+msgstr ""
+
+#: .\orders\models.py:383
+msgid "配送地址 / Shipping Addresses"
+msgstr ""
+
+#: .\orders\views.py:30 .\orders\views.py:35
+msgid "購物車是空的 / Your cart is empty"
+msgstr ""
+
+#: .\orders\views.py:45
+msgid "購物車中有商品缺貨或庫存不足 / Some items in your cart are out of stock"
+msgstr ""
+
+#: .\orders\views.py:61
+msgid "訂單建立失敗，請重試 / Order creation failed, please try again"
+msgstr ""
+
+#: .\orders\views.py:155
+msgid "功能開發中 / Feature under development"
+msgstr ""
+
+#: .\payments\admin.py:61 .\payments\admin.py:260 .\products\admin.py:47
+#: .\products\admin.py:126
+msgid "基本資訊 / Basic Information"
+msgstr ""
+
+#: .\payments\admin.py:70
+msgid "金額資訊 / Amount Information"
+msgstr ""
+
+#: .\payments\admin.py:78
+msgid "ECPay 交易資訊 / ECPay Transaction Info"
+msgstr ""
+
+#: .\payments\admin.py:87 .\templates\payments\payment_status.html:63
+msgid "付款詳細資訊 / Payment Details"
+msgstr ""
+
+#: .\payments\admin.py:100
+msgid "時間戳記 / Timestamps"
+msgstr ""
+
+#: .\payments\admin.py:148 .\payments\admin.py:314 .\products\admin.py:279
+#: .\products\models.py:247
+msgid "狀態 / Status"
+msgstr ""
+
+#: .\payments\admin.py:153 .\payments\admin.py:319
+msgid "金額 / Amount"
+msgstr ""
+
+#: .\payments\admin.py:199 .\payments\admin.py:286
+msgid "付款 / Payment"
+msgstr ""
+
+#: .\payments\admin.py:216
+msgid "類型 / Type"
+msgstr ""
+
+#: .\payments\admin.py:221 .\payments\models.py:335
+msgid "訊息 / Message"
+msgstr ""
+
+#: .\payments\admin.py:269
+msgid "處理資訊 / Processing Information"
+msgstr ""
+
+#: .\payments\admin.py:297 .\payments\models.py:444
+msgid "處理人 / Processed By"
+msgstr ""
+
+#: .\payments\models.py:26
+msgid "網路ATM / Web ATM"
+msgstr ""
+
+#: .\payments\models.py:27
+msgid "ATM轉帳 / ATM Transfer"
+msgstr ""
+
+#: .\payments\models.py:28
+msgid "超商代碼 / CVS Code Payment"
+msgstr ""
+
+#: .\payments\models.py:29
+msgid "超商條碼 / CVS Barcode Payment"
+msgstr ""
+
+#: .\payments\models.py:43
+msgid "部分退款 / Partial Refund"
+msgstr ""
+
+#: .\payments\models.py:48 .\templates\orders\order_detail.html:130
+#: .\templates\payments\ecpay_redirect.html:41
+#: .\templates\payments\payment_result.html:66
+#: .\templates\payments\payment_status.html:66
+msgid "付款編號 / Payment ID"
+msgstr ""
+
+#: .\payments\models.py:88
+msgid "付款金額 / Payment Amount"
+msgstr ""
+
+#: .\payments\models.py:95
+msgid "貨幣 / Currency"
+msgstr ""
+
+#: .\payments\models.py:98
+msgid "貨幣代碼 / Currency Code"
+msgstr ""
+
+#: .\payments\models.py:103
+msgid "ECPay商店交易編號 / ECPay Merchant Trade No"
+msgstr ""
+
+#: .\payments\models.py:111
+msgid "ECPay交易編號 / ECPay Trade No"
+msgstr ""
+
+#: .\payments\models.py:115
+msgid "ECPay系統交易編號 / ECPay system transaction number"
+msgstr ""
+
+#: .\payments\models.py:119
+msgid "ECPay付款時間 / ECPay Payment Date"
+msgstr ""
+
+#: .\payments\models.py:125
+msgid "ECPay付款類型 / ECPay Payment Type"
+msgstr ""
+
+#: .\payments\models.py:128
+msgid "ECPay回傳的付款類型 / Payment type returned by ECPay"
+msgstr ""
+
+#: .\payments\models.py:132
+msgid "ECPay手續費 / ECPay Charge Fee"
+msgstr ""
+
+#: .\payments\models.py:136
+msgid "ECPay收取的手續費 / Fee charged by ECPay"
+msgstr ""
+
+#: .\payments\models.py:144
+msgid "銀行或第三方支付交易編號 / Bank or third-party transaction ID"
+msgstr ""
+
+#: .\payments\models.py:148
+msgid "授權碼 / Authorization Code"
+msgstr ""
+
+#: .\payments\models.py:151
+msgid "信用卡授權碼 / Credit card authorization code"
+msgstr ""
+
+#: .\payments\models.py:156
+msgid "銀行代碼 / Bank Code"
+msgstr ""
+
+#: .\payments\models.py:159
+msgid "ATM轉帳銀行代碼 / ATM transfer bank code"
+msgstr ""
+
+#: .\payments\models.py:163 .\templates\payments\payment_result.html:92
+#: .\templates\payments\payment_status.html:107
+msgid "虛擬帳號 / Virtual Account"
+msgstr ""
+
+#: .\payments\models.py:166
+msgid "ATM轉帳虛擬帳號 / ATM transfer virtual account"
+msgstr ""
+
+#: .\payments\models.py:170 .\templates\payments\payment_result.html:102
+#: .\templates\payments\payment_status.html:114
+msgid "繳費代碼 / Payment Code"
+msgstr ""
+
+#: .\payments\models.py:173
+msgid "超商繳費代碼 / CVS payment code"
+msgstr ""
+
+#: .\payments\models.py:177
+msgid "條碼1 / Barcode 1"
+msgstr ""
+
+#: .\payments\models.py:183
+msgid "條碼2 / Barcode 2"
+msgstr ""
+
+#: .\payments\models.py:189
+msgid "條碼3 / Barcode 3"
+msgstr ""
+
+#: .\payments\models.py:196 .\templates\payments\payment_result.html:125
+#: .\templates\payments\payment_status.html:132
+msgid "付款期限 / Payment Deadline"
+msgstr ""
+
+#: .\payments\models.py:199
+msgid "ATM或超商付款期限 / ATM or CVS payment deadline"
+msgstr ""
+
+#: .\payments\models.py:204 .\payments\models.py:413
+msgid "退款金額 / Refund Amount"
+msgstr ""
+
+#: .\payments\models.py:211
+msgid "退款日期 / Refund Date"
+msgstr ""
+
+#: .\payments\models.py:228
+msgid "付款完成時間 / Paid At"
+msgstr ""
+
+#: .\payments\models.py:234 .\payments\models.py:324 .\payments\models.py:402
+msgid "付款記錄 / Payment"
+msgstr ""
+
+#: .\payments\models.py:235
+msgid "付款記錄 / Payments"
+msgstr ""
+
+#: .\payments\models.py:313
+msgid "請求 / Request"
+msgstr ""
+
+#: .\payments\models.py:314
+msgid "回應 / Response"
+msgstr ""
+
+#: .\payments\models.py:315
+msgid "回調 / Callback"
+msgstr ""
+
+#: .\payments\models.py:316
+msgid "錯誤 / Error"
+msgstr ""
+
+#: .\payments\models.py:317
+msgid "資訊 / Info"
+msgstr ""
+
+#: .\payments\models.py:328
+msgid "日誌類型 / Log Type"
+msgstr ""
+
+#: .\payments\models.py:336
+msgid "日誌訊息內容 / Log message content"
+msgstr ""
+
+#: .\payments\models.py:340
+msgid "請求資料 / Request Data"
+msgstr ""
+
+#: .\payments\models.py:343
+msgid "發送給ECPay的資料 / Data sent to ECPay"
+msgstr ""
+
+#: .\payments\models.py:347
+msgid "回應資料 / Response Data"
+msgstr ""
+
+#: .\payments\models.py:350
+msgid "ECPay回傳的資料 / Data returned from ECPay"
+msgstr ""
+
+#: .\payments\models.py:354
+msgid "IP地址 / IP Address"
+msgstr ""
+
+#: .\payments\models.py:357
+msgid "發起請求的IP地址 / IP address of the request"
+msgstr ""
+
+#: .\payments\models.py:361
+msgid "用戶代理 / User Agent"
+msgstr ""
+
+#: .\payments\models.py:363
+msgid "瀏覽器用戶代理字符串 / Browser user agent string"
+msgstr ""
+
+#: .\payments\models.py:372
+msgid "付款日誌 / Payment Log"
+msgstr ""
+
+#: .\payments\models.py:373
+msgid "付款日誌 / Payment Logs"
+msgstr ""
+
+#: .\payments\models.py:393
+msgid "已完成 / Completed"
+msgstr ""
+
+#: .\payments\models.py:394
+msgid "失敗 / Failed"
+msgstr ""
+
+#: .\payments\models.py:406
+msgid "退款編號 / Refund ID"
+msgstr ""
+
+#: .\payments\models.py:420
+msgid "退款原因 / Refund Reason"
+msgstr ""
+
+#: .\payments\models.py:421
+msgid "退款申請原因 / Reason for refund request"
+msgstr ""
+
+#: .\payments\models.py:425
+msgid "退款狀態 / Refund Status"
+msgstr ""
+
+#: .\payments\models.py:432
+msgid "ECPay退款編號 / ECPay Refund No"
+msgstr ""
+
+#: .\payments\models.py:435
+msgid "ECPay系統退款編號 / ECPay system refund number"
+msgstr ""
+
+#: .\payments\models.py:453
+msgid "處理時間 / Processed At"
+msgstr ""
+
+#: .\payments\models.py:459
+msgid "退款記錄 / Refund Record"
+msgstr ""
+
+#: .\payments\models.py:460
+msgid "退款記錄 / Refund Records"
+msgstr ""
+
+#: .\payments\views.py:49 .\payments\views.py:69
+msgid "此訂單無法付款 / This order cannot be paid"
+msgstr ""
+
+#: .\payments\views.py:74
+msgid "此訂單已有付款記錄 / Payment already exists for this order"
+msgstr ""
+
+#: .\payments\views.py:101
+msgid "付款建立失敗，請稍後再試 / Payment creation failed, please try again"
+msgstr ""
+
+#: .\payments\views.py:177
+msgid "找不到付款記錄 / No payment record found"
+msgstr ""
+
+#: .\products\admin.py:50 .\products\admin.py:136 .\products\models.py:38
+msgid "描述 / Description"
+msgstr ""
+
+#: .\products\admin.py:53
+msgid "顯示設定 / Display Settings"
+msgstr ""
+
+#: .\products\admin.py:56 .\products\admin.py:166
+msgid "SEO 設定 / SEO Settings"
+msgstr ""
+
+#: .\products\admin.py:65 .\products\admin.py:349 .\products\admin.py:416
+msgid "系統資訊 / System Information"
+msgstr ""
+
+#: .\products\admin.py:78 .\products\models.py:18
+msgid "分類名稱 / Category Name"
+msgstr ""
+
+#: .\products\admin.py:87
+msgid "產品數量 / Products"
+msgstr ""
+
+#: .\products\admin.py:144
+msgid "價格設定（新台幣）/ Pricing (NT$)"
+msgstr ""
+
+#: .\products\admin.py:150
+msgid "所有價格以新台幣 (NT$) 為單位 / All prices in New Taiwan Dollar (NT$)"
+msgstr ""
+
+#: .\products\admin.py:152
+msgid "庫存管理 / Inventory Management"
+msgstr ""
+
+#: .\products\admin.py:158
+msgid "產品特性 / Product Features"
+msgstr ""
+
+#: .\products\admin.py:175
+msgid "統計資訊 / Statistics"
+msgstr ""
+
+#: .\products\admin.py:185
+msgid "主圖預覽 / Primary Image Preview"
+msgstr ""
+
+#: .\products\admin.py:202 .\products\models.py:401
+msgid "圖片 / Image"
+msgstr ""
+
+#: .\products\admin.py:211 .\products\models.py:145
+msgid "產品名稱 / Product Name"
+msgstr ""
+
+#: .\products\admin.py:231
+msgid "價格 / Price"
+msgstr ""
+
+#: .\products\admin.py:238 .\products\admin.py:267 .\products\admin.py:451
+#: .\products\models.py:140
+msgid "缺貨 / Out of Stock"
+msgstr ""
+
+#: .\products\admin.py:254 .\products\admin.py:463
+msgid "庫存 / Stock"
+msgstr ""
+
+#: .\products\admin.py:265 .\products\models.py:138
+msgid "草稿 / Draft"
+msgstr ""
+
+#: .\products\admin.py:266 .\products\models.py:139
+msgid "上架中 / Active"
+msgstr ""
+
+#: .\products\admin.py:268 .\products\models.py:141
+msgid "停售 / Discontinued"
+msgstr ""
+
+#: .\products\admin.py:289
+msgid "無主圖片 / No primary image"
+msgstr ""
+
+#: .\products\admin.py:290
+msgid "主圖片預覽 / Primary Image Preview"
+msgstr ""
+
+#: .\products\admin.py:298
+#, python-brace-format
+msgid "{updated} 個產品已設為上架中 / {updated} products marked as active"
+msgstr ""
+
+#: .\products\admin.py:300
+msgid "設為上架中 / Mark as Active"
+msgstr ""
+
+#: .\products\admin.py:307
+#, python-brace-format
+msgid "{updated} 個產品已設為精選 / {updated} products marked as featured"
+msgstr ""
+
+#: .\products\admin.py:309
+msgid "設為精選產品 / Mark as Featured"
+msgstr ""
+
+#: .\products\admin.py:316
+#, python-brace-format
+msgid "{updated} 個產品已設為缺貨 / {updated} products marked as out of stock"
+msgstr ""
+
+#: .\products\admin.py:318
+msgid "設為缺貨 / Mark as Out of Stock"
+msgstr ""
+
+#: .\products\admin.py:338
+msgid "圖片資訊 / Image Information"
+msgstr ""
+
+#: .\products\admin.py:361
+msgid "預覽 / Preview"
+msgstr ""
+
+#: .\products\admin.py:369
+msgid "圖片預覽 / Image Preview"
+msgstr ""
+
+#: .\products\admin.py:378 .\products\models.py:407
+msgid "替代文字 / Alt Text"
+msgstr ""
+
+#: .\products\admin.py:399
+msgid "規格資訊 / Variant Information"
+msgstr ""
+
+#: .\products\admin.py:409
+msgid "價格與庫存 / Pricing & Inventory"
+msgstr ""
+
+#: .\products\admin.py:429 .\products\models.py:470
+msgid "規格名稱 / Variant Name"
+msgstr ""
+
+#: .\products\admin.py:444
+msgid "價格調整 / Price Adjustment"
+msgstr ""
+
+#: .\products\admin.py:457
+msgid "低庫存 / Low Stock"
+msgstr ""
+
+#: .\products\admin.py:478
+msgid "最終價格 / Final Price"
+msgstr ""
+
+#: .\products\models.py:20
+msgid "產品分類名稱（繁體中文）/ Product category name (Traditional Chinese)"
+msgstr ""
+
+#: .\products\models.py:24
+msgid "分類名稱（英文）/ Category Name (English)"
+msgstr ""
+
+#: .\products\models.py:27
+msgid "英文分類名稱 / English category name"
+msgstr ""
+
+#: .\products\models.py:31 .\products\models.py:158
+msgid "網址代碼 / URL Slug"
+msgstr ""
+
+#: .\products\models.py:34 .\products\models.py:161
+msgid "用於URL的唯一代碼 / Unique code for URLs"
+msgstr ""
+
+#: .\products\models.py:40
+msgid "分類描述（繁體中文）/ Category description (Traditional Chinese)"
+msgstr ""
+
+#: .\products\models.py:44
+msgid "描述（英文）/ Description (English)"
+msgstr ""
+
+#: .\products\models.py:46
+msgid "英文分類描述 / English category description"
+msgstr ""
+
+#: .\products\models.py:55
+msgid "上層分類 / Parent Category"
+msgstr ""
+
+#: .\products\models.py:56
+msgid "父分類（如果有）/ Parent category (if any)"
+msgstr ""
+
+#: .\products\models.py:60
+msgid "分類圖片 / Category Image"
+msgstr ""
+
+#: .\products\models.py:67 .\products\models.py:505
+msgid "啟用 / Active"
+msgstr ""
+
+#: .\products\models.py:69
+msgid "是否顯示此分類 / Whether to display this category"
+msgstr ""
+
+#: .\products\models.py:73 .\products\models.py:427 .\products\models.py:511
+msgid "顯示順序 / Display Order"
+msgstr ""
+
+#: .\products\models.py:75
+msgid "排序順序（數字越小越前面）/ Sort order (lower numbers appear first)"
+msgstr ""
+
+#: .\products\models.py:80 .\products\models.py:286
+msgid "SEO標題 / SEO Title"
+msgstr ""
+
+#: .\products\models.py:83 .\products\models.py:289
+msgid "搜尋引擎顯示標題（繁體中文）/ Search engine title (Traditional Chinese)"
+msgstr ""
+
+#: .\products\models.py:87 .\products\models.py:293
+msgid "SEO標題（英文）/ SEO Title (English)"
+msgstr ""
+
+#: .\products\models.py:90 .\products\models.py:296
+msgid "英文搜尋引擎標題 / English search engine title"
+msgstr ""
+
+#: .\products\models.py:94 .\products\models.py:300
+msgid "SEO描述 / SEO Description"
+msgstr ""
+
+#: .\products\models.py:96 .\products\models.py:302
+msgid ""
+"搜尋引擎顯示描述（繁體中文）/ Search engine description (Traditional Chinese)"
+msgstr ""
+
+#: .\products\models.py:100 .\products\models.py:306
+msgid "SEO描述（英文）/ SEO Description (English)"
+msgstr ""
+
+#: .\products\models.py:102 .\products\models.py:308
+msgid "英文搜尋引擎描述 / English search engine description"
+msgstr ""
+
+#: .\products\models.py:115
+msgid "產品分類 / Product Category"
+msgstr ""
+
+#: .\products\models.py:116
+msgid "產品分類 / Product Categories"
+msgstr ""
+
+#: .\products\models.py:147
+msgid "產品名稱（繁體中文）/ Product name (Traditional Chinese)"
+msgstr ""
+
+#: .\products\models.py:151
+msgid "產品名稱（英文）/ Product Name (English)"
+msgstr ""
+
+#: .\products\models.py:154
+msgid "英文產品名稱 / English product name"
+msgstr ""
+
+#: .\products\models.py:165
+msgid "產品編號 / SKU"
+msgstr ""
+
+#: .\products\models.py:168
+msgid "庫存單位編號 / Stock Keeping Unit"
+msgstr ""
+
+#: .\products\models.py:175
+msgid "分類 / Category"
+msgstr ""
+
+#: .\products\models.py:179
+msgid "產品描述 / Product Description"
+msgstr ""
+
+#: .\products\models.py:180
+msgid ""
+"詳細產品描述（繁體中文）/ Detailed product description (Traditional Chinese)"
+msgstr ""
+
+#: .\products\models.py:184
+msgid "產品描述（英文）/ Product Description (English)"
+msgstr ""
+
+#: .\products\models.py:186
+msgid "英文產品描述 / English product description"
+msgstr ""
+
+#: .\products\models.py:190
+msgid "產品規格 / Specifications"
+msgstr ""
+
+#: .\products\models.py:192
+msgid "技術規格（繁體中文）/ Technical specifications (Traditional Chinese)"
+msgstr ""
+
+#: .\products\models.py:196
+msgid "產品規格（英文）/ Specifications (English)"
+msgstr ""
+
+#: .\products\models.py:198
+msgid "英文技術規格 / English technical specifications"
+msgstr ""
+
+#: .\products\models.py:203
+msgid "售價（新台幣）/ Price (NT$)"
+msgstr ""
+
+#: .\products\models.py:207
+msgid "新台幣售價 / Price in New Taiwan Dollar"
+msgstr ""
+
+#: .\products\models.py:211
+msgid "特價（新台幣）/ Sale Price (NT$)"
+msgstr ""
+
+#: .\products\models.py:217
+msgid "促銷價格（如果有）/ Promotional price (if any)"
+msgstr ""
+
+#: .\products\models.py:221
+msgid "成本價（新台幣）/ Cost Price (NT$)"
+msgstr ""
+
+#: .\products\models.py:227
+msgid "進貨成本（內部使用）/ Purchase cost (internal use)"
+msgstr ""
+
+#: .\products\models.py:232 .\products\models.py:498
+msgid "庫存數量 / Stock Quantity"
+msgstr ""
+
+#: .\products\models.py:235
+msgid "現有庫存數量 / Current stock quantity"
+msgstr ""
+
+#: .\products\models.py:239
+msgid "低庫存警示 / Low Stock Threshold"
+msgstr ""
+
+#: .\products\models.py:242
+msgid "低於此數量時顯示警告 / Show warning when below this quantity"
+msgstr ""
+
+#: .\products\models.py:251
+msgid "產品狀態 / Product status"
+msgstr ""
+
+#: .\products\models.py:255
+msgid "精選產品 / Featured Product"
+msgstr ""
+
+#: .\products\models.py:257
+msgid "是否顯示在首頁精選區 / Display in homepage featured section"
+msgstr ""
+
+#: .\products\models.py:261
+msgid "新品 / New Arrival"
+msgstr ""
+
+#: .\products\models.py:263
+msgid "是否標示為新品 / Mark as new arrival"
+msgstr ""
+
+#: .\products\models.py:268
+msgid "重量（公克）/ Weight (grams)"
+msgstr ""
+
+#: .\products\models.py:274
+msgid "產品重量（用於運費計算）/ Product weight (for shipping calculation)"
+msgstr ""
+
+#: .\products\models.py:278
+msgid "尺寸 / Dimensions"
+msgstr ""
+
+#: .\products\models.py:281
+msgid "產品尺寸（長x寬x高 cm）/ Product dimensions (L x W x H cm)"
+msgstr ""
+
+#: .\products\models.py:321
+msgid "上架時間 / Published At"
+msgstr ""
+
+#: .\products\models.py:324
+msgid "產品上架日期時間 / Product publish date and time"
+msgstr ""
+
+#: .\products\models.py:329
+msgid "瀏覽次數 / View Count"
+msgstr ""
+
+#: .\products\models.py:331
+msgid "產品被瀏覽的次數 / Number of times product was viewed"
+msgstr ""
+
+#: .\products\models.py:335
+msgid "銷售數量 / Sales Count"
+msgstr ""
+
+#: .\products\models.py:337
+msgid "已售出數量 / Number of units sold"
+msgstr ""
+
+#: .\products\models.py:342
+msgid "產品 / Products"
+msgstr ""
+
+#: .\products\models.py:403
+msgid "產品圖片 / Product image"
+msgstr ""
+
+#: .\products\models.py:410
+msgid ""
+"圖片替代文字（繁體中文，用於SEO）/ Image alt text (Traditional Chinese, for "
+"SEO)"
+msgstr ""
+
+#: .\products\models.py:414
+msgid "替代文字（英文）/ Alt Text (English)"
+msgstr ""
+
+#: .\products\models.py:417
+msgid "英文圖片替代文字（用於SEO）/ English image alt text (for SEO)"
+msgstr ""
+
+#: .\products\models.py:421
+msgid "主要圖片 / Primary Image"
+msgstr ""
+
+#: .\products\models.py:423
+msgid "是否為主要顯示圖片 / Whether this is the primary display image"
+msgstr ""
+
+#: .\products\models.py:429
+msgid "排序順序 / Sort order"
+msgstr ""
+
+#: .\products\models.py:433
+msgid "上傳時間 / Uploaded At"
+msgstr ""
+
+#: .\products\models.py:438
+msgid "產品圖片 / Product Image"
+msgstr ""
+
+#: .\products\models.py:439
+msgid "產品圖片 / Product Images"
+msgstr ""
+
+#: .\products\models.py:472
+msgid "例如：紅色/L號/256GB / e.g., Red/L/256GB"
+msgstr ""
+
+#: .\products\models.py:476
+msgid "規格名稱（英文）/ Variant Name (English)"
+msgstr ""
+
+#: .\products\models.py:479
+msgid "英文規格名稱 / English variant name"
+msgstr ""
+
+#: .\products\models.py:483
+msgid "規格編號 / Variant SKU"
+msgstr ""
+
+#: .\products\models.py:486
+msgid "規格專屬SKU / Unique SKU for this variant"
+msgstr ""
+
+#: .\products\models.py:490
+msgid "價格差異（新台幣）/ Price Difference (NT$)"
+msgstr ""
+
+#: .\products\models.py:494
+msgid ""
+"相對於主產品的價格調整（可為負數）/ Price adjustment relative to main "
+"product (can be negative)"
+msgstr ""
+
+#: .\products\models.py:501
+msgid "此規格的庫存數量 / Stock quantity for this variant"
+msgstr ""
+
+#: .\products\models.py:507
+msgid "是否可供選擇 / Whether this variant is available for selection"
+msgstr ""
+
+#: .\products\models.py:526
+msgid "產品規格 / Product Variants"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:17
+msgid "確認連結無效"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:20
+msgid "無法確認您的電子郵件地址"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:34
+msgid "確認失敗"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:37
+msgid "此確認連結可能已過期、已被使用或無效。可能的原因包括："
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:39
+msgid "連結已過期（48小時有效期）"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:40
+msgid "連結已被使用過"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:41
+msgid "連結格式不正確"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:42
+msgid "帳戶已被確認"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:59
+msgid "解決方案"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:62
+msgid "請嘗試以下方法："
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:64
+msgid "檢查您的電子郵件是否已經確認"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:65
+msgid "嘗試登入您的帳戶"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:66
+msgid "如果無法登入，請重新註冊"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:67
+msgid "聯絡客服團隊尋求協助"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:79
+msgid "嘗試登入"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:83
+msgid "重新註冊"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:88
+#: .\templates\authentication\email_confirmed.html:58
+msgid "返回首頁"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:97
+msgid "需要協助？"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:100
+msgid "如果問題持續存在，請聯絡我們的客服團隊"
+msgstr ""
+
+#: .\templates\authentication\email_confirm_error.html:104
+msgid "聯絡客服"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:4
+msgid "電子郵件確認成功"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:17
+msgid "電子郵件確認成功！"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:20
+msgid "您的帳戶現已啟用"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:34
+msgid "確認完成"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:37
+msgid "恭喜！您的電子郵件地址已成功確認。您現在可以："
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:39
+msgid "使用您的帳戶登入"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:40
+msgid "享受完整的購物體驗"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:41
+msgid "接收重要的帳戶通知"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:42
+msgid "管理您的個人資料"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:54
+msgid "立即登入"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:73
+#: .\templates\authentication\password_reset_confirm.html:173
+msgid "安全提醒"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:76
+msgid "為了保護您的帳戶安全，請："
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:78
+msgid "使用強密碼並定期更換"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:79
+msgid "不要與他人分享您的登入資訊"
+msgstr ""
+
+#: .\templates\authentication\email_confirmed.html:80
+msgid "登出時記得關閉瀏覽器"
+msgstr ""
+
+#: .\templates\authentication\login.html:5
+msgid "用戶登入"
+msgstr ""
+
+#: .\templates\authentication\login.html:18
+msgid "登入您的帳戶"
+msgstr ""
+
+#: .\templates\authentication\login.html:21
+#: .\templates\authentication\register.html:21
+msgid "或"
+msgstr ""
+
+#: .\templates\authentication\login.html:23
+#: .\templates\authentication\register.html:18
+msgid "創建新帳戶"
+msgstr ""
+
+#: .\templates\authentication\login.html:83
+msgid "忘記密碼？"
+msgstr ""
+
+#: .\templates\authentication\login.html:97 .\templates\base.html:170
+msgid "登入"
+msgstr ""
+
+#: .\templates\authentication\login.html:104
+msgid "還沒有帳戶嗎？"
+msgstr ""
+
+#: .\templates\authentication\login.html:106
+msgid "立即註冊"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:5
+msgid "重設密碼"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:18
+msgid "重設您的密碼"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:21
+msgid "請輸入您的電子郵件地址，我們會發送重設連結給您"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:97
+msgid "發送重設連結"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:111
+msgid "重要提醒"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:115
+msgid "重設連結將在4小時後過期"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:116
+msgid "如果沒有收到郵件，請檢查垃圾郵件資料夾"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:117
+msgid "每個重設連結只能使用一次"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:118
+msgid "如果電子郵件不存在，您將不會收到任何郵件"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:128
+msgid "記起密碼了嗎？"
+msgstr ""
+
+#: .\templates\authentication\password_reset.html:130
+#: .\templates\authentication\password_reset_confirm.html:189
+msgid "返回登入"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:5
+#: .\templates\authentication\password_reset_confirm.html:18
+msgid "設定新密碼"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:21
+msgid "請輸入您的新密碼"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:36
+msgid "重設連結無效"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:43
+msgid "申請新的重設連結"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:137
+msgid "密碼安全提示"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:141
+msgid "至少8個字符長度"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:142
+msgid "包含字母和數字"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:143
+msgid "避免使用個人信息"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:144
+msgid "不要與其他網站使用相同密碼"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:159
+msgid "更新密碼"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:176
+msgid "密碼更新後，您將需要使用新密碼重新登入。此重設連結將在使用後失效。"
+msgstr ""
+
+#: .\templates\authentication\password_reset_confirm.html:187
+msgid "不需要重設密碼？"
+msgstr ""
+
+#: .\templates\authentication\profile.html:5
+#: .\templates\authentication\profile.html:20 .\templates\base.html:149
+msgid "個人資料"
+msgstr ""
+
+#: .\templates\authentication\profile.html:23
+msgid "管理您的帳戶信息和偏好設定"
+msgstr ""
+
+#: .\templates\authentication\profile.html:36
+msgid "基本信息"
+msgstr ""
+
+#: .\templates\authentication\profile.html:61
+msgid "電子郵件地址無法更改"
+msgstr ""
+
+#: .\templates\authentication\profile.html:102
+msgid "保存更改"
+msgstr ""
+
+#: .\templates\authentication\profile.html:116
+msgid "帳戶狀態"
+msgstr ""
+
+#: .\templates\authentication\profile.html:131
+msgid "等待電子郵件確認"
+msgstr ""
+
+#: .\templates\authentication\profile.html:141
+msgid "帳戶已啟用"
+msgstr ""
+
+#: .\templates\authentication\profile.html:146
+msgid "帳戶未啟用"
+msgstr ""
+
+#: .\templates\authentication\profile.html:152
+msgid "加入日期"
+msgstr ""
+
+#: .\templates\authentication\profile.html:159
+msgid "最後登入"
+msgstr ""
+
+#: .\templates\authentication\profile.html:170
+msgid "安全設定"
+msgstr ""
+
+#: .\templates\authentication\profile.html:176
+msgid "更改密碼"
+msgstr ""
+
+#: .\templates\authentication\profile.html:186
+msgid "隱私權資訊"
+msgstr ""
+
+#: .\templates\authentication\profile.html:195
+msgid "已同意個人資料保護法條款"
+msgstr ""
+
+#: .\templates\authentication\profile.html:199
+msgid "同意日期"
+msgstr ""
+
+#: .\templates\authentication\profile.html:205
+msgid "查看隱私政策"
+msgstr ""
+
+#: .\templates\authentication\register.html:5
+msgid "用戶註冊"
+msgstr ""
+
+#: .\templates\authentication\register.html:23
+msgid "登入現有帳戶"
+msgstr ""
+
+#: .\templates\authentication\register.html:108
+msgid "確認密碼"
+msgstr ""
+
+#: .\templates\authentication\register.html:142
+msgid "我同意"
+msgstr ""
+
+#: .\templates\authentication\register.html:143
+msgid "個人資料保護法條款"
+msgstr ""
+
+#: .\templates\authentication\register.html:160
+msgid "創建帳戶"
+msgstr ""
+
+#: .\templates\base.html:7 .\templates\home.html:4
+msgid "花蓮優質肉品專賣店"
+msgstr "花蓮優質肉品專賣店"
+
+#: .\templates\base.html:32
+msgid ""
+"日日鮮商行，花蓮50年老店明昌食品號旗艦店，提供新鮮優質肉品，牛羊雞豬海鮮一應"
+"俱全"
+msgstr ""
+
+#: .\templates\base.html:33
+msgid "花蓮肉品,新鮮肉類,牛肉,羊肉,雞肉,豬肉,海鮮,日日鮮,明昌食品"
+msgstr "花蓮肉品,新鮮肉類,牛肉,羊肉,雞肉,豬肉,海鮮,日日鮮,明昌食品"
+
+#: .\templates\base.html:46 .\templates\products\product_detail.html:12
+#: .\templates\products\product_list.html:144
+msgid "首頁"
+msgstr ""
+
+#: .\templates\base.html:49
+msgid "商店位置"
+msgstr "商店位置"
+
+#: .\templates\base.html:52 .\templates\base.html:247
+msgid "聯絡我們"
+msgstr "聯絡我們"
+
+#: .\templates\base.html:56
+msgid "週一至週六花蓮市區外送"
+msgstr "週一至週六花蓮市區外送"
+
+#: .\templates\base.html:80 .\templates\base.html:185
+#: .\templates\home.html:108
+msgid "美國1855"
+msgstr "美國1855"
+
+#: .\templates\base.html:85 .\templates\base.html:186 .\templates\home.html:85
+msgid "牛肉類"
+msgstr "牛肉類"
+
+#: .\templates\base.html:90 .\templates\base.html:187 .\templates\home.html:89
+msgid "羊肉類"
+msgstr "羊肉類"
+
+#: .\templates\base.html:95 .\templates\base.html:188 .\templates\home.html:93
+msgid "雞肉類"
+msgstr "雞肉類"
+
+#: .\templates\base.html:100 .\templates\base.html:189
+#: .\templates\home.html:112
+msgid "台灣1983神"
+msgstr "台灣1983神"
+
+#: .\templates\base.html:105 .\templates\base.html:190
+#: .\templates\home.html:97
+msgid "豬肉類"
+msgstr "豬肉類"
+
+#: .\templates\base.html:110 .\templates\base.html:191
+#: .\templates\home.html:104
+msgid "海鮮類"
+msgstr "海鮮類"
+
+#: .\templates\base.html:115 .\templates\base.html:192
+#: .\templates\home.html:116
+msgid "其他類"
+msgstr "其他類"
+
+#: .\templates\base.html:123
+msgid "購物車"
+msgstr ""
+
+#: .\templates\base.html:152
+msgid "訂單記錄"
+msgstr ""
+
+#: .\templates\base.html:155
+msgid "設定"
+msgstr ""
+
+#: .\templates\base.html:161
+msgid "登出"
+msgstr ""
+
+#: .\templates\base.html:174
+msgid "註冊"
+msgstr ""
+
+#: .\templates\base.html:220
+msgid "營業時間 & 地點"
+msgstr "營業時間 & 地點"
+
+#: .\templates\base.html:225
+msgid "週一公休"
+msgstr "週一公休"
+
+#: .\templates\base.html:229
+msgid "地址"
+msgstr "地址"
+
+#: .\templates\base.html:240
+msgid "週一至週六提供花蓮市區外送服務"
+msgstr "週一至週六提供花蓮市區外送服務"
+
+#: .\templates\base.html:241
+msgid "滿$500即可外送．滿$1000免運費"
+msgstr "滿$500即可外送．滿$1000免運費"
+
+#: .\templates\base.html:242
+msgid "未滿千加收$50運費"
+msgstr "未滿千加收$50運費"
+
+#: .\templates\base.html:249
+msgid "電話"
+msgstr "電話"
+
+#: .\templates\base.html:250
+msgid "訂購、詢價請加入line@"
+msgstr "訂購、詢價請加入line@"
+
+#: .\templates\base.html:262 .\templates\home.html:127
+msgid "關於日日鮮"
+msgstr "關於日日鮮"
+
+#: .\templates\base.html:264
+msgid "花蓮在地50年老店明昌食品號的創新品牌旗艦店"
+msgstr "花蓮在地50年老店明昌食品號的創新品牌旗艦店"
+
+#: .\templates\base.html:265
+msgid "提供新鮮衛生肉品給消費者"
+msgstr "提供新鮮衛生肉品給消費者"
+
+#: .\templates\base.html:268 .\templates\home.html:142
+msgid "營業負責人"
+msgstr "營業負責人"
+
+#: .\templates\base.html:269 .\templates\home.html:143
+msgid "統一編號"
+msgstr "統一編號"
+
+#: .\templates\base.html:276
+msgid "版權所有"
+msgstr ""
+
+#: .\templates\base.html:277
+msgid "明昌食品號成立於民國62年，坐落於花蓮市復興市場"
+msgstr "明昌食品號成立於民國62年，坐落於花蓮市復興市場"
+
+#: .\templates\cart\cart.html:66 .\templates\orders\order_detail.html:71
+msgid "單價 / Unit Price"
+msgstr ""
+
+#: .\templates\cart\cart.html:75
+msgid "減少數量 / Decrease quantity"
+msgstr ""
+
+#: .\templates\cart\cart.html:85
+msgid "商品數量 / Product quantity"
+msgstr ""
+
+#: .\templates\cart\cart.html:88
+msgid "增加數量 / Increase quantity"
+msgstr ""
+
+#: .\templates\cart\cart.html:95
+msgid "移除商品 / Remove item"
+msgstr ""
+
+#: .\templates\cart\cart.html:96
+msgid "移除 / Remove"
+msgstr ""
+
+#: .\templates\cart\cart.html:108
+msgid "僅剩 / Only"
+msgstr ""
+
+#: .\templates\cart\cart.html:108 .\templates\cart\cart.html:112
+#: .\templates\cart\cart.html:150 .\templates\orders\checkout.html:250
+msgid "件 / items"
+msgstr ""
+
+#: .\templates\cart\cart.html:121 .\templates\orders\order_detail.html:76
+msgid "小計 / Subtotal"
+msgstr ""
+
+#: .\templates\cart\cart.html:135
+msgid "清空購物車 / Clear cart"
+msgstr ""
+
+#: .\templates\cart\cart.html:136
+msgid "清空購物車 / Clear Cart"
+msgstr ""
+
+#: .\templates\cart\cart.html:145 .\templates\orders\checkout.html:213
+#: .\templates\orders\order_detail.html:150
+#: .\templates\payments\payment_selection.html:19
+msgid "訂單摘要 / Order Summary"
+msgstr ""
+
+#: .\templates\cart\cart.html:154 .\templates\orders\checkout.html:254
+#: .\templates\orders\order_detail.html:169
+#: .\templates\payments\payment_selection.html:30
+msgid "運費 / Shipping"
+msgstr ""
+
+#: .\templates\cart\cart.html:158
+msgid "免運費 / Free Shipping"
+msgstr ""
+
+#: .\templates\cart\cart.html:169
+#, python-format
+msgid ""
+"\n"
+"                            再購買 NT$ %(amount)s 即可享免運費\n"
+"                            "
+msgstr ""
+
+#: .\templates\cart\cart.html:174
+#, python-format
+msgid ""
+"\n"
+"                            Add NT$ %(amount)s more for free shipping\n"
+"                            "
+msgstr ""
+
+#: .\templates\cart\cart.html:192 .\templates\orders\checkout.html:264
+#: .\templates\orders\order_detail.html:179
+#: .\templates\payments\payment_selection.html:34
+msgid "總計 / Total"
+msgstr ""
+
+#: .\templates\cart\cart.html:198
+msgid "前往結帳 / Proceed to checkout"
+msgstr ""
+
+#: .\templates\cart\cart.html:199
+msgid "前往結帳 / Proceed to Checkout"
+msgstr ""
+
+#: .\templates\cart\cart.html:204
+msgid "繼續購物 / Continue shopping"
+msgstr ""
+
+#: .\templates\cart\cart.html:205
+#: .\templates\orders\checkout_coming_soon.html:37
+#: .\templates\payments\payment_result.html:143
+msgid "繼續購物 / Continue Shopping"
+msgstr ""
+
+#: .\templates\cart\cart.html:214
+msgid "安全結帳 / Secure Checkout"
+msgstr ""
+
+#: .\templates\cart\cart.html:217
+msgid "符合台灣個資法 PDPA 規範 / PDPA Compliant"
+msgstr ""
+
+#: .\templates\cart\cart.html:231
+msgid "購物車是空的 / Your Cart is Empty"
+msgstr ""
+
+#: .\templates\cart\cart.html:234
+msgid "還沒有添加任何商品 / No items added yet"
+msgstr ""
+
+#: .\templates\cart\cart.html:237
+msgid "瀏覽我們的商品，開始購物吧！ / Browse our products and start shopping!"
+msgstr ""
+
+#: .\templates\cart\cart.html:241
+msgid "開始購物 / Start shopping"
+msgstr ""
+
+#: .\templates\cart\cart.html:242
+msgid "開始購物 / Start Shopping"
+msgstr ""
+
+#: .\templates\cart\cart.html:311
+msgid "更新失敗，請重試 / Update failed, please try again"
+msgstr ""
+
+#: .\templates\cart\cart.html:321
+msgid "確定要移除此商品嗎？ / Are you sure you want to remove this item?"
+msgstr ""
+
+#: .\templates\cart\cart.html:354
+msgid "移除失敗，請重試 / Remove failed, please try again"
+msgstr ""
+
+#: .\templates\cart\cart.html:363
+msgid "確定要清空購物車嗎？ / Are you sure you want to clear the cart?"
+msgstr ""
+
+#: .\templates\cart\cart.html:384
+msgid "清空失敗，請重試 / Clear failed, please try again"
+msgstr ""
+
+#: .\templates\components\alert.html:51
+msgid "關閉"
+msgstr ""
+
+#: .\templates\components\button.html:13
+msgid "處理中..."
+msgstr ""
+
+#: .\templates\components\pagination.html:4
+msgid "分頁導航"
+msgstr ""
+
+#: .\templates\components\pagination.html:10
+#: .\templates\components\pagination.html:14
+#: .\templates\components\pagination.html:49
+#: .\templates\products\product_list.html:145
+msgid "上一頁"
+msgstr ""
+
+#: .\templates\components\pagination.html:21
+#: .\templates\components\pagination.html:25
+#: .\templates\components\pagination.html:89
+#: .\templates\products\product_list.html:153
+msgid "下一頁"
+msgstr ""
+
+#: .\templates\components\pagination.html:33
+msgid "顯示"
+msgstr ""
+
+#: .\templates\components\pagination.html:35
+msgid "到"
+msgstr ""
+
+#: .\templates\components\pagination.html:37
+msgid "筆，共"
+msgstr ""
+
+#: .\templates\components\pagination.html:39
+msgid "筆結果"
+msgstr ""
+
+#: .\templates\components\product_card.html:26
+msgid "新品"
+msgstr ""
+
+#: .\templates\components\product_card.html:39
+msgid "加入收藏"
+msgstr ""
+
+#: .\templates\components\product_card.html:83
+msgid "有現貨"
+msgstr ""
+
+#: .\templates\components\product_card.html:85
+msgid "缺貨"
+msgstr ""
+
+#: .\templates\components\product_card.html:99
+#: .\templates\products\product_detail.html:118
+msgid "加入購物車"
+msgstr ""
+
+#: .\templates\components\product_card.html:104
+msgid "暫時缺貨"
+msgstr ""
+
+#: .\templates\home.html:4
+msgid "日日鮮 Daily Fresh Meats"
+msgstr "日日鮮 Daily Fresh Meats"
+
+#: .\templates\home.html:34
+msgid "美國1855頂級牛肉"
+msgstr "美國1855頂級牛肉"
+
+#: .\templates\home.html:35
+msgid "嚴選優質美國牛肉，新鮮直送花蓮"
+msgstr "嚴選優質美國牛肉，新鮮直送花蓮"
+
+#: .\templates\home.html:36 .\templates\home.html:52 .\templates\home.html:68
+msgid "立即選購"
+msgstr "立即選購"
+
+#: .\templates\home.html:50
+msgid "新鮮海鮮直送"
+msgstr "新鮮海鮮直送"
+
+#: .\templates\home.html:51
+msgid "花蓮在地50年品質保證"
+msgstr "花蓮在地50年品質保證"
+
+#: .\templates\home.html:66
+msgid "台灣1983神豬肉"
+msgstr "台灣1983神豬肉"
+
+#: .\templates\home.html:67
+msgid "本土優質豬肉，健康安心首選"
+msgstr "本土優質豬肉，健康安心首選"
+
+#: .\templates\home.html:81
+msgid "精選肉品分類"
+msgstr "精選肉品分類"
+
+#: .\templates\home.html:130
+msgid ""
+"日日鮮商行為花蓮在地至今已50年老店「明昌食品號」的創新品牌旗艦店，於2020年在"
+"美崙新開幕，為您提供更優質舒適的購物環境！"
+msgstr ""
+
+#: .\templates\home.html:133
+msgid ""
+"明昌食品號成立於民國62年，坐落於花蓮市復興市場，從一個小小市場攤販拓展至如今"
+"的企業規模，便是秉持著「提供新鮮衛生肉品給消費者」的精神，長久以來在花蓮地區"
+"默默耕耘。"
+msgstr ""
+
+#: .\templates\home.html:136
+msgid ""
+"如今已是花蓮地區頗具規模的肉品供應商與加工廠，提供冷凍牛、羊、雞、豬及其肉品"
+"加工等食品，擁有專業的冷凍倉儲和物流中心，以穩定的貨源供給下游餐廳及廠商。"
+msgstr ""
+
+#: .\templates\home.html:140
+msgid "公司資訊"
+msgstr "公司資訊"
+
+#: .\templates\home.html:151
+msgid "新鮮肉品"
+msgstr "新鮮肉品"
+
+#: .\templates\home.html:154
+msgid "專業處理"
+msgstr "專業處理"
+
+#: .\templates\home.html:166
+msgid "熱門商品"
+msgstr "熱門商品"
+
+#: .\templates\home.html:168
+msgid "查看全部"
+msgstr ""
+
+#: .\templates\home.html:219
+msgid "為什麼選擇日日鮮？"
+msgstr "為什麼選擇日日鮮？"
+
+#: .\templates\home.html:229
+msgid "50年品質保證"
+msgstr "50年品質保證"
+
+#: .\templates\home.html:230
+msgid "明昌食品號民國62年創立，50年來堅持提供新鮮衛生肉品"
+msgstr "明昌食品號民國62年創立，50年來堅持提供新鮮衛生肉品"
+
+#: .\templates\home.html:240
+msgid "花蓮市區快速外送"
+msgstr "花蓮市區快速外送"
+
+#: .\templates\home.html:241
+msgid "週一至週六外送服務，滿500即送，滿1000免運"
+msgstr "週一至週六外送服務，滿500即送，滿1000免運"
+
+#: .\templates\home.html:251
+msgid "專業冷凍倉儲"
+msgstr "專業冷凍倉儲"
+
+#: .\templates\home.html:252
+msgid "專業冷凍倉儲和物流中心，確保肉品新鮮度"
+msgstr "專業冷凍倉儲和物流中心，確保肉品新鮮度"
+
+#: .\templates\orders\checkout.html:5 .\templates\orders\checkout.html:12
+#: .\templates\orders\checkout.html:18
+#: .\templates\orders\checkout_coming_soon.html:4
+msgid "結帳 / Checkout"
+msgstr ""
+
+#: .\templates\orders\checkout.html:36 .\templates\orders\order_detail.html:86
+msgid "配送資訊 / Shipping Information"
+msgstr ""
+
+#: .\templates\orders\checkout.html:131
+msgid "直接送達指定地址 / Direct delivery to specified address"
+msgstr ""
+
+#: .\templates\orders\checkout.html:133
+msgid "到超商取貨 / Pickup at convenience store"
+msgstr ""
+
+#: .\templates\orders\checkout.html:139 .\templates\orders\checkout.html:257
+#: .\templates\orders\order_detail.html:172
+msgid "免費 / Free"
+msgstr ""
+
+#: .\templates\orders\checkout.html:175
+msgid "支援 Visa、MasterCard、JCB / Supports Visa, MasterCard, JCB"
+msgstr ""
+
+#: .\templates\orders\checkout.html:177
+msgid "ATM 轉帳或網路銀行 / ATM transfer or online banking"
+msgstr ""
+
+#: .\templates\orders\checkout.html:179
+msgid "超商代碼繳費 / Convenience store code payment"
+msgstr ""
+
+#: .\templates\orders\checkout.html:273
+msgid "確認訂單並付款 / Confirm Order & Pay"
+msgstr ""
+
+#: .\templates\orders\checkout.html:278
+#: .\templates\orders\checkout_coming_soon.html:30
+msgid "返回購物車 / Back to Cart"
+msgstr ""
+
+#: .\templates\orders\checkout.html:284
+msgid "您的付款資訊將被安全加密處理"
+msgstr ""
+
+#: .\templates\orders\checkout.html:285
+msgid "Your payment information will be securely encrypted"
+msgstr ""
+
+#: .\templates\orders\checkout.html:331
+msgid "處理中... / Processing..."
+msgstr ""
+
+#: .\templates\orders\checkout_coming_soon.html:16
+msgid "結帳功能即將推出 / Checkout Coming Soon"
+msgstr ""
+
+#: .\templates\orders\checkout_coming_soon.html:20
+msgid ""
+"我們正在努力開發安全便捷的結帳系統 / We're working hard on a secure and "
+"convenient checkout system"
+msgstr ""
+
+#: .\templates\orders\checkout_coming_soon.html:24
+msgid "敬請期待！ / Stay tuned!"
+msgstr ""
+
+#: .\templates\orders\checkout_coming_soon.html:43
+msgid ""
+"如有任何問題，請聯繫客服 / For any questions, please contact customer service"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:4
+#: .\templates\orders\order_detail.html:13
+msgid "訂單詳情 / Order Details"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:36
+msgid "訂單商品 / Order Items"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:90
+msgid "收件人 / Recipient"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:111
+#: .\templates\payments\ecpay_redirect.html:34
+#: .\templates\payments\payment_status.html:96
+msgid "付款資訊 / Payment Information"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:159
+msgid "下單時間 / Order Date"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:190
+msgid "立即付款 / Pay Now"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:197
+#: .\templates\payments\payment_result.html:149
+msgid "查看付款狀態 / Check Payment Status"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:203
+msgid "返回訂單列表 / Back to Orders"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:209
+msgid "需要協助嗎？ / Need help?"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:210
+#: .\templates\payments\payment_result.html:159
+msgid "客服電話 / Customer Service"
+msgstr ""
+
+#: .\templates\orders\order_detail.html:211
+msgid "服務時間 / Service Hours"
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:4
+msgid "前往付款 / Redirecting to Payment"
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:12
+msgid "前往付款 / Proceeding to Payment"
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:24
+msgid "正在前往綠界科技付款頁面 / Redirecting to ECPay Payment Gateway"
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:27
+msgid "請稍候，系統正在為您準備安全的付款環境..."
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:28
+msgid "Please wait while we prepare a secure payment environment for you..."
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:45
+#: .\templates\payments\payment_result.html:74
+#: .\templates\payments\payment_status.html:78
+msgid "付款金額 / Amount"
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:65
+msgid ""
+"如果頁面沒有自動跳轉，請點擊這裡 / Click here if not redirected automatically"
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:70
+msgid "🔒 您的付款將透過綠界科技安全加密處理"
+msgstr ""
+
+#: .\templates\payments\ecpay_redirect.html:71
+msgid "🔒 Your payment will be processed securely through ECPay"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:4
+#: .\templates\payments\payment_result.html:12
+msgid "付款結果 / Payment Result"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:24
+msgid "付款成功！ / Payment Successful!"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:25
+msgid "感謝您的購買，您的訂單已確認"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:26
+msgid "Thank you for your purchase, your order has been confirmed"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:33
+msgid "付款處理中 / Payment Processing"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:34
+msgid "您的付款正在處理中，請稍候確認"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:35
+msgid "Your payment is being processed, please wait for confirmation"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:42
+#: .\templates\payments\payment_status.html:32
+msgid "等待付款 / Awaiting Payment"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:43
+msgid "請使用以下資訊完成付款"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:44
+msgid "Please use the information below to complete your payment"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:51
+#: .\templates\payments\payment_status.html:48
+msgid "付款失敗 / Payment Failed"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:52
+msgid "付款過程中發生問題，請重新嘗試"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:53
+msgid "There was an issue with your payment, please try again"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:59
+msgid "付款摘要 / Payment Summary"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:87
+msgid "付款指示 / Payment Instructions"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:96
+msgid "請至任一ATM機器或網路銀行轉帳至此帳號"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:106
+msgid "請至7-11、全家、萊爾富或OK超商使用此代碼繳費"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:112
+msgid "條碼 / Barcode"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:118
+msgid "請至超商出示此條碼給店員掃描繳費"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:137
+msgid "查看訂單詳情 / View Order Details"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:158
+msgid ""
+"如有任何問題，請聯絡客服 / If you have any questions, please contact "
+"customer service"
+msgstr ""
+
+#: .\templates\payments\payment_result.html:159
+msgid "客服信箱 / Email"
+msgstr ""
+
+#: .\templates\payments\payment_selection.html:5
+#: .\templates\payments\payment_selection.html:14
+msgid "選擇付款方式 / Select Payment Method"
+msgstr ""
+
+#: .\templates\payments\payment_selection.html:42
+msgid "選擇付款方式 / Choose Payment Method"
+msgstr ""
+
+#: .\templates\payments\payment_selection.html:66
+msgid "處理時間 / Processing Time"
+msgstr ""
+
+#: .\templates\payments\payment_selection.html:84
+msgid "返回訂單 / Back to Order"
+msgstr ""
+
+#: .\templates\payments\payment_selection.html:89
+msgid "前往付款 / Proceed to Payment"
+msgstr ""
+
+#: .\templates\payments\payment_selection.html:128
+msgid "處理中 / Processing..."
+msgstr ""
+
+#: .\templates\payments\payment_status.html:24
+msgid "付款成功 / Payment Successful"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:25
+msgid "您的付款已成功處理 / Your payment has been processed successfully"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:33
+msgid "請完成付款程序 / Please complete the payment process"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:41
+msgid "付款處理中，請稍候 / Payment is being processed, please wait"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:49
+msgid "付款處理失敗，請重新嘗試 / Payment processing failed, please try again"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:57
+msgid "付款狀態未知 / Payment status unknown"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:87
+msgid "付款時間 / Paid At"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:100
+msgid "ECPay 交易編號 / ECPay Transaction No"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:121
+msgid "條碼資訊 / Barcode Information"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:144
+msgid "查看訂單 / View Order"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:150
+msgid "重新整理狀態 / Refresh Status"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:157
+msgid "重新付款 / Retry Payment"
+msgstr ""
+
+#: .\templates\payments\payment_status.html:174
+msgid "更新中... / Updating..."
+msgstr ""
+
+#: .\templates\products\category_list.html:4
+#: .\templates\products\category_list.html:8
+#: .\templates\products\product_list.html:13
+msgid "商品分類"
+msgstr ""
+
+#: .\templates\products\category_list.html:26
+msgid "子分類"
+msgstr ""
+
+#: .\templates\products\product_detail.html:14
+msgid "商品"
+msgstr ""
+
+#: .\templates\products\product_detail.html:66
+msgid "省"
+msgstr ""
+
+#: .\templates\products\product_detail.html:69
+msgid "您節省了"
+msgstr ""
+
+#: .\templates\products\product_detail.html:79
+msgid "庫存剩餘"
+msgstr ""
+
+#: .\templates\products\product_detail.html:79
+msgid "件"
+msgstr ""
+
+#: .\templates\products\product_detail.html:81
+msgid "庫存充足"
+msgstr ""
+
+#: .\templates\products\product_detail.html:84
+#: .\templates\products\product_detail.html:125
+msgid "目前缺貨"
+msgstr ""
+
+#: .\templates\products\product_detail.html:91
+msgid "選擇規格"
+msgstr ""
+
+#: .\templates\products\product_detail.html:107
+msgid "數量"
+msgstr ""
+
+#: .\templates\products\product_detail.html:121
+msgid "直接購買"
+msgstr ""
+
+#: .\templates\products\product_detail.html:131
+msgid "商品資訊"
+msgstr ""
+
+#: .\templates\products\product_detail.html:133
+msgid "商品編號"
+msgstr ""
+
+#: .\templates\products\product_detail.html:135
+msgid "重量"
+msgstr ""
+
+#: .\templates\products\product_detail.html:137
+msgid "上架日期"
+msgstr ""
+
+#: .\templates\products\product_detail.html:145
+msgid "商品描述"
+msgstr ""
+
+#: .\templates\products\product_detail.html:154
+msgid "相關商品"
+msgstr ""
+
+#: .\templates\products\product_detail.html:267
+msgid "前往購物車查看？"
+msgstr ""
+
+#: .\templates\products\product_detail.html:276
+msgid "加入購物車失敗，請重試"
+msgstr ""
+
+#: .\templates\products\product_list.html:5
+msgid "商品列表"
+msgstr ""
+
+#: .\templates\products\product_list.html:17
+msgid "全部商品"
+msgstr ""
+
+#: .\templates\products\product_list.html:50
+msgid "搜尋結果"
+msgstr ""
+
+#: .\templates\products\product_list.html:52
+msgid "所有商品"
+msgstr ""
+
+#: .\templates\products\product_list.html:56
+#, python-format
+msgid "找到 %(counter)s 項商品"
+msgid_plural "找到 %(counter)s 項商品"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\products\product_list.html:69
+msgid "排序方式"
+msgstr ""
+
+#: .\templates\products\product_list.html:71
+msgid "最新上架"
+msgstr ""
+
+#: .\templates\products\product_list.html:72
+msgid "價格：低到高"
+msgstr ""
+
+#: .\templates\products\product_list.html:73
+msgid "價格：高到低"
+msgstr ""
+
+#: .\templates\products\product_list.html:74
+msgid "名稱：A-Z"
+msgstr ""
+
+#: .\templates\products\product_list.html:75
+msgid "名稱：Z-A"
+msgstr ""
+
+#: .\templates\products\product_list.html:84
+msgid "搜尋商品..."
+msgstr ""
+
+#: .\templates\products\product_list.html:86
+msgid "搜尋"
+msgstr ""
+
+#: .\templates\products\product_list.html:130
+msgid "缺貨中"
+msgstr ""
+
+#: .\templates\products\product_list.html:132
+msgid "庫存不足"
+msgstr ""
+
+#: .\templates\products\product_list.html:149
+msgid "第"
+msgstr ""
+
+#: .\templates\products\product_list.html:149
+msgid "頁，共"
+msgstr ""
+
+#: .\templates\products\product_list.html:149
+msgid "頁"
+msgstr ""
+
+#: .\templates\products\product_list.html:154
+msgid "末頁"
+msgstr ""
+
+#: .\templates\products\product_list.html:164
+msgid "找不到商品"
+msgstr ""
+
+#: .\templates\products\product_list.html:165
+msgid "請嘗試其他搜尋關鍵字或瀏覽其他分類"
+msgstr ""
+
+#~ msgid "條紋鋸齒拼圖枕頭和被套組"
+#~ msgstr "條紋鋸齒拼圖枕頭和被套組"
+
+#~ msgid "查看商品"
+#~ msgstr "查看商品"
+
+#~ msgid "真竹製壁掛時鐘"
+#~ msgstr "真竹製壁掛時鐘"
+
+#~ msgid "棕色和藍色精裝書"
+#~ msgstr "棕色和藍色精裝書"

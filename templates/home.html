@@ -1,79 +1,164 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 
-{% block title %}{% trans "首頁" %} - EShop{% endblock %}
+{% block title %}日日鮮 花蓮優質肉品專賣店 - {% trans "日日鮮 Daily Fresh Meats" %} - {% trans "花蓮優質肉品專賣店" %}{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+    <style>
+        .meat-category-card {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            transition: all 0.3s ease;
+        }
+        .meat-category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
 <div class="min-h-screen">
-    <!-- Hero Section -->
-    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div class="max-w-4xl mx-auto text-center px-4">
-            <!-- Large Logo for Hero -->
-            <div class="mb-8">
-                {% include 'components/logo.html' with size='large' link=False %}
+    <!-- Hero Carousel Banner -->
+    <div class="carousel relative container mx-auto" style="max-width:1600px;">
+        <div class="carousel-inner relative overflow-hidden w-full" style="height:60vh;">
+            <!--Slide 1 - Premium Beef-->
+            <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+            <div class="carousel-item absolute opacity-0 w-full h-full">
+                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{% static 'media/backgrounds/premiumbeef.jpg' %}');">
+                    <div class="container mx-auto">
+                        <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                            <h1 class="text-white text-4xl md:text-5xl font-bold my-4">美國1855頂級牛肉</h1>
+                            <p class="text-white text-xl mb-6">嚴選優質美國牛肉，新鮮直送花蓮</p>
+                            <a class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200" href="{% url 'products:product_list' %}?category=american-angus">立即選購</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer text-3xl font-bold text-white hover:text-red-600 rounded-full bg-black bg-opacity-50 hover:bg-white leading-tight text-center z-10 inset-y-0 left-0 my-auto items-center justify-center" style="display: none;">‹</label>
+            <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer text-3xl font-bold text-white hover:text-red-600 rounded-full bg-black bg-opacity-50 hover:bg-white leading-tight text-center z-10 inset-y-0 right-0 my-auto items-center justify-center" style="display: none;">›</label>
+
+            <!--Slide 2 - Fresh Seafood-->
+            <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+            <div class="carousel-item absolute opacity-0 w-full h-full">
+                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{% static 'media/backgrounds/seafood.jpg' %}');">
+                    <div class="container mx-auto">
+                        <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                            <h1 class="text-white text-4xl md:text-5xl font-bold my-4">新鮮海鮮直送</h1>
+                            <p class="text-white text-xl mb-6">花蓮在地50年品質保證</p>
+                            <a class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200" href="{% url 'products:product_list' %}?category=seafood">立即選購</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer text-3xl font-bold text-white hover:text-red-600 rounded-full bg-black bg-opacity-50 hover:bg-white leading-tight text-center z-10 inset-y-0 left-0 my-auto items-center justify-center" style="display: none;">‹</label>
+            <label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer text-3xl font-bold text-white hover:text-red-600 rounded-full bg-black bg-opacity-50 hover:bg-white leading-tight text-center z-10 inset-y-0 right-0 my-auto items-center justify-center" style="display: none;">›</label>
+
+            <!--Slide 3 - Taiwan Premium Pork-->
+            <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+            <div class="carousel-item absolute opacity-0 w-full h-full">
+                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{% static 'media/backgrounds/taiwanpork.jpg' %}');">
+                    <div class="container mx-auto">
+                        <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                            <h1 class="text-white text-4xl md:text-5xl font-bold my-4">台灣1983神豬肉</h1>
+                            <p class="text-white text-xl mb-6">本土優質豬肉，健康安心首選</p>
+                            <a class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200" href="{% url 'products:product_list' %}?category=taiwan-premium">立即選購</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer text-3xl font-bold text-white hover:text-red-600 rounded-full bg-black bg-opacity-50 hover:bg-white leading-tight text-center z-10 inset-y-0 left-0 my-auto items-center justify-center" style="display: none;">‹</label>
+            <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer text-3xl font-bold text-white hover:text-red-600 rounded-full bg-black bg-opacity-50 hover:bg-white leading-tight text-center z-10 inset-y-0 right-0 my-auto items-center justify-center" style="display: none;">›</label>
             
-            <h1 class="text-5xl font-bold mb-6">
-                {% trans "歡迎來到 EShop" %}
-            </h1>
-            <p class="text-xl mb-8 text-blue-100">
-                {% trans "台灣優質電商平台，提供安全便利的購物體驗" %}
-            </p>
-            <div class="flex justify-center gap-4">
-                <a href="{% url 'products:product_list' %}" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
-                    {% trans "立即購物" %}
-                </a>
-                <a href="{% url 'products:category_list' %}" class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition border-2 border-white">
-                    {% trans "瀏覽分類" %}
-                </a>
-            </div>
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+                <li class="inline-block mr-3">
+                    <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-white opacity-50 hover:opacity-100">•</label>
+                </li>
+                <li class="inline-block mr-3">
+                    <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-white opacity-50 hover:opacity-100">•</label>
+                </li>
+                <li class="inline-block">
+                    <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-white opacity-50 hover:opacity-100">•</label>
+                </li>
+            </ol>
         </div>
     </div>
-
-    <!-- Categories Section -->
-    {% if categories %}
-    <div class="py-12 bg-white">
+    <!-- About Company Section -->
+    <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">{% trans "熱門分類" %}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {% for category in categories %}
-                <a href="{% url 'products:product_list' %}?category={{ category.slug }}" class="bg-gray-50 rounded-lg shadow p-6 text-center hover:shadow-lg transition group">
-                    <div class="text-4xl mb-3">📦</div>
-                    <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition">{{ category.name }}</h3>
-                </a>
-                {% endfor %}
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Store Image -->
+                <div class="order-2 lg:order-1">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="{% static 'media/backgrounds/vitrina.jpg' %}" 
+                             alt="日日鮮商行門市" 
+                             class="w-full h-auto object-cover"
+                             onerror="this.onerror=null; this.src='{% static 'media/backgrounds/vitrina.jpg' %}';">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <p class="text-white text-lg font-semibold">日日鮮 Daily Fresh Meats</p>
+                            <p class="text-white/90 text-sm">花蓮市中美路208-1號</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- About Text -->
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-4xl font-bold mb-8 text-gray-900">{% trans "關於日日鮮" %}</h2>
+                    <div class="prose prose-lg text-gray-600 space-y-4">
+                        <p class="text-lg leading-relaxed">
+                            {% trans "日日鮮商行為花蓮在地至今已50年老店「明昌食品號」的創新品牌旗艦店，於2020年在美崙新開幕，為您提供更優質舒適的購物環境！" %}
+                        </p>
+                        <p class="leading-relaxed">
+                            {% trans "明昌食品號成立於民國62年，坐落於花蓮市復興市場，從一個小小市場攤販拓展至如今的企業規模，便是秉持著「提供新鮮衛生肉品給消費者」的精神，長久以來在花蓮地區默默耕耘。" %}
+                        </p>
+                        <p class="leading-relaxed">
+                            {% trans "如今已是花蓮地區頗具規模的肉品供應商與加工廠，提供冷凍牛、羊、雞、豬及其肉品加工等食品，擁有專業的冷凍倉儲和物流中心，以穩定的貨源供給下游餐廳及廠商。" %}
+                        </p>
+                        
+                        <div class="bg-red-50 p-6 rounded-lg mt-8">
+                            <h3 class="font-bold text-lg mb-3 text-red-800">{% trans "公司資訊" %}</h3>
+                            <div class="text-sm space-y-2">
+                                <p><span class="font-medium">{% trans "營業負責人" %}:</span> 李威</p>
+                                <p><span class="font-medium">{% trans "統一編號" %}:</span> 87345494</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    {% endif %}
 
-    <!-- Featured Products Section -->
+    <!-- Popular Items Section -->
     {% if featured_products %}
-    <div class="py-16 bg-gray-50">
+    <div class="py-16 bg-red-50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-900">{% trans "精選商品" %}</h2>
-                <a href="{% url 'products:product_list' %}?featured=true" class="text-blue-600 hover:text-blue-700 font-medium">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900">{% trans "熱門商品" %}</h2>
+                <a href="{% url 'products:product_list' %}?popular=true" class="text-red-600 hover:text-red-700 font-medium text-lg">
                     {% trans "查看全部" %} →
                 </a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {% for product in featured_products %}
-                <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-xl transition group">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition group">
                     <a href="{% url 'products:product_detail' product.slug %}">
                         {% if product.images.first %}
                         <div class="aspect-square overflow-hidden bg-gray-100">
                             <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
                         </div>
                         {% else %}
-                        <div class="aspect-square bg-gray-200 flex items-center justify-center">
-                            <svg class="w-20 h-20 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="aspect-square bg-red-100 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
                         {% endif %}
                         <div class="p-4">
-                            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition">
+                            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-red-600 transition">
                                 {{ product.name }}
                             </h3>
                             <div class="flex items-center justify-between">
@@ -84,7 +169,7 @@
                                         <span class="text-gray-400 line-through text-sm">NT$ {{ product.price|floatformat:0 }}</span>
                                     </div>
                                     {% else %}
-                                    <span class="text-gray-900 font-bold text-xl">NT$ {{ product.price|floatformat:0 }}</span>
+                                    <span class="text-red-600 font-bold text-xl">NT$ {{ product.price|floatformat:0 }}</span>
                                     {% endif %}
                                 </div>
                                 {% if product.is_on_sale %}
@@ -101,77 +186,102 @@
         </div>
     </div>
     {% endif %}
-
-    <!-- Features Section -->
+    
+    <!-- Store Features Section -->
     <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">
-                {% trans "為什麼選擇 EShop？" %}
-            </h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">為什麼選擇日日鮮？</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
                 <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">{% trans "安全可靠" %}</h3>
-                    <p class="text-gray-600">
-                        {% trans "採用業界標準的安全機制，保護您的個人資料和交易安全" %}
-                    </p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">50年品質保證</h3>
+                    <p class="text-gray-600">明昌食品號民國62年創立，50年來堅持提供新鮮衛生肉品</p>
                 </div>
 
                 <!-- Feature 2 -->
                 <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">{% trans "快速便捷" %}</h3>
-                    <p class="text-gray-600">
-                        {% trans "簡潔的介面設計，讓您輕鬆完成購物流程" %}
-                    </p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">花蓮市區快速外送</h3>
+                    <p class="text-gray-600">週一至週六外送服務，滿500即送，滿1000免運</p>
                 </div>
 
                 <!-- Feature 3 -->
                 <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">{% trans "優質服務" %}</h3>
-                    <p class="text-gray-600">
-                        {% trans "專業客服團隊，隨時為您解決問題" %}
-                    </p>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">專業冷凍倉儲</h3>
+                    <p class="text-gray-600">專業冷凍倉儲和物流中心，確保肉品新鮮度</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Call to Action -->
-    {% if not user.is_authenticated %}
-    <div class="py-16 bg-blue-50">
-        <div class="max-w-4xl mx-auto text-center px-4">
-            <h2 class="text-3xl font-bold mb-4 text-gray-900">
-                {% trans "開始您的購物之旅" %}
-            </h2>
-            <p class="text-gray-600 mb-6">
-                {% trans "立即註冊，享受更多會員專屬優惠" %}
-            </p>
-            <div class="flex justify-center gap-4">
-                <a href="{% url 'auth:register-form' %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
-                    {% trans "免費註冊" %}
-                </a>
-                <a href="{% url 'auth:login-form' %}" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200 border-2 border-blue-600">
-                    {% trans "已有帳戶？登入" %}
-                </a>
-            </div>
-        </div>
-    </div>
-    {% endif %}
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Auto-rotate carousel every 5 seconds
+(function() {
+    let currentSlide = 1;
+    const totalSlides = 3;
+    let autoRotateInterval;
+    
+    function nextSlide() {
+        currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+        document.getElementById('carousel-' + currentSlide).checked = true;
+    }
+    
+    function startAutoRotate() {
+        autoRotateInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+    
+    function stopAutoRotate() {
+        clearInterval(autoRotateInterval);
+    }
+    
+    // Start auto-rotation on page load
+    startAutoRotate();
+    
+    // Pause auto-rotation when user interacts with carousel
+    const carouselInputs = document.querySelectorAll('.carousel-open');
+    const carouselLabels = document.querySelectorAll('.carousel-indicators label, .prev, .next');
+    
+    carouselInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            currentSlide = parseInt(this.id.replace('carousel-', ''));
+            stopAutoRotate();
+            // Resume auto-rotation after 10 seconds of no interaction
+            setTimeout(startAutoRotate, 10000);
+        });
+    });
+    
+    carouselLabels.forEach(label => {
+        label.addEventListener('click', function() {
+            stopAutoRotate();
+            // Resume auto-rotation after 10 seconds of no interaction
+            setTimeout(startAutoRotate, 10000);
+        });
+    });
+    
+    // Pause on hover
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoRotate);
+        carousel.addEventListener('mouseleave', startAutoRotate);
+    }
+})();
+</script>
 {% endblock %}

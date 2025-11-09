@@ -70,6 +70,7 @@ TEMPLATES = [
                 "django.template.context_processors.media",  # Add this for MEDIA_URL
                 "django.template.context_processors.static",  # Add this for STATIC_URL
                 "cart.context_processors.cart_context",
+                "products.context_processors.categories_context",  # Global categories for navigation
             ],
         },
     },
@@ -106,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "zh-hant"
 TIME_ZONE = "Asia/Taipei"
 
 USE_I18N = True

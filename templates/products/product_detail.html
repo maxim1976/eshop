@@ -102,6 +102,14 @@
             </div>
             {% endif %}
 
+            <!-- Product Description -->
+            <div class="mb-6">
+                <h3 class="font-semibold text-gray-900 mb-3">{% trans "商品描述" %}:</h3>
+                <div class="text-gray-700 leading-relaxed whitespace-pre-line bg-gray-50 p-4 rounded-lg">
+                    {{ product.description }}
+                </div>
+            </div>
+
             <!-- Quantity -->
             <div class="mb-6">
                 <label for="quantity" class="block font-semibold text-gray-900 mb-2">{% trans "數量" %}:</label>
@@ -112,18 +120,33 @@
                 </div>
             </div>
 
-            <!-- Add to Cart Button -->
+            <!-- Action Buttons -->
             {% if product.is_in_stock %}
-            <button type="button" onclick="addToCart()" class="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition mb-3">
-                🛒 {% trans "加入購物車" %}
-            </button>
-            <button type="button" class="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition">
-                💳 {% trans "直接購買" %}
-            </button>
+            <div class="space-y-3">
+                <button type="button" onclick="addToCart()" class="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    {% trans "加入購物車" %}
+                </button>
+                <p class="text-sm text-gray-600 text-center">{% trans "先加入購物車，稍後結帳" %}</p>
+                
+                <button type="button" onclick="buyNow()" class="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                    </svg>
+                    {% trans "立即購買" %}
+                </button>
+                <p class="text-sm text-gray-600 text-center">{% trans "直接進入結帳流程" %}</p>
+            </div>
             {% else %}
-            <button type="button" class="w-full bg-gray-400 text-white py-4 rounded-lg font-semibold text-lg cursor-not-allowed" disabled>
+            <button type="button" class="w-full bg-gray-400 text-white py-4 rounded-lg font-semibold text-lg cursor-not-allowed flex items-center justify-center gap-2" disabled>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
                 {% trans "目前缺貨" %}
             </button>
+            <p class="text-sm text-gray-500 text-center mt-2">{% trans "商品補貨中，請稍後再試" %}</p>
             {% endif %}
 
             <!-- Product Details -->
@@ -137,14 +160,6 @@
                     <li><strong>{% trans "上架日期" %}:</strong> {{ product.published_at|date:"Y-m-d" }}</li>
                 </ul>
             </div>
-        </div>
-    </div>
-
-    <!-- Product Description -->
-    <div class="bg-white rounded-lg shadow p-8 mb-12">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">{% trans "商品描述" %}</h2>
-        <div class="prose max-w-none text-gray-700 whitespace-pre-line">
-            {{ product.description }}
         </div>
     </div>
 
@@ -274,6 +289,40 @@
         .catch(error => {
             console.error('Error:', error);
             alert('{% trans "加入購物車失敗，請重試" %}');
+        });
+    }
+
+    function buyNow() {
+        const quantity = document.getElementById('quantity').value;
+        const productId = {{ product.id }};
+        const csrftoken = getCookie('csrftoken');
+        
+        const data = {
+            product_id: productId,
+            variant_id: selectedVariant,
+            quantity: parseInt(quantity)
+        };
+        
+        fetch('/cart/add/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirect directly to cart for immediate checkout
+                window.location.href = '/cart/';
+            } else {
+                alert('❌ ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('{% trans "購買失敗，請重試" %}');
         });
     }
 
