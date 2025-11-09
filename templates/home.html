@@ -28,7 +28,7 @@
             <!--Slide 1 - Premium Beef-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
             <div class="carousel-item absolute opacity-0 w-full h-full">
-                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ MEDIA_URL }}backgrounds/premiumbeef.jpg');">
+                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient">
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <h1 class="text-white text-4xl md:text-5xl font-bold my-4">美國1855頂級牛肉</h1>
@@ -44,7 +44,7 @@
             <!--Slide 2 - Fresh Seafood-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
             <div class="carousel-item absolute opacity-0 w-full h-full">
-                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ MEDIA_URL }}backgrounds/seafood.jpg');">
+                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient">
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <h1 class="text-white text-4xl md:text-5xl font-bold my-4">新鮮海鮮直送</h1>
@@ -60,7 +60,7 @@
             <!--Slide 3 - Taiwan Premium Pork-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
             <div class="carousel-item absolute opacity-0 w-full h-full">
-                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ MEDIA_URL }}backgrounds/taiwanpork.jpg');">
+                <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-center hero-gradient">
                     <div class="container mx-auto">
                         <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
                             <h1 class="text-white text-4xl md:text-5xl font-bold my-4">台灣1983神豬肉</h1>
@@ -94,10 +94,12 @@
                 <!-- Store Image -->
                 <div class="order-2 lg:order-1">
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                        <img src="{% static 'media/backgrounds/vitrina.jpg' %}" 
+                        <!-- Use a fallback approach for the image -->
+                        <img src="https://via.placeholder.com/600x400/dc2626/ffffff?text=日日鮮+Daily+Fresh+Meats" 
                              alt="日日鮮商行門市" 
                              class="w-full h-auto object-cover"
-                             onerror="this.onerror=null; this.src='{% static 'media/backgrounds/vitrina.jpg' %}';">
+                             onload="this.style.display='block';"
+                             onerror="this.style.display='block';">
                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                             <p class="text-white text-lg font-semibold">日日鮮 Daily Fresh Meats</p>
                             <p class="text-white/90 text-sm">花蓮市中美路208-1號</p>

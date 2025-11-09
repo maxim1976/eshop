@@ -79,8 +79,8 @@ CSRF_TRUSTED_ORIGINS = [
 # Static files for Railway.com with WhiteNoise
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# WhiteNoise configuration for static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WhiteNoise configuration for static files - more permissive for media files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Add WhiteNoise to middleware (will be added to base MIDDLEWARE)
 MIDDLEWARE = [
