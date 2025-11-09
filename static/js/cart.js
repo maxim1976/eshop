@@ -47,12 +47,16 @@ class CartManager {
     button.classList.add('opacity-50');
     
     try {
+      // Get CSRF token with debugging
+      const csrfToken = this.getCSRFToken();
+      console.log('CSRF Token:', csrfToken.substring(0, 10) + '...', 'Length:', csrfToken.length);
+      
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRFToken': this.getCSRFToken(),
+          'X-CSRFToken': csrfToken,
         }
       });
       

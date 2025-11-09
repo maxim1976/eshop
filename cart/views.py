@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
-from django.views.decorators.http import require_POST, require_http_methods
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from django.utils.translation import gettext as _
 from django.db.models import Sum, F
 from products.models import Product, ProductVariant
@@ -51,6 +52,16 @@ def get_or_create_cart(request):
 @require_POST
 def add_to_cart(request):
     """Add product to cart (AJAX endpoint)"""
+    
+    # Debug CSRF token issue
+    csrf_token = request.META.get('HTTP_X_CSRFTOKEN', '')
+    if len(csrf_token) != 64:
+        return JsonResponse({
+            'success': False,
+            'message': f'CSRF token issue: length {len(csrf_token)}, token: {csrf_token[:20]}...',
+            'debug': True
+        }, status=403)
+    
     try:
         # Handle both JSON and form data
         if request.content_type == 'application/json':
