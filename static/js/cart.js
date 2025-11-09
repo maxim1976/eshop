@@ -37,7 +37,6 @@ class CartManager {
   }
   
   async addToCart(form) {
-    const formData = new FormData(form);
     const button = form.querySelector('button[type="submit"]');
     const originalText = button.textContent;
     
@@ -47,16 +46,15 @@ class CartManager {
     button.classList.add('opacity-50');
     
     try {
-      // Get CSRF token with debugging
-      const csrfToken = this.getCSRFToken();
-      console.log('CSRF Token:', csrfToken.substring(0, 10) + '...', 'Length:', csrfToken.length);
+      // Use the form's own CSRF token from the hidden input
+      const formData = new FormData(form);
       
+      // Don't override CSRF - let the form handle it naturally
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRFToken': csrfToken,
         }
       });
       

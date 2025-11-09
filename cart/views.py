@@ -49,19 +49,9 @@ def get_or_create_cart(request):
     return cart
 
 
-@require_POST
+@require_POST  
 def add_to_cart(request):
     """Add product to cart (AJAX endpoint)"""
-    
-    # Debug CSRF token issue
-    csrf_token = request.META.get('HTTP_X_CSRFTOKEN', '')
-    if len(csrf_token) != 64:
-        return JsonResponse({
-            'success': False,
-            'message': f'CSRF token issue: length {len(csrf_token)}, token: {csrf_token[:20]}...',
-            'debug': True
-        }, status=403)
-    
     try:
         # Handle both JSON and form data
         if request.content_type == 'application/json':
