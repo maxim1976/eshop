@@ -22,6 +22,10 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import os
 
+def simple_health(request):
+    """Ultra simple health check."""
+    return HttpResponse("OK", content_type="text/plain")
+
 def health_check(request):
     """Simple health check endpoint for Railway.com monitoring."""
     try:
@@ -30,7 +34,8 @@ def health_check(request):
             'status': 'healthy', 
             'service': 'eshop',
             'environment': os.environ.get('RAILWAY_ENVIRONMENT', 'unknown'),
-            'settings_module': os.environ.get('DJANGO_SETTINGS_MODULE', 'unknown')
+            'settings_module': os.environ.get('DJANGO_SETTINGS_MODULE', 'unknown'),
+            'allowed_hosts': getattr(settings, 'ALLOWED_HOSTS', [])
         })
     except Exception as e:
         return JsonResponse({
@@ -38,35 +43,35 @@ def health_check(request):
             'error': str(e)
         }, status=500)
 
-def simple_health(request):
-    """Ultra simple health check."""
-    return HttpResponse("OK", content_type="text/plain")
-
 def home_view(request):
     """Home page view with featured products and categories."""
-    from products.models import Product, Category
-    
-    # Get featured products
-    featured_products = Product.objects.filter(
-        status='active',
-        is_featured=True
-    ).select_related('category').prefetch_related('images')[:6]
-    
-    # Get categories for display
-    categories = Category.objects.filter(
-        is_active=True
-    ).order_by('display_order', 'name')[:6]
-    
-    context = {
-        'featured_products': featured_products,
-        'categories': categories,
-    }
-    return render(request, 'home.html', context)
+    try:
+        from products.models import Product, Category
+        
+        # Get featured products
+        featured_products = Product.objects.filter(
+            status='active',
+            is_featured=True
+        ).select_related('category').prefetch_related('images')[:6]
+        
+        # Get categories for display
+        categories = Category.objects.filter(
+            is_active=True
+        ).order_by('display_order', 'name')[:6]
+        
+        context = {
+            'featured_products': featured_products,
+            'categories': categories,
+        }
+        return render(request, 'home.html', context)
+    except Exception as e:
+        # Return a simple response if there are any issues
+        return HttpResponse(f"<h1>Welcome to EShop</h1><p>Application is running. Error: {e}</p>")
 
 urlpatterns = [
-    # Simple health checks
-    path("health/", health_check, name='health-check'),
+    # Simple health checks - put these first
     path("ping/", simple_health, name='simple-health'),
+    path("health/", health_check, name='health-check'),
     
     # Admin
     path("admin/", admin.site.urls),

@@ -13,6 +13,8 @@ ALLOWED_HOSTS = [
     'eshop-production-8a1d.up.railway.app',
     '127.0.0.1',
     'localhost',
+    '0.0.0.0',  # Add for Docker container
+    '*',  # Temporary wildcard for debugging
 ] + config('ALLOWED_HOSTS', default='', cast=lambda v: [s.strip() for s in v.split(',') if s.strip()])
 
 # Database - Railway.com PostgreSQL
@@ -48,15 +50,17 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 # Security settings for production
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_SSL_REDIRECT = True
+# Temporarily disable SSL redirect to debug health check
+# SECURE_SSL_REDIRECT = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 # Session and CSRF settings for production
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Temporarily disable secure cookies for debugging
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = True
 
