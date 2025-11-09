@@ -17,10 +17,11 @@ ALLOWED_HOSTS = [
     '*',  # Temporary wildcard for debugging
 ] + config('ALLOWED_HOSTS', default='', cast=lambda v: [s.strip() for s in v.split(',') if s.strip()])
 
-# Database - Railway.com PostgreSQL
+# Database - Railway.com PostgreSQL (same for both dev and production)
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL', default='sqlite:///db.sqlite3')
+        default=config('DATABASE_URL', 
+                      default='postgresql://postgres:lAljkuzMrvOdlmYAtgaSddmbwosCnwQr@postgres.railway.internal:5432/railway')
     )
 }
 
