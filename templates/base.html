@@ -23,6 +23,16 @@
     <!-- Logo Optimization CSS -->
     <link rel="stylesheet" href="{% static 'css/logo-optimization.css' %}">
     
+    <!-- CSRF Token for JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const csrfInput = document.querySelector('[name=csrfmiddlewaretoken]');
+            if (csrfInput) {
+                window.CSRF_TOKEN = csrfInput.value;
+            }
+        });
+    </script>
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

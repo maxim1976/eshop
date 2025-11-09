@@ -361,8 +361,39 @@ class CartManager {
   }
   
   getCSRFToken() {
-    const token = document.querySelector('[name=csrfmiddlewaretoken]');
-    return token ? token.value : '';
+    // Try multiple methods to get CSRF token
+    const tokenInput = document.querySelector('[name=csrfmiddlewaretoken]');
+    if (tokenInput) {
+      return tokenInput.value;
+    }
+    
+    const metaToken = document.querySelector('meta[name="csrf-token"]');
+    if (metaToken) {
+      return metaToken.getAttribute('content');
+    }
+    
+    // Use window global if available
+    if (window.CSRF_TOKEN) {
+      return window.CSRF_TOKEN;
+    }
+    
+    // Fallback to cookie
+    return this.getCookie('csrftoken');
+  }
+
+  getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
   }
 }
 
