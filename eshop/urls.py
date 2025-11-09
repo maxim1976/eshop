@@ -172,8 +172,15 @@ urlpatterns = [
     path("i18n/", include('django.conf.urls.i18n')),
 ]
 
-# Serve media files in development
+# Serve media files in development and production
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+else:
+    # In production, serve media files through Django (temporary solution)
+    from django.views.static import serve
+    from django.urls import re_path
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    ]

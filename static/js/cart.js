@@ -52,6 +52,7 @@ class CartManager {
         body: formData,
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': this.getCSRFToken(),
         }
       });
       

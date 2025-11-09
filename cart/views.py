@@ -28,10 +28,17 @@ def get_or_create_cart(request):
 def add_to_cart(request):
     """Add product to cart (AJAX endpoint)"""
     try:
-        data = json.loads(request.body)
-        product_id = data.get('product_id')
-        variant_id = data.get('variant_id')
-        quantity = int(data.get('quantity', 1))
+        # Handle both JSON and form data
+        if request.content_type == 'application/json':
+            data = json.loads(request.body)
+            product_id = data.get('product_id')
+            variant_id = data.get('variant_id')
+            quantity = int(data.get('quantity', 1))
+        else:
+            # Handle form data
+            product_id = request.POST.get('product_id')
+            variant_id = request.POST.get('variant_id')
+            quantity = int(request.POST.get('quantity', 1))
         
         # Validate product
         product = get_object_or_404(Product, id=product_id, status='active')
