@@ -22,6 +22,9 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 import os
 
+# Import the populate view
+from populate_view import populate_now
+
 def simple_health(request):
     """Ultra simple health check."""
     return HttpResponse("OK", content_type="text/plain")
@@ -143,6 +146,9 @@ urlpatterns = [
     
     # Admin
     path("admin/", admin.site.urls),
+    
+    # Database population (admin only)
+    path("populate_now/", populate_now, name='populate-now'),
     
     # Home
     path("", home_view, name='home'),
