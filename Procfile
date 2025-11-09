@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:$PORT --timeout 60 --workers 2 eshop.wsgi:application
+web: python3 manage.py migrate && python3 manage.py collectstatic --noinput && python3 -m gunicorn --bind 0.0.0.0:$PORT --timeout 60 --workers 2 eshop.wsgi:application

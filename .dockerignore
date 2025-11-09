@@ -1,0 +1,77 @@
+# Git files
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Django files
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Development files
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Media files (don't copy to container)
+media/
+
+# Static files (will be collected during build)
+staticfiles/
+
+# Node.js (disabled)
+node_modules/
+package*.json.disabled
+
+# Documentation
+*.md
+!README.md
+
+# Test files
+.pytest_cache/
+.coverage
+
+# Temporary files
+*.tmp
+*.temp
