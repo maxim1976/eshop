@@ -8,14 +8,34 @@ import dj_database_url
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=lambda v: [s.strip() for s in v.split(',')])
+# Railway.com specific allowed hosts
+ALLOWED_HOSTS = [
+    'eshop-production-8a1d.up.railway.app',
+    '127.0.0.1',
+    'localhost',
+] + config('ALLOWED_HOSTS', default='', cast=lambda v: [s.strip() for s in v.split(',') if s.strip()])
 
 # Database - Railway.com PostgreSQL
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default=config('DATABASE_URL', default='sqlite:///db.sqlite3')
     )
 }
+
+# Static files for Railway.com - handle both development and production
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media files configuration for production
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+# Site URL for Railway deployment
+SITE_URL = 'https://eshop-production-8a1d.up.railway.app'
+
+# Update ECPay site URL for production
+if not DEBUG:
+    ECPAY_SANDBOX = False  # Use production ECPay in production
+    # Override site URL in base.py for production
+    globals()['SITE_URL'] = SITE_URL
 
 # Email Backend for production
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -39,12 +59,37 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = True
 
-# CORS settings for production
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='', cast=lambda v: [s.strip() for s in v.split(',')])
+# CORS settings for production - allow Railway domain
+CORS_ALLOWED_ORIGINS = [
+    'https://eshop-production-8a1d.up.railway.app',
+] + config('CORS_ALLOWED_ORIGINS', default='', cast=lambda v: [s.strip() for s in v.split(',') if s.strip()])
+
 CORS_ALLOW_CREDENTIALS = True
 
-# Static files for Railway.com
+# Trusted origins for CSRF (Railway specific)
+CSRF_TRUSTED_ORIGINS = [
+    'https://eshop-production-8a1d.up.railway.app',
+] + config('CSRF_TRUSTED_ORIGINS', default='', cast=lambda v: [s.strip() for s in v.split(',') if s.strip()])
+
+# Static files for Railway.com with WhiteNoise
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise configuration for static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Add WhiteNoise to middleware (will be added to base MIDDLEWARE)
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add WhiteNoise early
+    "corsheaders.middleware.CorsMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
 
 # Logging configuration
 LOGGING = {

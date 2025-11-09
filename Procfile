@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn eshop.wsgi
+web: python manage.py migrate && python manage.py compilemessages && python manage.py collectstatic --noinput && gunicorn --bind 0.0.0.0:$PORT eshop.wsgi:application
