@@ -18,12 +18,29 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
+import os
 
 def health_check(request):
-    """Health check endpoint for Railway.com monitoring."""
-    return JsonResponse({'status': 'healthy', 'service': 'eshop'})
+    """Simple health check endpoint for Railway.com monitoring."""
+    try:
+        # Just return a simple response without database checks
+        return JsonResponse({
+            'status': 'healthy', 
+            'service': 'eshop',
+            'environment': os.environ.get('RAILWAY_ENVIRONMENT', 'unknown'),
+            'settings_module': os.environ.get('DJANGO_SETTINGS_MODULE', 'unknown')
+        })
+    except Exception as e:
+        return JsonResponse({
+            'status': 'unhealthy', 
+            'error': str(e)
+        }, status=500)
+
+def simple_health(request):
+    """Ultra simple health check."""
+    return HttpResponse("OK", content_type="text/plain")
 
 def home_view(request):
     """Home page view with featured products and categories."""
@@ -47,11 +64,12 @@ def home_view(request):
     return render(request, 'home.html', context)
 
 urlpatterns = [
+    # Simple health checks
+    path("health/", health_check, name='health-check'),
+    path("ping/", simple_health, name='simple-health'),
+    
     # Admin
     path("admin/", admin.site.urls),
-    
-    # Health check
-    path("health/", health_check, name='health-check'),
     
     # Home
     path("", home_view, name='home'),
