@@ -12,14 +12,38 @@ import json
 def get_or_create_cart(request):
     """Get or create cart for user or guest session"""
     if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(user=request.user)
+        # For authenticated users, try to get existing cart, handle duplicates
+        try:
+            cart = Cart.objects.get(user=request.user)
+        except Cart.DoesNotExist:
+            cart = Cart.objects.create(user=request.user)
+        except Cart.MultipleObjectsReturned:
+            # Handle duplicate carts - keep the first one, delete others
+            carts = Cart.objects.filter(user=request.user).order_by('created_at')
+            cart = carts.first()
+            # Delete duplicates
+            carts.exclude(id=cart.id).delete()
     else:
         # Use session for guest users
-        if 'cart_session_key' not in request.session:
-            request.session['cart_session_key'] = request.session.session_key or request.session.create()
+        if not request.session.session_key:
+            request.session.create()
         
-        session_key = request.session['cart_session_key']
-        cart, created = Cart.objects.get_or_create(session_key=session_key)
+        session_key = request.session.session_key
+        
+        try:
+            cart = Cart.objects.get(session_key=session_key)
+        except Cart.DoesNotExist:
+            cart = Cart.objects.create(session_key=session_key)
+        except Cart.MultipleObjectsReturned:
+            # Handle duplicate session carts
+            carts = Cart.objects.filter(session_key=session_key).order_by('created_at')
+            cart = carts.first()
+            # Merge items from duplicate carts and delete duplicates
+            for duplicate_cart in carts.exclude(id=cart.id):
+                for item in duplicate_cart.items.all():
+                    item.cart = cart
+                    item.save()
+                duplicate_cart.delete()
     
     return cart
 
@@ -37,11 +61,24 @@ def add_to_cart(request):
         else:
             # Handle form data
             product_id = request.POST.get('product_id')
-            variant_id = request.POST.get('variant_id')
+            variant_id = request.POST.get('variant_id') 
             quantity = int(request.POST.get('quantity', 1))
         
+        # Validate required fields
+        if not product_id:
+            return JsonResponse({
+                'success': False,
+                'message': _('商品ID不能為空')
+            }, status=400)
+        
         # Validate product
-        product = get_object_or_404(Product, id=product_id, status='active')
+        try:
+            product = get_object_or_404(Product, id=product_id, status='active')
+        except (ValueError, Product.DoesNotExist):
+            return JsonResponse({
+                'success': False,
+                'message': _('商品不存在或無法購買')
+            }, status=400)
         
         # Validate variant if provided
         variant = None
