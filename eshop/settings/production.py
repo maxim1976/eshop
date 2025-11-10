@@ -39,7 +39,9 @@ SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = True
 
 # CORS settings for production
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='', cast=lambda v: [s.strip() for s in v.split(',')])
+CORS_ALLOWED_ORIGINS = [
+    f"https://{config('RAILWAY_PUBLIC_DOMAIN', default='')}"
+] if config('RAILWAY_PUBLIC_DOMAIN', default='') else []
 CORS_ALLOW_CREDENTIALS = True
 
 # Static files for Railway.com
