@@ -13,7 +13,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=lambda v: [s.strip() fo
 # Database - Railway.com PostgreSQL
 # Using the new Railway PostgreSQL connection string provided
 DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE_URL', default='postgresql://postgres:GTXmeZStEhDuOPTsqlljirnfwXwSuWIA@postgres.railway.internal:5432/railway'))
+    'default': dj_database_url.parse(config('DATABASE_URL', default='postgresql://postgres:siBOOIPghALCDLyEQLzcKrBQzHSSCpcr@postgres.railway.internal:5432/railway'))
 }
 
 # Email Backend for production
