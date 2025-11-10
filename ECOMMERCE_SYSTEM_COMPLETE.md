@@ -1,4 +1,4 @@
-# EShop E-Commerce System - Implementation Summary
+# 日日鮮肉品專賣 E-Commerce System - Implementation Summary
 
 **Date**: October 2, 2025
 **Status**: 75% Complete - Products, Orders, and Frontend Complete
@@ -259,14 +259,14 @@ ShippingAddress (id, user, label, is_default, recipient_name, phone, postal_code
 - `templates/home.html` (updated with featured products)
 
 **Modified Files**:
-- `eshop/settings/base.py` - Added products, cart, orders to INSTALLED_APPS
-- `eshop/urls.py` - Added products URLs, updated home view
+- `日日鮮肉品專賣/settings/base.py` - Added products, cart, orders to INSTALLED_APPS
+- `日日鮮肉品專賣/urls.py` - Added products URLs, updated home view
 - `templates/base.html` - Added products links and cart icon
 - `requirements.txt` - Added Pillow, django-widget-tweaks
 
 ## 🚀 How to Test
 
-1. **Start server**: `python manage.py runserver --settings=eshop.settings.development`
+1. **Start server**: `python manage.py runserver --settings=日日鮮肉品專賣.settings.development`
 2. **Admin panel**: http://127.0.0.1:8000/admin/
 3. **Create sample data** in admin:
    - Add categories

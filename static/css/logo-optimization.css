@@ -1,10 +1,10 @@
 /**
- * EShop Logo Optimization CSS
+ * 日日鮮肉品專賣 Logo Optimization CSS
  * Handles responsive logo display, fallbacks, and performance optimization
  */
 
 /* Base logo styles */
-.eshop-logo {
+.日日鮮肉品專賣-logo {
     max-height: 40px;
     height: auto;
     width: auto;
@@ -13,26 +13,26 @@
     image-rendering: crisp-edges;
 }
 
-.eshop-logo:hover {
+.日日鮮肉品專賣-logo:hover {
     transform: scale(1.05);
     filter: brightness(1.1);
 }
 
 /* Responsive logo sizes */
-.logo-small .eshop-logo {
+.logo-small .日日鮮肉品專賣-logo {
     max-height: 24px;
 }
 
-.logo-medium .eshop-logo {
+.logo-medium .日日鮮肉品專賣-logo {
     max-height: 32px;
 }
 
-.logo-large .eshop-logo {
+.logo-large .日日鮮肉品專賣-logo {
     max-height: 48px;
 }
 
 /* Loading state */
-.eshop-logo[loading] {
+.日日鮮肉品專賣-logo[loading] {
     opacity: 0.5;
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -47,9 +47,9 @@
 }
 
 /* Error state - hide broken image */
-.eshop-logo:not([src]),
-.eshop-logo[src=""],
-.eshop-logo[alt]:after {
+.日日鮮肉品專賣-logo:not([src]),
+.日日鮮肉品專賣-logo[src=""],
+.日日鮮肉品專賣-logo[alt]:after {
     display: none;
 }
 
@@ -66,7 +66,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-    .eshop-logo {
+    .日日鮮肉品專賣-logo {
         filter: contrast(1.2);
     }
     
@@ -81,7 +81,7 @@
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-    .eshop-logo {
+    .日日鮮肉品專賣-logo {
         filter: brightness(0.9);
     }
     
@@ -95,7 +95,7 @@
 
 /* Print styles */
 @media print {
-    .eshop-logo {
+    .日日鮮肉品專賣-logo {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
         max-height: 20px;
@@ -104,8 +104,8 @@
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-    .eshop-logo,
-    .eshop-logo:hover {
+    .日日鮮肉品專賣-logo,
+    .日日鮮肉品專賣-logo:hover {
         transition: none;
         transform: none;
         animation: none;

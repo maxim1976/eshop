@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
-{% load i18n %}
-
-{% block title %}{% trans "前往付款 / Redirecting to Payment" %}{% endblock %}
-
+{% block title %}前往付款 / Redirecting to Payment{% endblock %}
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-2xl mx-auto">
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Header -->
             <div class="bg-blue-600 text-white px-6 py-4">
-                <h1 class="text-xl font-bold">{% trans "前往付款 / Proceeding to Payment" %}</h1>
+                <h1 class="text-xl font-bold">前往付款 / Proceeding to Payment</h1>
             </div>
-
             <!-- Content -->
             <div class="p-6 text-center">
                 <div class="mb-6">
@@ -21,60 +17,55 @@
                         </svg>
                     </div>
                     <h2 class="text-xl font-semibold text-gray-800 mb-2">
-                        {% trans "正在前往綠界科技付款頁面 / Redirecting to ECPay Payment Gateway" %}
+                        正在前往綠界科技付款頁面 / Redirecting to ECPay Payment Gateway
                     </h2>
                     <p class="text-gray-600">
-                        {% trans "請稍候，系統正在為您準備安全的付款環境..." %}<br>
-                        {% trans "Please wait while we prepare a secure payment environment for you..." %}
+                        請稍候，系統正在為您準備安全的付款環境...<br>
+                        Please wait while we prepare a secure payment environment for you...
                     </p>
                 </div>
-
                 <!-- Payment Details -->
                 <div class="bg-gray-50 rounded-lg p-4 mb-6 text-left">
-                    <h3 class="font-semibold text-gray-800 mb-3">{% trans "付款資訊 / Payment Information" %}</h3>
+                    <h3 class="font-semibold text-gray-800 mb-3">付款資訊 / Payment Information</h3>
                     <div class="space-y-2 text-sm">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">{% trans "訂單編號 / Order Number" %}:</span>
+                            <span class="text-gray-600">訂單編號 / Order Number:</span>
                             <span class="font-semibold">{{ order.order_number }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">{% trans "付款編號 / Payment ID" %}:</span>
+                            <span class="text-gray-600">付款編號 / Payment ID:</span>
                             <span class="font-semibold">{{ payment.payment_id }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">{% trans "付款金額 / Amount" %}:</span>
+                            <span class="text-gray-600">付款金額 / Amount:</span>
                             <span class="font-semibold text-blue-600">NT$ {{ payment.amount|floatformat:0 }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">{% trans "付款方式 / Payment Method" %}:</span>
+                            <span class="text-gray-600">付款方式 / Payment Method:</span>
                             <span class="font-semibold">{{ payment.get_payment_method_display }}</span>
                         </div>
                     </div>
                 </div>
-
                 <!-- Auto-submit form -->
                 <form id="ecpay-form" method="post" action="{{ action_url }}" style="display: none;">
                     {% for key, value in form_data.items %}
                         <input type="hidden" name="{{ key }}" value="{{ value }}">
                     {% endfor %}
                 </form>
-
                 <!-- Manual submit button (fallback) -->
                 <button onclick="document.getElementById('ecpay-form').submit();" 
                         class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
-                    {% trans "如果頁面沒有自動跳轉，請點擊這裡 / Click here if not redirected automatically" %}
+                    如果頁面沒有自動跳轉，請點擊這裡 / Click here if not redirected automatically
                 </button>
-
                 <!-- Security Notice -->
                 <div class="mt-6 text-xs text-gray-500">
-                    <p>{% trans "🔒 您的付款將透過綠界科技安全加密處理" %}</p>
-                    <p>{% trans "🔒 Your payment will be processed securely through ECPay" %}</p>
+                    <p>🔒 您的付款將透過綠界科技安全加密處理</p>
+                    <p>🔒 Your payment will be processed securely through ECPay</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Auto-submit form after 2 seconds

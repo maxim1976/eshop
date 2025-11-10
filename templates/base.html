@@ -1,11 +1,10 @@
-{% load i18n static %}
+{% load static %}
 <!DOCTYPE html>
-<html lang="{% get_current_language as LANGUAGE_CODE %}{{ LANGUAGE_CODE }}">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}EShop - {% trans "台灣電商平台" %}{% endblock %}</title>
-    
+    <title>{% block title %}日日鮮肉品專賣 - 新鮮肉品專賣店{% endblock %}</title>
     <!-- Tailwind CSS - Using CDN for development -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -19,54 +18,46 @@
             }
         }
     </script>
-    
+    <style>
+        /* Sticky header helper (optional custom styles) */
+    </style>
     <!-- Logo Optimization CSS -->
     <link rel="stylesheet" href="{% static 'css/logo-optimization.css' %}">
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="{{ MEDIA_URL }}pictures/log.jpg">
     <!-- Meta -->
-    <meta name="description" content="{% block description %}{% trans '台灣優質電商平台，提供安全便利的購物體驗' %}{% endblock %}">
-    <meta name="keywords" content="{% trans '電商,購物,台灣,網購' %}">
-    
+    <meta name="description" content="{% block description %}專業肉品供應商，提供新鮮優質肉品與便利購物服務{% endblock %}">
+    <meta name="keywords" content="肉品,新鮮肉類,豬肉,牛肉,雞肉,台灣,網購">
     {% block extra_head %}{% endblock %}
 </head>
 <body class="font-sans bg-gray-50 text-gray-900">
     <!-- Header / 頁首 -->
-    <header class="bg-white shadow-sm border-b border-gray-200">
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50 transition-shadow" id="site-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo / 商標 -->
                 <div class="flex items-center">
                     {% include 'components/logo.html' with size='medium' link=True %}
                 </div>
-                
                 <!-- Navigation / 導航 -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
-                        {% trans "首頁" %}
-                    </a>
-                    <a href="{% url 'products:product_list' %}" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
-                        {% trans "商品" %}
-                    </a>
-                    <a href="{% url 'products:category_list' %}" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
-                        {% trans "分類" %}
-                    </a>
+                <nav class="hidden md:flex space-x-6" aria-label="主選單">
+                    <a href="{% url 'home' %}" class="text-gray-700 hover:text-red-600 px-3 py-2 text-sm font-medium">首頁</a>
+                    <a href="{% url 'products:product_list' %}" class="text-gray-700 hover:text-red-600 px-3 py-2 text-sm font-medium">商品</a>
+                    <a href="{% url 'products:category_list' %}" class="text-gray-700 hover:text-red-600 px-3 py-2 text-sm font-medium">全部分類</a>
                 </nav>
-                
                 <!-- User Menu / 用戶選單 -->
                 <div class="flex items-center space-x-4">
                     <!-- Shopping Cart / 購物車 -->
-                    <a href="{% url 'cart:cart' %}" class="relative text-gray-700 hover:text-blue-600" aria-label="{% trans '購物車' %}">
+                    <a href="{% url 'cart:cart' %}" class="relative text-gray-700 hover:text-blue-600" aria-label="購物車">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                         <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center cart-count-badge">{{ cart_count|default:0 }}</span>
                     </a>
-                    
                     {% if user.is_authenticated %}
                         <!-- Authenticated User Menu / 已登入用戶選單 -->
                         <div class="relative">
@@ -79,19 +70,19 @@
                             <!-- Dropdown menu / 下拉選單 -->
                             <div id="user-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200" role="menu" aria-orientation="vertical">
                                 <a href="{% url 'auth:profile-form' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                    {% trans "個人資料" %}
+                                    個人資料
                                 </a>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                    {% trans "訂單記錄" %}
+                                    訂單記錄
                                 </a>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                    {% trans "設定" %}
+                                    設定
                                 </a>
                                 <hr class="my-1">
                                 <form method="post" action="{% url 'auth:logout-form' %}" class="m-0">
                                     {% csrf_token %}
                                     <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                        {% trans "登出" %}
+                                        登出
                                     </button>
                                 </form>
                             </div>
@@ -99,20 +90,29 @@
                     {% else %}
                         <!-- Guest User Menu / 訪客選單 -->
                         <a href="{% url 'auth:login-form' %}" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
-                            {% trans "登入" %}
+                            登入
                         </a>
                         <a href="{% url 'auth:register-form' %}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-sm font-medium">
-                            {% trans "註冊" %}
+                            註冊
                         </a>
                     {% endif %}
-                    
-                    
                     </div>
                 </div>
             </div>
         </div>
+        {% if nav_categories %}
+        <!-- Category Quick Nav / 快速分類導覽 -->
+        <div class="hidden md:block border-t border-gray-200 bg-gray-50/80 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex gap-4 overflow-x-auto py-2" aria-label="商品分類">
+                    {% for cat in nav_categories %}
+                        <a href="{% url 'products:product_list' %}?category={{ cat.slug }}" class="flex-shrink-0 px-3 py-1.5 rounded-md text-sm font-medium bg-white hover:bg-red-50 text-gray-700 hover:text-red-600 border border-gray-200 shadow-sm transition-colors" title="{{ cat.name }}">{{ cat.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </header>
-
     <!-- Main Content / 主要內容 -->
     <main class="min-h-screen">
         <!-- Messages / 訊息 -->
@@ -123,61 +123,58 @@
                 {% endfor %}
             </div>
         {% endif %}
-        
         <!-- Page Content / 頁面內容 -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {% block content %}{% endblock %}
         </div>
     </main>
-
     <!-- Footer / 頁尾 -->
     <footer class="bg-gray-800 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">EShop</h3>
+                    <h3 class="text-lg font-semibold mb-4">日日鮮肉品專賣</h3>
                     <p class="text-gray-300">
-                        {% trans "台灣優質電商平台，提供安全便利的購物體驗。" %}
+                        專業肉品供應商，提供新鮮優質肉品與便利購物服務。
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">{% trans "購物指南" %}</h4>
+                    <h4 class="font-semibold mb-4">肉品指南</h4>
                     <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-white">{% trans "如何購買" %}</a></li>
-                        <li><a href="#" class="hover:text-white">{% trans "付款方式" %}</a></li>
-                        <li><a href="#" class="hover:text-white">{% trans "配送資訊" %}</a></li>
+                        <li><a href="#" class="hover:text-white">如何選購</a></li>
+                        <li><a href="#" class="hover:text-white">保存方式</a></li>
+                        <li><a href="#" class="hover:text-white">烹飪建議</a></li>
+                        <li><a href="#" class="hover:text-white">配送資訊</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">{% trans "客戶服務" %}</h4>
+                    <h4 class="font-semibold mb-4">客戶服務</h4>
                     <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-white">{% trans "聯絡我們" %}</a></li>
-                        <li><a href="#" class="hover:text-white">{% trans "退換貨政策" %}</a></li>
-                        <li><a href="#" class="hover:text-white">{% trans "常見問題" %}</a></li>
+                        <li><a href="#" class="hover:text-white">聯絡我們</a></li>
+                        <li><a href="#" class="hover:text-white">退換貨政策</a></li>
+                        <li><a href="#" class="hover:text-white">常見問題</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">{% trans "法律資訊" %}</h4>
+                    <h4 class="font-semibold mb-4">法律資訊</h4>
                     <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-white">{% trans "隱私政策" %}</a></li>
-                        <li><a href="#" class="hover:text-white">{% trans "服務條款" %}</a></li>
-                        <li><a href="#" class="hover:text-white">{% trans "個資保護聲明" %}</a></li>
+                        <li><a href="#" class="hover:text-white">隱私政策</a></li>
+                        <li><a href="#" class="hover:text-white">服務條款</a></li>
+                        <li><a href="#" class="hover:text-white">個資保護聲明</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2025 EShop. {% trans "版權所有" %}.</p>
+                <p>&copy; 2025 日日鮮肉品專賣. 版權所有.</p>
             </div>
         </div>
     </footer>
-
     <!-- JavaScript -->
     <script>
-        // User menu toggle / 用戶選單切換
+        // User menu toggle / 用戶選單切換 & sticky shadow
         document.addEventListener('DOMContentLoaded', function() {
             const userMenuButton = document.getElementById('user-menu-button');
             const userMenu = document.getElementById('user-menu');
-            
             if (userMenuButton && userMenu) {
                 userMenuButton.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -185,8 +182,6 @@
                     userMenu.classList.toggle('hidden');
                     userMenuButton.setAttribute('aria-expanded', isExpanded);
                 });
-                
-                // Close menu when clicking outside / 點擊外部時關閉選單
                 document.addEventListener('click', function(e) {
                     if (!userMenuButton.contains(e.target) && !userMenu.contains(e.target)) {
                         userMenu.classList.add('hidden');
@@ -194,7 +189,6 @@
                     }
                 });
             }
-            
             // Language switcher / 語言切換器
             const languageSwitcher = document.getElementById('language-switcher');
             if (languageSwitcher) {
@@ -203,12 +197,19 @@
                     window.location.href = `/i18n/setlang/?language=${selectedLang}&next=${window.location.pathname}`;
                 });
             }
+            // Sticky header shadow
+            const header = document.getElementById('site-header');
+            if(header){
+                const shadowClass = 'shadow-md';
+                function onScroll(){
+                    if(window.scrollY > 10){ header.classList.add(shadowClass);} else { header.classList.remove(shadowClass);} }
+                window.addEventListener('scroll', onScroll, {passive:true});
+                onScroll();
+            }
         });
     </script>
-    
     <!-- Cart Management JavaScript -->
-    <script src="{% load static %}{% static 'js/cart.js' %}"></script>
-    
+    <script src="{% static 'js/cart.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

@@ -33,26 +33,29 @@ class RegisterAPIView(APIView):
         serializer = UserRegistrationSerializer(data=request.data)
         
         if serializer.is_valid():
-            # Create user (inactive until email confirmed)
+            # Create user (active immediately - no email confirmation required)
             user = serializer.save()
+            user.is_active = True  # Activate user immediately
+            user.save()
             
-            # Create email confirmation token
-            confirmation_token = EmailConfirmationToken.objects.create(
-                user=user,
-                email=user.email,
-                token=str(uuid.uuid4())
+            # Auto-login user after registration with explicit authentication
+            from django.contrib.auth import authenticate
+            authenticated_user = authenticate(
+                request, 
+                username=user.email,  # Use username parameter instead of email
+                password=serializer.validated_data['password']  # Use 'password' not 'password1'
             )
-            
-            # Send confirmation email
-            self._send_confirmation_email(user, confirmation_token, request)
+            if authenticated_user:
+                authenticated_user.backend = 'authentication.backends.EmailBackend'
+                login(request, authenticated_user)
             
             return Response({
                 'success': True,
-                'message': _('註冊成功，請檢查您的電子郵件以確認帳戶'),
+                'message': _('註冊成功！歡迎加入日日鮮肉品專賣！'),
                 'data': {
                     'user_id': user.id,
                     'email': user.email,
-                    'confirmation_sent': True
+                    'logged_in': True
                 }
             }, status=status.HTTP_201_CREATED)
         
@@ -67,10 +70,10 @@ class RegisterAPIView(APIView):
         language = user.preferred_language
         
         if language == 'zh-hant':
-            subject = '確認您的電子郵件地址 - EShop'
+            subject = '確認您的電子郵件地址 - 日日鮮肉品專賣'
             template = 'emails/confirmation_zh_hant.txt'
         else:
-            subject = 'Confirm Your Email Address - EShop'
+            subject = 'Confirm Your Email Address - 日日鮮肉品專賣'
             template = 'emails/confirmation_en.txt'
         
         # For now, send simple email (templates will be created later)
@@ -249,9 +252,9 @@ class PasswordResetAPIView(APIView):
         language = user.preferred_language
         
         if language == 'zh-hant':
-            subject = '重設您的密碼 - EShop'
+            subject = '重設您的密碼 - 日日鮮肉品專賣'
         else:
-            subject = 'Reset Your Password - EShop'
+            subject = 'Reset Your Password - 日日鮮肉品專賣'
         
         message = f"""
         {_('您已申請重設密碼')}。{_('請點擊以下連結重設您的密碼')}:
@@ -404,8 +407,8 @@ from .forms import UserRegistrationForm, UserLoginForm, PasswordResetForm, Passw
 @require_http_methods(["GET", "POST"])
 def register_view(request):
     """
-    User registration web form view.
-    Displays registration form and handles submission.
+    Simplified user registration web form view.
+    Creates active users immediately without email confirmation.
     """
     if request.user.is_authenticated:
         return redirect('auth:profile-form')
@@ -413,25 +416,23 @@ def register_view(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            # Create user (inactive until email confirmed)
+            # Create user (active immediately - no email confirmation required)
             user = form.save()
+            user.is_active = True  # Activate user immediately
+            user.save()
             
-            # Create email confirmation token
-            confirmation_token = EmailConfirmationToken.objects.create(
-                user=user,
-                email=user.email,
-                token=str(uuid.uuid4())
-            )
-            
-            # Send confirmation email
-            _send_confirmation_email_web(user, confirmation_token, request)
+            # Auto-login user after registration with explicit backend
+            from django.contrib.auth import authenticate, login as auth_login
+            authenticated_user = authenticate(request, username=user.email, password=form.cleaned_data['password1'])
+            if authenticated_user:
+                auth_login(request, authenticated_user, backend='authentication.backends.EmailBackend')
             
             # Show success message
             messages.success(
                 request,
-                _('註冊成功！請檢查您的電子郵件以確認帳戶。')
+                _('註冊成功！歡迎加入日日鮮肉品專賣！您已自動登入。')
             )
-            return redirect('auth:login-form')
+            return redirect('home')  # Redirect to homepage after successful registration
     else:
         form = UserRegistrationForm()
     
@@ -646,9 +647,9 @@ def _send_confirmation_email_web(user, token, request):
     language = user.preferred_language
     
     if language == 'zh-hant':
-        subject = '確認您的電子郵件地址 - EShop'
+        subject = '確認您的電子郵件地址 - 日日鮮肉品專賣'
     else:
-        subject = 'Confirm Your Email Address - EShop'
+        subject = 'Confirm Your Email Address - 日日鮮肉品專賣'
     
     # Build absolute URL for confirmation
     confirm_url = request.build_absolute_uri(
@@ -656,7 +657,7 @@ def _send_confirmation_email_web(user, token, request):
     )
     
     message = f"""
-{_('感謝您註冊 EShop！')}
+{_('感謝您註冊 日日鮮肉品專賣！')}
 
 {_('請點擊以下連結確認您的電子郵件地址')}:
 
@@ -667,7 +668,7 @@ def _send_confirmation_email_web(user, token, request):
 {_('如果您沒有註冊帳戶，請忽略此電子郵件')}。
 
 ---
-EShop 團隊
+日日鮮肉品專賣 團隊
     """
     
     send_mail(
@@ -684,9 +685,9 @@ def _send_reset_email_web(user, token, request):
     language = user.preferred_language
     
     if language == 'zh-hant':
-        subject = '重設您的密碼 - EShop'
+        subject = '重設您的密碼 - 日日鮮肉品專賣'
     else:
-        subject = 'Reset Your Password - EShop'
+        subject = 'Reset Your Password - 日日鮮肉品專賣'
     
     # Build absolute URL for password reset
     reset_url = request.build_absolute_uri(
@@ -705,7 +706,7 @@ def _send_reset_email_web(user, token, request):
 {_('如果您沒有申請密碼重設，請忽略此電子郵件')}。
 
 ---
-EShop 團隊
+日日鮮肉品專賣 團隊
     """
     
     send_mail(

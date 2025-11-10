@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions for EShop Authentication System
+# GitHub Copilot Instructions for 日日鮮肉品專賣 Authentication System
 
 ## Project Context
 This is a Taiwan-based e-commerce platform built with Django and Tailwind CSS, deployed on Railway.com. The current feature focus is user registration and authentication with Traditional Chinese primary language support.
@@ -65,8 +65,8 @@ This is a Taiwan-based e-commerce platform built with Django and Tailwind CSS, d
 
 ## File Structure
 ```
-eshop/
-├── eshop/
+日日鮮肉品專賣/
+├── 日日鮮肉品專賣/
 │   ├── settings/
 │   │   ├── base.py
 │   │   ├── development.py

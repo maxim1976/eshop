@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
-{% load i18n %}
-
-{% block title %}{% trans "付款結果 / Payment Result" %}{% endblock %}
-
+{% block title %}付款結果 / Payment Result{% endblock %}
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-3xl mx-auto">
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Header -->
             <div class="bg-gray-800 text-white px-6 py-4">
-                <h1 class="text-2xl font-bold">{% trans "付款結果 / Payment Result" %}</h1>
+                <h1 class="text-2xl font-bold">付款結果 / Payment Result</h1>
             </div>
-
             <!-- Result Content -->
             <div class="p-6">
                 <div class="text-center mb-8">
@@ -21,62 +17,60 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
-                        <h2 class="text-3xl font-bold text-green-600 mb-4">{% trans "付款成功！ / Payment Successful!" %}</h2>
-                        <p class="text-lg text-gray-600 mb-2">{% trans "感謝您的購買，您的訂單已確認" %}</p>
-                        <p class="text-lg text-gray-600">{% trans "Thank you for your purchase, your order has been confirmed" %}</p>
+                        <h2 class="text-3xl font-bold text-green-600 mb-4">付款成功！ / Payment Successful!</h2>
+                        <p class="text-lg text-gray-600 mb-2">感謝您的購買，您的訂單已確認</p>
+                        <p class="text-lg text-gray-600">Thank you for your purchase, your order has been confirmed</p>
                     {% elif payment.status == 'processing' %}
                         <div class="inline-flex items-center justify-center w-24 h-24 bg-blue-100 rounded-full mb-6">
                             <svg class="w-16 h-16 text-blue-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h2 class="text-3xl font-bold text-blue-600 mb-4">{% trans "付款處理中 / Payment Processing" %}</h2>
-                        <p class="text-lg text-gray-600 mb-2">{% trans "您的付款正在處理中，請稍候確認" %}</p>
-                        <p class="text-lg text-gray-600">{% trans "Your payment is being processed, please wait for confirmation" %}</p>
+                        <h2 class="text-3xl font-bold text-blue-600 mb-4">付款處理中 / Payment Processing</h2>
+                        <p class="text-lg text-gray-600 mb-2">您的付款正在處理中，請稍候確認</p>
+                        <p class="text-lg text-gray-600">Your payment is being processed, please wait for confirmation</p>
                     {% elif payment.status == 'pending' %}
                         <div class="inline-flex items-center justify-center w-24 h-24 bg-yellow-100 rounded-full mb-6">
                             <svg class="w-16 h-16 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"></path>
                             </svg>
                         </div>
-                        <h2 class="text-3xl font-bold text-yellow-600 mb-4">{% trans "等待付款 / Awaiting Payment" %}</h2>
-                        <p class="text-lg text-gray-600 mb-2">{% trans "請使用以下資訊完成付款" %}</p>
-                        <p class="text-lg text-gray-600">{% trans "Please use the information below to complete your payment" %}</p>
+                        <h2 class="text-3xl font-bold text-yellow-600 mb-4">等待付款 / Awaiting Payment</h2>
+                        <p class="text-lg text-gray-600 mb-2">請使用以下資訊完成付款</p>
+                        <p class="text-lg text-gray-600">Please use the information below to complete your payment</p>
                     {% else %}
                         <div class="inline-flex items-center justify-center w-24 h-24 bg-red-100 rounded-full mb-6">
                             <svg class="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
                         </div>
-                        <h2 class="text-3xl font-bold text-red-600 mb-4">{% trans "付款失敗 / Payment Failed" %}</h2>
-                        <p class="text-lg text-gray-600 mb-2">{% trans "付款過程中發生問題，請重新嘗試" %}</p>
-                        <p class="text-lg text-gray-600">{% trans "There was an issue with your payment, please try again" %}</p>
+                        <h2 class="text-3xl font-bold text-red-600 mb-4">付款失敗 / Payment Failed</h2>
+                        <p class="text-lg text-gray-600 mb-2">付款過程中發生問題，請重新嘗試</p>
+                        <p class="text-lg text-gray-600">There was an issue with your payment, please try again</p>
                     {% endif %}
                 </div>
-
                 <!-- Payment Summary -->
                 <div class="bg-gray-50 rounded-lg p-6 mb-8">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">{% trans "付款摘要 / Payment Summary" %}</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">付款摘要 / Payment Summary</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-600 mb-1">{% trans "訂單編號 / Order Number" %}</label>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">訂單編號 / Order Number</label>
                             <p class="text-lg font-semibold text-gray-800">{{ order.order_number }}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-600 mb-1">{% trans "付款編號 / Payment ID" %}</label>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">付款編號 / Payment ID</label>
                             <p class="text-lg font-semibold text-gray-800">{{ payment.payment_id }}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-600 mb-1">{% trans "付款方式 / Payment Method" %}</label>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">付款方式 / Payment Method</label>
                             <p class="text-lg text-gray-800">{{ payment.get_payment_method_display }}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-600 mb-1">{% trans "付款金額 / Amount" %}</label>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">付款金額 / Amount</label>
                             <p class="text-2xl font-bold text-blue-600">NT$ {{ payment.amount|floatformat:0 }}</p>
                         </div>
                     </div>
                 </div>
-
                 <!-- Payment Instructions (for ATM/CVS payments) -->
                 {% if payment.status == 'pending' and payment.payment_method in 'ATM,CVS,BARCODE' %}
                 <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
@@ -84,85 +78,76 @@
                         <svg class="inline w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        {% trans "付款指示 / Payment Instructions" %}
+                        付款指示 / Payment Instructions
                     </h3>
-                    
                     {% if payment.virtual_account %}
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">{% trans "虛擬帳號 / Virtual Account" %}</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">虛擬帳號 / Virtual Account</label>
                         <div class="bg-white p-3 rounded border">
                             <p class="text-2xl font-mono font-bold text-center">{{ payment.virtual_account }}</p>
                         </div>
-                        <p class="text-sm text-gray-600 mt-2">{% trans "請至任一ATM機器或網路銀行轉帳至此帳號" %}</p>
+                        <p class="text-sm text-gray-600 mt-2">請至任一ATM機器或網路銀行轉帳至此帳號</p>
                     </div>
                     {% endif %}
-
                     {% if payment.payment_code %}
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">{% trans "繳費代碼 / Payment Code" %}</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">繳費代碼 / Payment Code</label>
                         <div class="bg-white p-3 rounded border">
                             <p class="text-2xl font-mono font-bold text-center">{{ payment.payment_code }}</p>
                         </div>
-                        <p class="text-sm text-gray-600 mt-2">{% trans "請至7-11、全家、萊爾富或OK超商使用此代碼繳費" %}</p>
+                        <p class="text-sm text-gray-600 mt-2">請至7-11、全家、萊爾富或OK超商使用此代碼繳費</p>
                     </div>
                     {% endif %}
-
                     {% if payment.barcode_1 %}
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">{% trans "條碼 / Barcode" %}</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">條碼 / Barcode</label>
                         <div class="bg-white p-3 rounded border space-y-2">
                             <p class="font-mono text-center">{{ payment.barcode_1 }}</p>
                             {% if payment.barcode_2 %}<p class="font-mono text-center">{{ payment.barcode_2 }}</p>{% endif %}
                             {% if payment.barcode_3 %}<p class="font-mono text-center">{{ payment.barcode_3 }}</p>{% endif %}
                         </div>
-                        <p class="text-sm text-gray-600 mt-2">{% trans "請至超商出示此條碼給店員掃描繳費" %}</p>
+                        <p class="text-sm text-gray-600 mt-2">請至超商出示此條碼給店員掃描繳費</p>
                     </div>
                     {% endif %}
-
                     {% if payment.payment_deadline %}
                     <div class="text-center">
                         <p class="text-sm font-semibold text-red-600">
-                            {% trans "付款期限 / Payment Deadline" %}: {{ payment.payment_deadline|date:"Y/m/d H:i" }}
+                            付款期限 / Payment Deadline: {{ payment.payment_deadline|date:"Y/m/d H:i" }}
                         </p>
                     </div>
                     {% endif %}
                 </div>
                 {% endif %}
-
                 <!-- Next Steps -->
                 <div class="text-center">
                     <div class="space-y-4">
                         <a href="{% url 'orders:order_detail' order.id %}" 
                            class="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
-                            {% trans "查看訂單詳情 / View Order Details" %}
+                            查看訂單詳情 / View Order Details
                         </a>
-                        
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <a href="{% url 'home' %}" 
                                class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 font-semibold hover:bg-gray-50 transition-colors duration-200">
-                                {% trans "繼續購物 / Continue Shopping" %}
+                                繼續購物 / Continue Shopping
                             </a>
-                            
                             {% if payment.status != 'paid' %}
                             <a href="{% url 'payments:status' payment.payment_id %}" 
                                class="px-6 py-2 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition-colors duration-200">
-                                {% trans "查看付款狀態 / Check Payment Status" %}
+                                查看付款狀態 / Check Payment Status
                             </a>
                             {% endif %}
                         </div>
                     </div>
                 </div>
-
                 <!-- Contact Information -->
                 <div class="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
-                    <p class="mb-2">{% trans "如有任何問題，請聯絡客服 / If you have any questions, please contact customer service" %}</p>
-                    <p>{% trans "客服電話 / Customer Service" %}: 02-1234-5678 | {% trans "客服信箱 / Email" %}: support@eshop.com</p>
+                    <p class="mb-2">如有任何問題，請聯絡客服 / If you have any questions, please contact customer service</p>
+                    <p>客服電話 / Customer Service: 02-1234-5678 | 客服信箱 / Email: support@日日鮮肉品專賣.com</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Auto-refresh for processing payments

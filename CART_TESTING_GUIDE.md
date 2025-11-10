@@ -19,7 +19,7 @@ python manage.py shell < create_test_data.py
 
 ### 2️⃣ Start Development Server
 ```bash
-python manage.py runserver --settings=eshop.settings.development
+python manage.py runserver --settings=日日鮮肉品專賣.settings.development
 ```
 
 Visit: http://127.0.0.1:8000/

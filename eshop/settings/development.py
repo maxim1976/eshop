@@ -1,5 +1,5 @@
 """
-Development settings for eshop project.
+Development settings for 日日鮮肉品專賣 project.
 """
 
 from .base import *

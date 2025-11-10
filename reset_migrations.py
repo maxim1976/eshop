@@ -8,7 +8,7 @@ import shutil
 from pathlib import Path
 
 # Django setup
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'eshop.settings.development')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '日日鮮肉品專賣.settings.development')
 
 def print_header(title):
     """Print formatted header."""
@@ -103,9 +103,9 @@ def main():
         print("✅ All migrations cleaned and recreated")
         print("✅ Database schema updated successfully")
         print("\n🚀 Next steps:")
-        print("   1. Run: python setup_eshop.py")
+        print("   1. Run: python setup_日日鮮肉品專賣.py")
         print("   2. Or run: python manage.py createsuperuser")
-        print("   3. Start server: python manage.py runserver --settings=eshop.settings.development")
+        print("   3. Start server: python manage.py runserver --settings=日日鮮肉品專賣.settings.development")
         print("\n" + "=" * 70)
         
     except Exception as e:

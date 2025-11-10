@@ -200,7 +200,7 @@ class SystemIntegrationTest(TransactionTestCase):
         
         health_data = health_response.json()
         self.assertEqual(health_data['status'], 'healthy')
-        self.assertEqual(health_data['service'], 'eshop')
+        self.assertEqual(health_data['service'], '日日鮮肉品專賣')
         
         # Test all authentication endpoints are reachable (even if they return errors)
         endpoints_to_test = [

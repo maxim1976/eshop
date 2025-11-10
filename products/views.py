@@ -34,15 +34,16 @@ def product_list(request):
     if category_slug:
         products = products.filter(category__slug=category_slug)
     
-    # Apply sorting
+    # Apply sorting - default to first entered first (created_at ASC)
     sort_options = {
         'name': 'name',
-        'name_en': 'name_en',
+        'name_en': 'name_en', 
         'price_low': 'price',
         'price_high': '-price',
         'newest': '-created_at',
+        'oldest': 'created_at',  # First entered first
     }
-    products = products.order_by(sort_options.get(sort_by, 'name'))
+    products = products.order_by(sort_options.get(sort_by, 'created_at'))  # Default to oldest first
     
     # Pagination
     paginator = Paginator(products, 12)  # 12 products per page
@@ -76,10 +77,11 @@ def product_detail(request, slug):
     )
     
     # Get related products from same category
+    # Get related products in same category (first entered first)
     related_products = Product.objects.filter(
         category=product.category,
         status='active'
-    ).exclude(id=product.id).prefetch_related('images')[:4]
+    ).exclude(id=product.id).prefetch_related('images').order_by('created_at')[:4]
     
     context = {
         'product': product,

@@ -1,20 +1,17 @@
 {% extends "base.html" %}
-{% load i18n %}
 {% load static %}
-
-{% block title %}{% trans "商品列表" %} - {{ block.super }}{% endblock %}
-
+{% block title %}商品列表 - {{ block.super }}{% endblock %}
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <div class="flex flex-col lg:flex-row gap-8">
         <!-- Sidebar -->
         <aside class="lg:w-64 flex-shrink-0">
             <div class="bg-white rounded-lg shadow p-6 sticky top-4">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">{% trans "商品分類" %}</h2>
+                <h2 class="text-xl font-bold mb-4 text-gray-800">商品分類</h2>
                 <ul class="space-y-2">
                     <li>
                         <a href="{% url 'products:product_list' %}" class="block py-2 px-3 rounded hover:bg-gray-100 {% if not current_category %}bg-blue-50 text-blue-600 font-medium{% endif %}">
-                            {% trans "全部商品" %}
+                            全部商品
                         </a>
                     </li>
                     {% for category in categories %}
@@ -38,7 +35,6 @@
                 </ul>
             </div>
         </aside>
-
         <!-- Main Content -->
         <div class="flex-1">
             <!-- Header -->
@@ -47,16 +43,15 @@
                     {% if current_category %}
                         {{ current_category.name }}
                     {% elif query %}
-                        {% trans "搜尋結果" %}: "{{ query }}"
+                        搜尋結果: "{{ query }}"
                     {% else %}
-                        {% trans "所有商品" %}
+                        所有商品
                     {% endif %}
                 </h1>
                 <p class="text-gray-600">
-                    {% blocktrans count counter=page_obj.paginator.count %}找到 {{ counter }} 項商品{% plural %}找到 {{ counter }} 項商品{% endblocktrans %}
+                    找到 {{ page_obj.paginator.count }} 項商品
                 </p>
             </div>
-
             <!-- Sorting and Filters -->
             <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
                 <form method="get" class="flex items-center gap-2">
@@ -66,28 +61,26 @@
                     {% if query %}
                     <input type="hidden" name="q" value="{{ query }}">
                     {% endif %}
-                    <label for="sort" class="text-sm text-gray-600">{% trans "排序方式" %}:</label>
+                    <label for="sort" class="text-sm text-gray-600">排序方式:</label>
                     <select name="sort" id="sort" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" onchange="this.form.submit()">
-                        <option value="-created_at" {% if sort_by == '-created_at' %}selected{% endif %}>{% trans "最新上架" %}</option>
-                        <option value="price" {% if sort_by == 'price' %}selected{% endif %}>{% trans "價格：低到高" %}</option>
-                        <option value="-price" {% if sort_by == '-price' %}selected{% endif %}>{% trans "價格：高到低" %}</option>
-                        <option value="name" {% if sort_by == 'name' %}selected{% endif %}>{% trans "名稱：A-Z" %}</option>
-                        <option value="-name" {% if sort_by == '-name' %}selected{% endif %}>{% trans "名稱：Z-A" %}</option>
+                        <option value="-created_at" {% if sort_by == '-created_at' %}selected{% endif %}>最新上架</option>
+                        <option value="price" {% if sort_by == 'price' %}selected{% endif %}>價格：低到高</option>
+                        <option value="-price" {% if sort_by == '-price' %}selected{% endif %}>價格：高到低</option>
+                        <option value="name" {% if sort_by == 'name' %}selected{% endif %}>名稱：A-Z</option>
+                        <option value="-name" {% if sort_by == '-name' %}selected{% endif %}>名稱：Z-A</option>
                     </select>
                 </form>
-
                 <!-- Search Form -->
                 <form method="get" class="flex items-center gap-2">
                     {% if current_category %}
                     <input type="hidden" name="category" value="{{ current_category.slug }}">
                     {% endif %}
-                    <input type="text" name="q" value="{{ query }}" placeholder="{% trans '搜尋商品...' %}" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" name="q" value="{{ query }}" placeholder="搜尋商品..." class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-                        {% trans "搜尋" %}
+                        搜尋
                     </button>
                 </form>
             </div>
-
             <!-- Product Grid -->
             {% if products %}
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -127,42 +120,38 @@
                                 {% endif %}
                             </div>
                             {% if not product.is_in_stock %}
-                            <p class="text-red-500 text-sm mt-2 font-medium">{% trans "缺貨中" %}</p>
+                            <p class="text-red-500 text-sm mt-2 font-medium">缺貨中</p>
                             {% elif product.is_low_stock %}
-                            <p class="text-orange-500 text-sm mt-2">{% trans "庫存不足" %}</p>
+                            <p class="text-orange-500 text-sm mt-2">庫存不足</p>
                             {% endif %}
                         </div>
                     </a>
                 </div>
                 {% endfor %}
             </div>
-
             <!-- Pagination -->
             {% if page_obj.has_other_pages %}
             <div class="flex justify-center items-center gap-2">
                 {% if page_obj.has_previous %}
-                <a href="?page=1{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "首頁" %}</a>
-                <a href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "上一頁" %}</a>
+                <a href="?page=1{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">首頁</a>
+                <a href="?page={{ page_obj.previous_page_number }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">上一頁</a>
                 {% endif %}
-
                 <span class="px-4 py-2 text-gray-700">
-                    {% trans "第" %} {{ page_obj.number }} {% trans "頁，共" %} {{ page_obj.paginator.num_pages }} {% trans "頁" %}
+                    第 {{ page_obj.number }} 頁，共 {{ page_obj.paginator.num_pages }} 頁
                 </span>
-
                 {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "下一頁" %}</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">{% trans "末頁" %}</a>
+                <a href="?page={{ page_obj.next_page_number }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">下一頁</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if current_category %}&category={{ current_category.slug }}{% endif %}{% if query %}&q={{ query }}{% endif %}{% if sort_by != '-created_at' %}&sort={{ sort_by }}{% endif %}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">末頁</a>
                 {% endif %}
             </div>
             {% endif %}
-
             {% else %}
             <div class="text-center py-12">
                 <svg class="w-24 h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <h3 class="text-xl font-semibold text-gray-600 mb-2">{% trans "找不到商品" %}</h3>
-                <p class="text-gray-500">{% trans "請嘗試其他搜尋關鍵字或瀏覽其他分類" %}</p>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">找不到商品</h3>
+                <p class="text-gray-500">請嘗試其他搜尋關鍵字或瀏覽其他分類</p>
             </div>
             {% endif %}
         </div>

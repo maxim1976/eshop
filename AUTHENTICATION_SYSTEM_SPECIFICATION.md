@@ -1,8 +1,8 @@
-# EShop Authentication System - Technical Specification
+# 日日鮮肉品專賣 Authentication System - Technical Specification
 
 ## 1. Executive Summary
 
-This document provides a comprehensive technical specification for the EShop authentication system - a Taiwan-based e-commerce platform with Traditional Chinese localization and PDPA compliance. The system implements secure user registration, authentication, and session management using Django 4.2 with PostgreSQL backend, deployed on Railway.com.
+This document provides a comprehensive technical specification for the 日日鮮肉品專賣 authentication system - a Taiwan-based e-commerce platform with Traditional Chinese localization and PDPA compliance. The system implements secure user registration, authentication, and session management using Django 4.2 with PostgreSQL backend, deployed on Railway.com.
 
 ### 1.1 Key Features
 - **Email-based Authentication**: Custom user model with email as primary identifier
@@ -10,6 +10,9 @@ This document provides a comprehensive technical specification for the EShop aut
 - **PDPA Compliance**: Taiwan Personal Data Protection Act requirements
 - **Security-First Design**: Rate limiting, secure sessions, token-based confirmations
 - **Multi-Channel Access**: REST API endpoints and web form interfaces
+- **Mobile-First Design**: Responsive design optimized for mobile devices
+- **Touch-Friendly Interface**: Large buttons, accessible form controls
+- **Cross-Platform Compatibility**: iOS, Android, and desktop browser support
 
 ### 1.2 Technology Stack
 - **Backend**: Django 4.2.24, Django REST Framework 3.14.0
@@ -139,11 +142,50 @@ CREATE TABLE authentication_userpreferences (
 );
 ```
 
-## 4. API Specification
+## 4. Mobile-First Design Requirements
 
-### 4.1 Authentication Endpoints
+### 4.1 Responsive Design Standards
+- **Viewport Configuration**: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+- **Breakpoints**: Mobile (0-640px), Tablet (641-1024px), Desktop (1025px+)
+- **Touch Targets**: Minimum 44px height for all interactive elements
+- **Font Scaling**: Responsive typography using rem/em units
+- **Image Optimization**: Responsive images with srcset and WebP support
 
-#### 4.1.1 User Registration
+### 4.2 Mobile User Experience
+- **Single-Column Layout**: Stack form elements vertically on mobile
+- **Large Input Fields**: Minimum 44px height for form inputs
+- **Touch-Friendly Buttons**: Prominent CTAs with adequate spacing
+- **Keyboard Optimization**: Proper input types (email, tel, password)
+- **Loading States**: Spinner indicators for form submissions
+- **Error Handling**: Clear, prominent error messages
+- **Offline Support**: Graceful degradation when network unavailable
+
+### 4.3 Performance Requirements
+- **First Contentful Paint**: <2 seconds on 3G networks
+- **Time to Interactive**: <4 seconds on mobile devices
+- **Bundle Size**: JavaScript <100KB gzipped
+- **Image Optimization**: WebP format with fallbacks
+- **Critical CSS**: Inline above-the-fold styles
+
+### 4.4 Accessibility Standards
+- **WCAG 2.1 AA Compliance**: Level AA accessibility standards
+- **Screen Reader Support**: Proper ARIA labels and descriptions
+- **Color Contrast**: Minimum 4.5:1 ratio for text
+- **Focus Management**: Visible focus indicators
+- **Semantic HTML**: Proper heading hierarchy and landmarks
+
+### 4.5 Cross-Platform Testing
+- **iOS Safari**: Latest 2 versions
+- **Chrome Mobile**: Latest 2 versions  
+- **Samsung Internet**: Latest version
+- **Mobile Firefox**: Latest version
+- **Device Testing**: iPhone 12+, Samsung Galaxy S21+, iPad
+
+## 5. API Specification
+
+### 5.1 Authentication Endpoints
+
+#### 5.1.1 User Registration
 ```http
 POST /api/auth/register/
 Content-Type: application/json
@@ -480,7 +522,7 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER=your-email@example.com
 EMAIL_HOST_PASSWORD=your-app-password
-DEFAULT_FROM_EMAIL=noreply@eshop.com
+DEFAULT_FROM_EMAIL=noreply@日日鮮肉品專賣.com
 
 # ECPay payment gateway
 ECPAY_MERCHANT_ID=your-merchant-id
@@ -655,7 +697,7 @@ class Command(BaseCommand):
 
 ## 13. Conclusion
 
-The EShop authentication system provides a robust, secure, and scalable foundation for the Taiwan e-commerce platform. With comprehensive security measures, PDPA compliance, and bilingual support, the system is well-positioned to handle production workloads while maintaining excellent user experience and regulatory compliance.
+The 日日鮮肉品專賣 authentication system provides a robust, secure, and scalable foundation for the Taiwan e-commerce platform. With comprehensive security measures, PDPA compliance, and bilingual support, the system is well-positioned to handle production workloads while maintaining excellent user experience and regulatory compliance.
 
 The modular design allows for easy extension and maintenance, while the comprehensive testing strategy ensures reliability and security. The deployment on Railway.com provides scalability and ease of management, making it suitable for both development and production environments.
 

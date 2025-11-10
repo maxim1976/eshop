@@ -241,6 +241,6 @@ class LoginAttemptAdmin(admin.ModelAdmin):
 
 
 # Admin site customization
-admin.site.site_header = 'EShop Administration'
-admin.site.site_title = 'EShop Admin'
-admin.site.index_title = 'Welcome to EShop Management System'
+admin.site.site_header = '日日鮮肉品專賣 管理istration'
+admin.site.site_title = '日日鮮肉品專賣 管理'
+admin.site.index_title = 'Welcome to 日日鮮肉品專賣 Management System'

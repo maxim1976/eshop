@@ -1,6 +1,6 @@
 """
 Shopping cart admin interface - English Version.
-Follows Django best practices and EShop coding standards.
+Follows Django best practices and 日日鮮肉品專賣 coding standards.
 """
 
 from django.contrib import admin

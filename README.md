@@ -1,20 +1,20 @@
-# EShop - Taiwan E-Commerce Platform
+# 日日鮮肉品專賣 - 台灣新鮮肉品專賣店
 
-![EShop Logo](media/pictures/logo-2-cs6ol-03.png)
+![日日鮮肉品專賣 Logo](media/pictures/log.jpg)
 
-## 🛍️ Overview
+## 🥩 專案概述
 
-EShop is a comprehensive e-commerce platform designed specifically for the Taiwan market, featuring Traditional Chinese localization, PDPA compliance, and modern web technologies.
+日日鮮肉品專賣是專為台灣市場設計的專業肉品電商平台，提供新鮮優質肉品與完整的線上購物體驗。
 
-## ✨ Features
+## ✨ 核心特色
 
-### 🔐 **Authentication System**
-- Email-based user registration and login
-- Email confirmation with 48-hour token expiry
-- Password reset with 4-hour security tokens
-- Rate limiting (3 attempts per 15 minutes)
-- PDPA (Personal Data Protection Act) compliance
-- Traditional Chinese / English bilingual support
+### 🔐 **用戶系統**
+- 電子郵件註冊與登入系統
+- 48小時電子郵件確認機制
+- 4小時密碼重設安全令牌
+- 速率限制保護 (每15分鐘3次嘗試)
+- 符合個資法(PDPA)規範
+- 繁體中文介面
 
 ### 🛒 **Shopping Experience**
 - **Product Management**: Categories, variants, images, stock tracking
@@ -77,8 +77,8 @@ Node.js (for Tailwind CSS compilation)
 ### **Installation**
 ```bash
 # Clone the repository
-git clone https://github.com/maxim1976/eshop.git
-cd eshop
+git clone https://github.com/maxim1976/日日鮮肉品專賣.git
+cd 日日鮮肉品專賣
 
 # Install Python dependencies
 pip install -r requirements.txt
@@ -120,7 +120,7 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER=your-email@example.com
 EMAIL_HOST_PASSWORD=your-password
-DEFAULT_FROM_EMAIL=noreply@eshop.com
+DEFAULT_FROM_EMAIL=noreply@日日鮮肉品專賣.com
 
 # ECPay Configuration (Taiwan Payment Gateway)
 ECPAY_MERCHANT_ID=your-merchant-id
@@ -170,7 +170,7 @@ GET  /api/payments/status/   - Payment status
 
 ### **Project Structure**
 ```
-eshop/
+日日鮮肉品專賣/
 ├── authentication/          # User management system
 ├── products/               # Product catalog
 ├── cart/                   # Shopping cart functionality
@@ -182,7 +182,7 @@ eshop/
 │   └── ...
 ├── static/                 # Static assets (CSS, JS, images)
 ├── media/                  # User-uploaded files
-└── eshop/                  # Django project settings
+└── 日日鮮肉品專賣/                  # Django project settings
 ```
 
 ### **Key Components**
@@ -255,7 +255,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🤝 Support
 
-For support, email support@eshop.com or create an issue in the GitHub repository.
+For support, email support@日日鮮肉品專賣.com or create an issue in the GitHub repository.
 
 ## 🎯 Roadmap
 

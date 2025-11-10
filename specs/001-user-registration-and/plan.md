@@ -92,8 +92,8 @@ specs/[###-feature]/
 
 ### Source Code (repository root)
 ```
-eshop/                     # Django project root
-├── eshop/                 # Main Django app
+日日鮮肉品專賣/                     # Django project root
+├── 日日鮮肉品專賣/                 # Main Django app
 │   ├── settings/
 │   │   ├── base.py        # Common settings
 │   │   ├── development.py # Local development

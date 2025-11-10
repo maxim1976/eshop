@@ -37,7 +37,7 @@
 - Include exact file paths in descriptions
 
 ## Phase 3.1: Setup
-- [x] T001 Create Django project structure with authentication app in `eshop/` and `authentication/`
+- [x] T001 Create Django project structure with authentication app in `日日鮮肉品專賣/` and `authentication/`
 - [x] T002 Initialize Django project with dependencies: Django 4.2, djangorestframework, django-cors-headers, psycopg2-binary, python-decouple, django-ratelimit
 - [x] T003 [P] Configure Tailwind CSS with Node.js dependencies in `package.json` and `tailwind.config.js`
 - [x] T004 [P] Create Railway.com deployment configuration in `railway.json` and production settings
@@ -95,7 +95,7 @@
 ### URL Configuration
 - [x] T040 Create authentication URL patterns in `authentication/urls.py` for all API endpoints
 - [x] T041 Create authentication template URL patterns in `authentication/urls.py` for web forms
-- [x] T042 Include authentication URLs in main `eshop/urls.py` with API and web prefixes
+- [x] T042 Include authentication URLs in main `日日鮮肉品專賣/urls.py` with API and web prefixes
 
 ## Phase 3.4: Frontend Templates and Components
 
@@ -122,7 +122,7 @@
 - [ ] T056 Create email service utility in `authentication/utils.py` for sending localized emails
 
 ### Localization and Internationalization  
-- [ ] T057 Configure Django i18n settings for Traditional Chinese and English in `eshop/settings/`
+- [ ] T057 Configure Django i18n settings for Traditional Chinese and English in `日日鮮肉品專賣/settings/`
 - [ ] T058 [P] Create Traditional Chinese translation files in `locale/zh_Hant/LC_MESSAGES/django.po`
 - [ ] T059 [P] Create English translation files in `locale/en/LC_MESSAGES/django.po`
 - [ ] T060 Add language switching functionality to base template and user preferences
@@ -157,7 +157,7 @@
 - [ ] T077 Configure Railway.com PostgreSQL database connection and environment variables
 - [ ] T078 [P] Create Django management commands for Railway deployment in `authentication/management/`
 - [ ] T079 [P] Configure static file serving and media uploads for Railway.com
-- [ ] T080 [P] Add health check endpoint in `eshop/urls.py` for Railway monitoring
+- [ ] T080 [P] Add health check endpoint in `日日鮮肉品專賣/urls.py` for Railway monitoring
 
 ### Documentation and Final Testing
 - [ ] T081 [P] Create development setup documentation in `README.md` with Railway.com instructions

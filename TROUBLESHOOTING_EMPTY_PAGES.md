@@ -133,7 +133,7 @@ Sometimes cached files cause issues:
 Stop the server (`Ctrl + C`) and restart:
 
 ```bash
-python manage.py runserver --settings=eshop.settings.development
+python manage.py runserver --settings=日日鮮肉品專賣.settings.development
 ```
 
 ---

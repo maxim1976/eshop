@@ -1,40 +1,17 @@
 {% extends 'base.html' %}
-{% load i18n %}
-
-{% block title %}{% trans "首頁" %} - EShop{% endblock %}
-
+{% load static %}
+{% block title %}首頁 - 日日鮮肉品專賣{% endblock %}
 {% block content %}
 <div class="min-h-screen">
     <!-- Hero Section -->
-    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div class="max-w-4xl mx-auto text-center px-4">
-            <!-- Large Logo for Hero -->
-            <div class="mb-8">
-                {% include 'components/logo.html' with size='large' link=False %}
-            </div>
-            
-            <h1 class="text-5xl font-bold mb-6">
-                {% trans "歡迎來到 EShop" %}
-            </h1>
-            <p class="text-xl mb-8 text-blue-100">
-                {% trans "台灣優質電商平台，提供安全便利的購物體驗" %}
-            </p>
-            <div class="flex justify-center gap-4">
-                <a href="{% url 'products:product_list' %}" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
-                    {% trans "立即購物" %}
-                </a>
-                <a href="{% url 'products:category_list' %}" class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition border-2 border-white">
-                    {% trans "瀏覽分類" %}
-                </a>
-            </div>
-        </div>
+    <div class="relative">
+        {% include 'components/hero_carousel.html' %}
     </div>
-
     <!-- Categories Section -->
     {% if categories %}
     <div class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">{% trans "熱門分類" %}</h2>
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">熱門分類</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {% for category in categories %}
                 <a href="{% url 'products:product_list' %}?category={{ category.slug }}" class="bg-gray-50 rounded-lg shadow p-6 text-center hover:shadow-lg transition group">
@@ -46,15 +23,59 @@
         </div>
     </div>
     {% endif %}
-
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Store Image -->
+                <div class="order-2 lg:order-1">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">                        
+                        <img src="{{ MEDIA_URL }}pictures/interior.jpg" 
+                             alt="日日鮮商行門市" 
+                             class="w-full h-auto object-cover"
+                             onload="this.style.display='block';"
+                             onerror="this.style.display='block'; console.log('Image failed to load');"
+                             loading="lazy">>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <p class="text-white text-lg font-semibold">日日鮮 Daily Fresh Meats</p>
+                            <p class="text-white/90 text-sm">花蓮市中美路208-1號</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- About Text -->
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-4xl font-bold mb-8 text-gray-900">"關於日日鮮"</h2>
+                    <div class="prose prose-lg text-gray-600 space-y-4">
+                        <p class="text-lg leading-relaxed">
+                            日日鮮商行為花蓮在地至今已50年老店「明昌食品號」的創新品牌旗艦店，於2020年在美崙新開幕，為您提供更優質舒適的購物環境！
+                        </p>
+                        <p class="leading-relaxed">
+                            明昌食品號成立於民國62年，坐落於花蓮市復興市場，從一個小小市場攤販拓展至如今的企業規模，便是秉持著「提供新鮮衛生肉品給消費者」的精神，長久以來在花蓮地區默默耕耘。
+                        </p>
+                        <p class="leading-relaxed">
+                            如今已是花蓮地區頗具規模的肉品供應商與加工廠，提供冷凍牛、羊、雞、豬及其肉品加工等食品，擁有專業的冷凍倉儲和物流中心，以穩定的貨源供給下游餐廳及廠商。
+                        </p>
+                        
+                        <div class="bg-red-100 p-6 rounded-lg mt-8">
+                            <h3 class="font-bold text-lg mb-3 text-red-800">"公司資訊"</h3>
+                            <div class="text-sm space-y-2">
+                                <p><span class="font-medium"> "營業負責人" :</span> 李威</p>
+                                <p><span class="font-medium">統一編號" :</span> 87345494</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Featured Products Section -->
     {% if featured_products %}
     <div class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-900">{% trans "精選商品" %}</h2>
+                <h2 class="text-3xl font-bold text-gray-900">精選商品</h2>
                 <a href="{% url 'products:product_list' %}?featured=true" class="text-blue-600 hover:text-blue-700 font-medium">
-                    {% trans "查看全部" %} →
+                    查看全部 →
                 </a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -101,73 +122,68 @@
         </div>
     </div>
     {% endif %}
-
     <!-- Features Section -->
     <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">
-                {% trans "為什麼選擇 EShop？" %}
+                為什麼選擇 日日鮮肉品專賣？
             </h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
                 <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">{% trans "安全可靠" %}</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">新鮮保證</h3>
                     <p class="text-gray-600">
-                        {% trans "採用業界標準的安全機制，保護您的個人資料和交易安全" %}
+                        每日現宰新鮮肉品，嚴格品質把關，確保肉品新鮮度
                     </p>
                 </div>
-
                 <!-- Feature 2 -->
                 <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">{% trans "快速便捷" %}</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">快速配送</h3>
                     <p class="text-gray-600">
-                        {% trans "簡潔的介面設計，讓您輕鬆完成購物流程" %}
+                        冷鍊配送，當日訂購最快隔日到貨，保持肉品新鮮
                     </p>
                 </div>
-
                 <!-- Feature 3 -->
                 <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900">{% trans "優質服務" %}</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">在地精選</h3>
                     <p class="text-gray-600">
-                        {% trans "專業客服團隊，隨時為您解決問題" %}
+                        嚴選台灣在地優質肉品，支持本土畜牧業
                     </p>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Call to Action -->
     {% if not user.is_authenticated %}
-    <div class="py-16 bg-blue-50">
+    <div class="py-16 bg-red-50">
         <div class="max-w-4xl mx-auto text-center px-4">
             <h2 class="text-3xl font-bold mb-4 text-gray-900">
-                {% trans "開始您的購物之旅" %}
+                開始您的新鮮肉品購物之旅
             </h2>
             <p class="text-gray-600 mb-6">
-                {% trans "立即註冊，享受更多會員專屬優惠" %}
+                立即註冊，享受會員專屬優惠和新鮮肉品
             </p>
             <div class="flex justify-center gap-4">
-                <a href="{% url 'auth:register-form' %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
-                    {% trans "免費註冊" %}
+                <a href="{% url 'auth:register-form' %}" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200">
+                    免費註冊
                 </a>
-                <a href="{% url 'auth:login-form' %}" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200 border-2 border-blue-600">
-                    {% trans "已有帳戶？登入" %}
+                <a href="{% url 'auth:login-form' %}" class="inline-block bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200 border-2 border-red-600">
+                    已有帳戶？登入
                 </a>
             </div>
         </div>

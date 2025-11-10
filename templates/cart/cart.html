@@ -1,14 +1,10 @@
 {% extends "base.html" %}
-{% load i18n %}
-
-{% block title %}{% trans "購物車 / Shopping Cart" %} - {{ block.super }}{% endblock %}
-
+{% block title %}購物車 / Shopping Cart - {{ block.super }}{% endblock %}
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold text-gray-900 mb-8">
-        {% trans "購物車 / Shopping Cart" %}
+        購物車 / Shopping Cart
     </h1>
-    
     {% if cart_items %}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Cart Items / 購物車商品 -->
@@ -30,7 +26,6 @@
                         </div>
                         {% endif %}
                     </div>
-                    
                     <!-- Product Info / 商品資訊 -->
                     <div class="flex-1">
                         <h3 class="font-semibold text-lg text-gray-900 mb-1">
@@ -41,38 +36,34 @@
                         {% if item.product.name_en %}
                         <p class="text-sm text-gray-500 mb-2">{{ item.product.name_en }}</p>
                         {% endif %}
-                        
                         {% if item.variant %}
                         <p class="text-sm text-gray-600 mb-2">
-                            <span class="font-medium">{% trans "規格 / Variant" %}:</span> 
+                            <span class="font-medium">規格 / Variant:</span> 
                             {{ item.variant.name }}
                             {% if item.variant.name_en %}
                             <span class="text-gray-500">/ {{ item.variant.name_en }}</span>
                             {% endif %}
                         </p>
                         {% endif %}
-                        
                         <p class="text-sm text-gray-500 mb-2">
-                            <span class="font-medium">{% trans "商品編號 / SKU" %}:</span> 
+                            <span class="font-medium">商品編號 / SKU:</span> 
                             {{ item.product.sku }}
                         </p>
-                        
                         <!-- Price / 價格 -->
                         <div class="mb-3">
                             <span class="text-lg font-bold text-gray-900">
                                 NT$ {{ item.get_price|floatformat:0 }}
                             </span>
                             <span class="text-xs text-gray-500 ml-2">
-                                {% trans "單價 / Unit Price" %}
+                                單價 / Unit Price
                             </span>
                         </div>
-                        
                         <!-- Quantity Controls / 數量控制 -->
                         <div class="flex items-center gap-4">
                             <div class="flex items-center border border-gray-300 rounded">
                                 <button onclick="updateQuantity({{ item.id }}, -1)" 
                                         class="px-3 py-1 hover:bg-gray-100 transition"
-                                        aria-label="{% trans '減少數量 / Decrease quantity' %}">
+                                        aria-label="減少數量 / Decrease quantity">
                                     -
                                 </button>
                                 <input type="number" 
@@ -82,21 +73,19 @@
                                        class="w-16 text-center border-x border-gray-300 py-1" 
                                        id="qty-{{ item.id }}" 
                                        onchange="updateQuantity({{ item.id }}, 0, this.value)"
-                                       aria-label="{% trans '商品數量 / Product quantity' %}">
+                                       aria-label="商品數量 / Product quantity">
                                 <button onclick="updateQuantity({{ item.id }}, 1)" 
                                         class="px-3 py-1 hover:bg-gray-100 transition"
-                                        aria-label="{% trans '增加數量 / Increase quantity' %}">
+                                        aria-label="增加數量 / Increase quantity">
                                     +
                                 </button>
                             </div>
-                            
                             <button onclick="removeItem({{ item.id }})" 
                                     class="text-red-600 hover:text-red-700 text-sm font-medium transition"
-                                    aria-label="{% trans '移除商品 / Remove item' %}">
-                                🗑️ {% trans "移除 / Remove" %}
+                                    aria-label="移除商品 / Remove item">
+                                🗑️ 移除 / Remove
                             </button>
                         </div>
-                        
                         <!-- Stock Status / 庫存狀態 -->
                         {% with status=item.stock_status %}
                             {% if status.level == 'error' %}
@@ -105,20 +94,19 @@
                             </p>
                             {% elif status.level == 'warning' %}
                             <p class="text-orange-600 text-sm mt-2 font-medium">
-                                ⚠️ {{ status.message }} ({% trans "僅剩 / Only" %} {{ status.available }} {% trans "件 / items" %})
+                                ⚠️ {{ status.message }} (僅剩 / Only {{ status.available }} 件 / items)
                             </p>
                             {% elif status.level == 'info' %}
                             <p class="text-blue-600 text-sm mt-2">
-                                ℹ️ {{ status.message }}: {{ status.available }} {% trans "件 / items" %}
+                                ℹ️ {{ status.message }}: {{ status.available }} 件 / items
                             </p>
                             {% endif %}
                         {% endwith %}
                     </div>
-                    
                     <!-- Item Subtotal / 小計 -->
                     <div class="text-right">
                         <p class="text-sm text-gray-500 mb-1">
-                            {% trans "小計 / Subtotal" %}
+                            小計 / Subtotal
                         </p>
                         <p class="text-lg font-bold text-gray-900 item-subtotal" data-item-id="{{ item.id }}">
                             NT$ {{ item.get_total_price|floatformat:0 }}
@@ -127,53 +115,46 @@
                 </div>
             </div>
             {% endfor %}
-            
             <!-- Clear Cart Button / 清空購物車按鈕 -->
             <div class="mt-4">
                 <button onclick="clearCart()" 
                         class="text-red-600 hover:text-red-700 font-medium transition"
-                        aria-label="{% trans '清空購物車 / Clear cart' %}">
-                    🗑️ {% trans "清空購物車 / Clear Cart" %}
+                        aria-label="清空購物車 / Clear cart">
+                    🗑️ 清空購物車 / Clear Cart
                 </button>
             </div>
         </div>
-        
         <!-- Order Summary / 訂單摘要 -->
         <div class="lg:col-span-1">
             <div class="bg-white rounded-lg shadow p-6 sticky top-4">
                 <h2 class="text-xl font-bold text-gray-900 mb-4">
-                    {% trans "訂單摘要 / Order Summary" %}
+                    訂單摘要 / Order Summary
                 </h2>
-                
                 <div class="space-y-3 mb-4 pb-4 border-b">
                     <div class="flex justify-between text-gray-700">
-                        <span>{% trans "商品小計 / Subtotal" %} ({{ item_count }} {% trans "件 / items" %})</span>
+                        <span>商品小計 / Subtotal ({{ item_count }} 件 / items)</span>
                         <span id="cart-subtotal">NT$ {{ subtotal|floatformat:0 }}</span>
                     </div>
                     <div class="flex justify-between text-gray-700">
-                        <span>{% trans "運費 / Shipping" %}</span>
+                        <span>運費 / Shipping</span>
                         <span id="cart-shipping">
                             {% if shipping_fee == 0 %}
                                 <span class="text-green-600 font-medium">
-                                    ✓ {% trans "免運費 / Free Shipping" %}
+                                    ✓ 免運費 / Free Shipping
                                 </span>
                             {% else %}
                                 NT$ {{ shipping_fee|floatformat:0 }}
                             {% endif %}
                         </span>
                     </div>
-                    
                     {% if shipping_remaining > 0 %}
                     <div class="bg-blue-50 border border-blue-200 rounded p-3">
                         <p class="text-sm text-blue-800 mb-2">
-                            💡 {% blocktrans with amount=shipping_remaining|floatformat:0 %}
+                            💡 
                             再購買 NT$ {{ amount }} 即可享免運費
-                            {% endblocktrans %}
                         </p>
                         <p class="text-xs text-blue-600 mb-2">
-                            {% blocktrans with amount=shipping_remaining|floatformat:0 %}
                             Add NT$ {{ amount }} more for free shipping
-                            {% endblocktrans %}
                         </p>
                         <div class="w-full bg-blue-200 rounded-full h-2">
                             {% widthratio subtotal free_shipping_threshold 100 as progress_percent %}
@@ -187,40 +168,35 @@
                     </div>
                     {% endif %}
                 </div>
-                
                 <div class="flex justify-between text-xl font-bold text-gray-900 mb-6">
-                    <span>{% trans "總計 / Total" %}</span>
+                    <span>總計 / Total</span>
                     <span id="cart-total">NT$ {{ total|floatformat:0 }}</span>
                 </div>
-                
                 <a href="{% url 'orders:checkout' %}" 
                    class="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition mb-3"
-                   aria-label="{% trans '前往結帳 / Proceed to checkout' %}">
-                    {% trans "前往結帳 / Proceed to Checkout" %}
+                   aria-label="前往結帳 / Proceed to checkout">
+                    前往結帳 / Proceed to Checkout
                 </a>
-                
                 <a href="{% url 'products:product_list' %}" 
                    class="block w-full bg-gray-100 text-gray-700 text-center py-3 rounded-lg font-medium hover:bg-gray-200 transition"
-                   aria-label="{% trans '繼續購物 / Continue shopping' %}">
-                    {% trans "繼續購物 / Continue Shopping" %}
+                   aria-label="繼續購物 / Continue shopping">
+                    繼續購物 / Continue Shopping
                 </a>
-                
                 <!-- Security Badges / 安全標章 -->
                 <div class="mt-6 pt-6 border-t">
                     <div class="flex items-center justify-center gap-2 text-sm text-gray-600">
                         <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
                         </svg>
-                        <span>{% trans "安全結帳 / Secure Checkout" %}</span>
+                        <span>安全結帳 / Secure Checkout</span>
                     </div>
                     <p class="text-xs text-center text-gray-500 mt-2">
-                        {% trans "符合台灣個資法 PDPA 規範 / PDPA Compliant" %}
+                        符合台灣個資法 PDPA 規範 / PDPA Compliant
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    
     {% else %}
     <!-- Empty Cart / 空購物車 -->
     <div class="text-center py-16">
@@ -228,23 +204,22 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
         </svg>
         <h2 class="text-2xl font-bold text-gray-900 mb-2">
-            {% trans "購物車是空的 / Your Cart is Empty" %}
+            購物車是空的 / Your Cart is Empty
         </h2>
         <p class="text-gray-600 mb-2">
-            {% trans "還沒有添加任何商品 / No items added yet" %}
+            還沒有添加任何商品 / No items added yet
         </p>
         <p class="text-sm text-gray-500 mb-6">
-            {% trans "瀏覽我們的商品，開始購物吧！ / Browse our products and start shopping!" %}
+            瀏覽我們的商品，開始購物吧！ / Browse our products and start shopping!
         </p>
         <a href="{% url 'products:product_list' %}" 
            class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-           aria-label="{% trans '開始購物 / Start shopping' %}">
-            🛍️ {% trans "開始購物 / Start Shopping" %}
+           aria-label="開始購物 / Start shopping">
+            🛍️ 開始購物 / Start Shopping
         </a>
     </div>
     {% endif %}
 </div>
-
 <script>
 // CSRF Token Helper / CSRF 令牌輔助函數
 function getCookie(name) {
@@ -261,9 +236,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-
 const csrftoken = getCookie('csrftoken');
-
 /**
  * Update cart item quantity
  * 更新購物車商品數量
@@ -274,10 +247,8 @@ const csrftoken = getCookie('csrftoken');
 function updateQuantity(itemId, change, newValue = null) {
     const input = document.getElementById(`qty-${itemId}`);
     let quantity = newValue !== null ? parseInt(newValue) : parseInt(input.value) + change;
-    
     if (quantity < 1) quantity = 1;
     input.value = quantity;
-    
     fetch(`/cart/update/${itemId}/`, {
         method: 'POST',
         headers: {
@@ -292,13 +263,11 @@ function updateQuantity(itemId, change, newValue = null) {
             // Update item subtotal / 更新商品小計
             document.querySelector(`.item-subtotal[data-item-id="${itemId}"]`).textContent = 
                 `NT$ ${Math.round(data.item_subtotal).toLocaleString()}`;
-            
             // Update cart totals / 更新購物車總計
             document.getElementById('cart-total').textContent = 
                 `NT$ ${Math.round(data.cart_total).toLocaleString()}`;
             document.getElementById('cart-subtotal').textContent = 
                 `NT$ ${Math.round(data.cart_total).toLocaleString()}`;
-            
             // Update navbar cart count / 更新導航欄購物車數量
             updateCartCount(data.cart_count);
         } else {
@@ -308,20 +277,18 @@ function updateQuantity(itemId, change, newValue = null) {
     })
     .catch(error => {
         console.error('Error updating quantity / 更新數量錯誤:', error);
-        alert('{% trans "更新失敗，請重試 / Update failed, please try again" %}');
+        alert('更新失敗，請重試 / Update failed, please try again');
     });
 }
-
 /**
  * Remove item from cart
  * 從購物車移除商品
  * @param {number} itemId - Cart item ID / 購物車項目 ID
  */
 function removeItem(itemId) {
-    if (!confirm('{% trans "確定要移除此商品嗎？ / Are you sure you want to remove this item?" %}')) {
+    if (!confirm('確定要移除此商品嗎？ / Are you sure you want to remove this item?')) {
         return;
     }
-    
     fetch(`/cart/remove/${itemId}/`, {
         method: 'POST',
         headers: {
@@ -334,10 +301,8 @@ function removeItem(itemId) {
         if (data.success) {
             // Remove item from DOM / 從 DOM 移除商品
             document.querySelector(`.cart-item[data-item-id="${itemId}"]`).remove();
-            
             // Update navbar cart count / 更新導航欄購物車數量
             updateCartCount(data.cart_count);
-            
             // Reload if cart is empty / 如果購物車為空則重新載入
             if (data.cart_count === 0) {
                 location.reload();
@@ -351,19 +316,17 @@ function removeItem(itemId) {
     })
     .catch(error => {
         console.error('Error removing item / 移除商品錯誤:', error);
-        alert('{% trans "移除失敗，請重試 / Remove failed, please try again" %}');
+        alert('移除失敗，請重試 / Remove failed, please try again');
     });
 }
-
 /**
  * Clear all items from cart
  * 清空購物車所有商品
  */
 function clearCart() {
-    if (!confirm('{% trans "確定要清空購物車嗎？ / Are you sure you want to clear the cart?" %}')) {
+    if (!confirm('確定要清空購物車嗎？ / Are you sure you want to clear the cart?')) {
         return;
     }
-    
     fetch('/cart/clear/', {
         method: 'POST',
         headers: {
@@ -381,10 +344,9 @@ function clearCart() {
     })
     .catch(error => {
         console.error('Error clearing cart / 清空購物車錯誤:', error);
-        alert('{% trans "清空失敗，請重試 / Clear failed, please try again" %}');
+        alert('清空失敗，請重試 / Clear failed, please try again');
     });
 }
-
 /**
  * Update cart count badge in navbar
  * 更新導航欄購物車數量標章

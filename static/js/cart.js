@@ -1,5 +1,5 @@
 /**
- * EShop Cart Management JavaScript
+ * 日日鮮肉品專賣 Cart Management JavaScript
  * Handles AJAX cart operations and UI updates
  */
 

@@ -131,7 +131,7 @@ def calculate_shipping_fee(subtotal):
 ### **Test Steps**:
 ```bash
 # 1. Start server
-python manage.py runserver --settings=eshop.settings.development
+python manage.py runserver --settings=日日鮮肉品專賣.settings.development
 
 # 2. Navigate to cart
 http://127.0.0.1:8000/cart/

@@ -7,7 +7,7 @@
 **Django Admin URL**: `http://127.0.0.1:8000/admin/`
 
 **Superuser Credentials**:
-- **Email**: `admin@eshop.com`
+- **Email**: `admin@日日鮮肉品專賣.com`
 - **Password**: `admin123456`
 - **Name**: 系統管理員 (System Administrator)
 - **Language**: Traditional Chinese (zh-hant)
@@ -106,12 +106,12 @@
 #### **Starting Admin Session**
 ```bash
 # Start Django development server
-cd C:\Users\maxim\Documents\dev\copilot\ecom\eshop
-set DJANGO_SETTINGS_MODULE=eshop.settings.development
+cd C:\Users\maxim\Documents\dev\copilot\ecom\日日鮮肉品專賣
+set DJANGO_SETTINGS_MODULE=日日鮮肉品專賣.settings.development
 python manage.py runserver
 
 # Access admin at http://127.0.0.1:8000/admin/
-# Login with admin@eshop.com / admin123456
+# Login with admin@日日鮮肉品專賣.com / admin123456
 ```
 
 #### **Admin Interface Tour**
@@ -150,7 +150,7 @@ python manage.py createsuperuser
 python manage.py shell -c "
 from authentication.models import CustomUser
 try:
-    dev_admin = CustomUser.objects.get(email='admin@eshop.com')
+    dev_admin = CustomUser.objects.get(email='admin@日日鮮肉品專賣.com')
     dev_admin.delete()
     print('Development admin removed')
 except CustomUser.DoesNotExist:
@@ -188,7 +188,7 @@ except CustomUser.DoesNotExist:
    ```bash
    python manage.py shell -c "
    from django.contrib.auth import authenticate
-   user = authenticate(email='admin@eshop.com', password='admin123456')
+   user = authenticate(email='admin@日日鮮肉品專賣.com', password='admin123456')
    print('Success' if user else 'Failed')
    "
    ```
@@ -197,18 +197,18 @@ except CustomUser.DoesNotExist:
    ```bash
    python manage.py shell -c "
    from authentication.models import CustomUser
-   user = CustomUser.objects.get(email='admin@eshop.com')
+   user = CustomUser.objects.get(email='admin@日日鮮肉品專賣.com')
    print(f'Active: {user.is_active}, Staff: {user.is_staff}')
    "
    ```
 
 #### **Reset Admin Password**
 ```bash
-python manage.py changepassword admin@eshop.com
+python manage.py changepassword admin@日日鮮肉品專賣.com
 # Or via shell:
 python manage.py shell -c "
 from authentication.models import CustomUser
-user = CustomUser.objects.get(email='admin@eshop.com')
+user = CustomUser.objects.get(email='admin@日日鮮肉品專賣.com')
 user.set_password('new_password_here')
 user.save()
 print('Password updated successfully')

@@ -1,66 +1,76 @@
 {% load static %}
 {% comment %}
-Logo component for EShop - Responsive logo with fallback text
+Logo component for 日日鮮肉品專賣 - Responsive logo with fallback text
 Usage: {% include 'components/logo.html' with size='small|medium|large' link=True %}
 {% endcomment %}
-
 {% with size=size|default:'medium' link=link|default:True %}
 <div class="logo-container flex items-center space-x-3">
     {% if link %}
     <a href="{% url 'home' %}" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
     {% endif %}
-    
         <!-- Logo Image -->
-        <img src="{{ MEDIA_URL }}pictures/logo-2-cs6ol-03.png" 
-             alt="EShop - 台灣電商平台"
-             class="{% if size == 'small' %}h-6 w-auto{% elif size == 'large' %}h-12 w-auto{% else %}h-8 w-auto{% endif %} 
-                    logo-image"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        
+        <img src="{{ MEDIA_URL }}pictures/log.jpg" 
+             alt="日日鮮肉品專賣 - 新鮮肉品專賣店"
+             class="{% if size == 'small' %}h-8 w-auto{% elif size == 'large' %}h-16 w-auto{% else %}h-10 w-auto{% endif %} 
+                    logo-image object-contain"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+             loading="eager">
         <!-- Fallback Text (hidden by default, shown if image fails to load) -->
         <span class="{% if size == 'small' %}text-lg{% elif size == 'large' %}text-3xl{% else %}text-2xl{% endif %} 
-                     font-bold text-blue-600 logo-text" 
+                     font-bold text-red-600 logo-text" 
               style="display: none;">
-            EShop
+            日日鮮肉品專賣
         </span>
-        
         <!-- Brand Text (optional, responsive) -->
         {% if size != 'small' %}
         <span class="{% if size == 'large' %}text-3xl{% else %}text-2xl{% endif %} 
-                     font-bold text-blue-600 hidden sm:block brand-text">
-            EShop
+                     font-bold text-red-600 hidden sm:block brand-text">
+            日日鮮肉品專賣
         </span>
         {% endif %}
-    
     {% if link %}
     </a>
     {% endif %}
 </div>
 {% endwith %}
-
 <style>
-/* Logo specific styles */
+/* Logo specific styles for 日日鮮肉品專賣 */
 .logo-container .logo-image {
     transition: all 0.3s ease;
+    max-width: 100%;
+    /* Allow Tailwind height utility (h-*) to take effect by removing height:auto */
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
-
 .logo-container:hover .logo-image {
     transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(220,38,38,0.15);
 }
-
+/* Ensure logo maintains aspect ratio */
+.logo-container img {
+    object-fit: contain;
+}
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     .logo-container .brand-text,
     .logo-container .logo-text {
-        color: #60a5fa; /* blue-400 */
+        color: #fca5a5; /* red-300 */
+    }
+    .logo-container .logo-image {
+        filter: brightness(0.9);
     }
 }
-
 /* High DPI display optimization */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .logo-container .logo-image {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
+    }
+}
+/* Responsive logo sizing */
+@media (max-width: 640px) {
+    .logo-container .brand-text {
+        display: none !important;
     }
 }
 </style>

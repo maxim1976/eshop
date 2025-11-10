@@ -1,7 +1,7 @@
 """
-Complete automated setup script for EShop Taiwan E-commerce Platform.
+Complete automated setup script for 日日鮮肉品專賣 Taiwan E-commerce Platform.
 Handles migrations, sample data creation, and initial configuration.
-Run with: python setup_eshop.py
+Run with: python setup_日日鮮肉品專賣.py
 """
 import os
 import sys
@@ -9,7 +9,7 @@ import django
 from pathlib import Path
 
 # Setup Django environment
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'eshop.settings.development')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '日日鮮肉品專賣.settings.development')
 django.setup()
 
 from django.core.management import call_command
@@ -164,7 +164,7 @@ def create_sample_products(electronics_category):
             'description_en': 'Latest iPhone 15 Pro with revolutionary A17 Pro chip. Titanium design for strength and lightness. 6.1-inch Super Retina XDR display with ProMotion.',
             'specifications': '• A17 Pro 晶片\n• 6.1吋 Super Retina XDR\n• Pro 相機系統\n• 鈦金屬設計',
             'specifications_en': '• A17 Pro chip\n• 6.1" Super Retina XDR\n• Pro camera system\n• Titanium design',
-            'meta_title_en': 'iPhone 15 Pro - Premium Smartphone | EShop Taiwan',
+            'meta_title_en': 'iPhone 15 Pro - Premium Smartphone | 日日鮮肉品專賣 Taiwan',
             'meta_description_en': 'Experience the power of A17 Pro chip with titanium design. Professional camera system and all-day battery life.',
             'weight': Decimal('187'),
             'has_variants': True,
@@ -181,7 +181,7 @@ def create_sample_products(electronics_category):
             'description_en': 'All-new M3 chip in an incredibly thin design. Up to 18 hours of battery life. 13.6-inch Liquid Retina display. Perfect for work and entertainment.',
             'specifications': '• Apple M3 晶片\n• 8GB 統一記憶體\n• 256GB SSD\n• 13.6吋 Liquid Retina',
             'specifications_en': '• Apple M3 chip\n• 8GB unified memory\n• 256GB SSD\n• 13.6" Liquid Retina',
-            'meta_title_en': 'MacBook Air M3 13-inch - Lightweight Laptop | EShop Taiwan',
+            'meta_title_en': 'MacBook Air M3 13-inch - Lightweight Laptop | 日日鮮肉品專賣 Taiwan',
             'meta_description_en': 'Ultra-portable laptop with M3 chip and all-day battery. Perfect balance of performance and portability.',
             'weight': Decimal('1240'),
             'has_variants': False,
@@ -198,7 +198,7 @@ def create_sample_products(electronics_category):
             'description_en': '2nd generation AirPods Pro with Active Noise Cancellation for immersive audio experience. MagSafe charging and longer battery life.',
             'specifications': '• 主動降噪\n• 通透模式\n• 個人化空間音訊\n• MagSafe 充電',
             'specifications_en': '• Active Noise Cancellation\n• Transparency mode\n• Personalized Spatial Audio\n• MagSafe charging',
-            'meta_title_en': 'AirPods Pro 2nd Gen - Wireless Earbuds | EShop Taiwan',
+            'meta_title_en': 'AirPods Pro 2nd Gen - Wireless Earbuds | 日日鮮肉品專賣 Taiwan',
             'meta_description_en': 'Premium wireless earbuds with active noise cancellation and personalized spatial audio.',
             'weight': Decimal('56'),
             'has_variants': False,
@@ -215,7 +215,7 @@ def create_sample_products(electronics_category):
             'description_en': 'Powerful and lightweight iPad Air with M2 chip. 11-inch Liquid Retina display. Perfect for creativity, learning, and entertainment.',
             'specifications': '• Apple M2 晶片\n• 11吋 Liquid Retina\n• 128GB 儲存空間\n• 支援 Apple Pencil',
             'specifications_en': '• Apple M2 chip\n• 11" Liquid Retina\n• 128GB storage\n• Apple Pencil support',
-            'meta_title_en': 'iPad Air 11-inch M2 - Versatile Tablet | EShop Taiwan',
+            'meta_title_en': 'iPad Air 11-inch M2 - Versatile Tablet | 日日鮮肉品專賣 Taiwan',
             'meta_description_en': 'Lightweight tablet with M2 chip for work and play. Support for Apple Pencil and Magic Keyboard.',
             'weight': Decimal('461'),
             'has_variants': False,
@@ -232,7 +232,7 @@ def create_sample_products(electronics_category):
             'description_en': 'Apple Watch Series 9 with S9 chip, double tap gesture, and brighter display. Comprehensive health and fitness tracking.',
             'specifications': '• S9 晶片\n• 雙指互點手勢\n• 健康監測\n• GPS + 行動網路',
             'specifications_en': '• S9 chip\n• Double tap gesture\n• Health monitoring\n• GPS + Cellular',
-            'meta_title_en': 'Apple Watch Series 9 - Smart Watch | EShop Taiwan',
+            'meta_title_en': 'Apple Watch Series 9 - Smart Watch | 日日鮮肉品專賣 Taiwan',
             'meta_description_en': 'Advanced health features with S9 chip and innovative double tap gesture control.',
             'weight': Decimal('51'),
             'has_variants': True,
@@ -345,7 +345,7 @@ def print_summary():
     
     print("\n🚀 NEXT STEPS:")
     print("   1. Start the development server:")
-    print("      python manage.py runserver --settings=eshop.settings.development")
+    print("      python manage.py runserver --settings=日日鮮肉品專賣.settings.development")
     print("   2. Visit http://127.0.0.1:8000/admin/ and login")
     print("   3. Explore the bilingual product catalog")
     print("   4. Test the shopping cart functionality")
@@ -365,7 +365,7 @@ def main():
     """Main setup execution."""
     print("\n")
     print("╔" + "═" * 78 + "╗")
-    print("║" + " " * 15 + "ESHOP TAIWAN E-COMMERCE PLATFORM SETUP" + " " * 24 + "║")
+    print("║" + " " * 15 + "日日鮮肉品專賣 TAIWAN E-COMMERCE PLATFORM SETUP" + " " * 24 + "║")
     print("║" + " " * 20 + "Automated Installation & Configuration" + " " * 19 + "║")
     print("╚" + "═" * 78 + "╝")
     

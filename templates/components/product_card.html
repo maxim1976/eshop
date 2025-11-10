@@ -1,5 +1,3 @@
-{% load i18n %}
-
 <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
   <a href="{% url 'products:product_detail' product.slug %}" class="block">
     <!-- Product Image -->
@@ -18,12 +16,11 @@
           </svg>
         </div>
       {% endif %}
-      
       <!-- Product Badges -->
       <div class="absolute top-2 left-2 flex flex-col gap-1">
         {% if product.is_new %}
           <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-            {% trans "新品" %}
+            新品
           </span>
         {% endif %}
         {% if product.is_on_sale %}
@@ -32,27 +29,23 @@
           </span>
         {% endif %}
       </div>
-      
       <!-- Quick Actions -->
       <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
         <button class="bg-white p-2 rounded-full shadow hover:bg-gray-50 wishlist-btn" 
-                title="{% trans '加入收藏' %}" data-product-id="{{ product.id }}">
+                title="加入收藏" data-product-id="{{ product.id }}">
           <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
           </svg>
         </button>
       </div>
     </div>
-    
     <!-- Product Info -->
     <div class="p-4">
       <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition">
         {{ product.name }}
       </h3>
-      
       <!-- Category -->
       <p class="text-sm text-gray-500 mb-2">{{ product.category.name }}</p>
-      
       <!-- Rating (placeholder) -->
       <div class="flex items-center mb-2">
         <div class="flex text-yellow-400">
@@ -64,7 +57,6 @@
         </div>
         <span class="text-sm text-gray-500 ml-1">({{ product.sales_count|default:0 }})</span>
       </div>
-      
       <!-- Price -->
       <div class="flex items-center justify-between">
         <div>
@@ -77,17 +69,15 @@
             <span class="text-gray-900 font-bold text-xl">NT$ {{ product.price|floatformat:0 }}</span>
           {% endif %}
         </div>
-        
         <!-- Stock Status -->
         {% if product.stock_quantity > 0 %}
-          <span class="text-green-600 text-sm font-medium">{% trans "有現貨" %}</span>
+          <span class="text-green-600 text-sm font-medium">有現貨</span>
         {% else %}
-          <span class="text-red-600 text-sm font-medium">{% trans "缺貨" %}</span>
+          <span class="text-red-600 text-sm font-medium">缺貨</span>
         {% endif %}
       </div>
     </div>
   </a>
-  
   <!-- Add to Cart Button -->
   <div class="p-4 pt-0">
     {% if product.stock_quantity > 0 %}
@@ -96,12 +86,12 @@
         <input type="hidden" name="product_id" value="{{ product.id }}">
         <input type="hidden" name="quantity" value="1">
         <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition font-medium">
-          {% trans "加入購物車" %}
+          加入購物車
         </button>
       </form>
     {% else %}
       <button disabled class="w-full bg-gray-300 text-gray-500 py-2 px-4 rounded-md cursor-not-allowed font-medium">
-        {% trans "暫時缺貨" %}
+        暫時缺貨
       </button>
     {% endif %}
   </div>

@@ -1,6 +1,6 @@
 """
 Product admin interface with bilingual support and Taiwan-specific features.
-Follows Django best practices and EShop coding standards.
+Follows Django best practices and 日日鮮肉品專賣 coding standards.
 """
 
 from django.contrib import admin

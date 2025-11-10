@@ -217,7 +217,7 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         """Generate order number if not exists."""
         if not self.order_number:
-            # Format: ES-YYYYMMDD-XXXXX (ES = EShop)
+            # Format: ES-YYYYMMDD-XXXXX (ES = 日日鮮肉品專賣)
             from django.utils import timezone
             timestamp = timezone.now().strftime('%Y%m%d')
             random_suffix = str(uuid.uuid4().hex)[:5].upper()

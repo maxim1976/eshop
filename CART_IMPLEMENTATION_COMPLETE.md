@@ -286,8 +286,8 @@ The last major feature to implement:
 - `templates/cart/cart.html` - Full cart page (240 lines)
 
 **Modified Files**:
-- `eshop/urls.py` - Added cart URLs
-- `eshop/settings/base.py` - Added context processor
+- `日日鮮肉品專賣/urls.py` - Added cart URLs
+- `日日鮮肉品專賣/settings/base.py` - Added context processor
 - `templates/base.html` - Updated cart badge with dynamic count
 - `templates/products/product_detail.html` - Working add to cart with AJAX
 

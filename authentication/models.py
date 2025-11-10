@@ -22,6 +22,9 @@ class CustomUserManager(UserManager):
             raise ValueError(_('電子郵件地址是必需的'))
         
         email = self.normalize_email(email)
+        # Set default values for simplified registration
+        extra_fields.setdefault('is_active', True)  # Users are active immediately
+        
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)

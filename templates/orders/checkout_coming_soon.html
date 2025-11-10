@@ -1,8 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
-
-{% block title %}{% trans "結帳 / Checkout" %} - {{ block.super }}{% endblock %}
-
+{% block title %}結帳 / Checkout - {{ block.super }}{% endblock %}
 {% block content %}
 <div class="container mx-auto px-4 py-16">
     <div class="text-center max-w-md mx-auto">
@@ -11,36 +8,29 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
         </div>
-        
         <h1 class="text-3xl font-bold text-gray-900 mb-4">
-            {% trans "結帳功能即將推出 / Checkout Coming Soon" %}
+            結帳功能即將推出 / Checkout Coming Soon
         </h1>
-        
         <p class="text-gray-600 mb-2">
-            {% trans "我們正在努力開發安全便捷的結帳系統 / We're working hard on a secure and convenient checkout system" %}
+            我們正在努力開發安全便捷的結帳系統 / We're working hard on a secure and convenient checkout system
         </p>
-        
         <p class="text-sm text-gray-500 mb-8">
-            {% trans "敬請期待！ / Stay tuned!" %}
+            敬請期待！ / Stay tuned!
         </p>
-        
         <div class="space-y-4">
             <a href="{% url 'cart:cart' %}" 
                class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                ← {% trans "返回購物車 / Back to Cart" %}
+                ← 返回購物車 / Back to Cart
             </a>
-            
             <br>
-            
             <a href="{% url 'products:product_list' %}" 
                class="inline-block bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition">
-                {% trans "繼續購物 / Continue Shopping" %}
+                繼續購物 / Continue Shopping
             </a>
         </div>
-        
         <div class="mt-12 pt-8 border-t">
             <p class="text-xs text-gray-500">
-                {% trans "如有任何問題，請聯繫客服 / For any questions, please contact customer service" %}
+                如有任何問題，請聯繫客服 / For any questions, please contact customer service
             </p>
         </div>
     </div>

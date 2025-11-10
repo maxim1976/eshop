@@ -1,6 +1,6 @@
 """
 Orders admin interface - English Version.
-Follows Django best practices and EShop coding standards.
+Follows Django best practices and 日日鮮肉品專賣 coding standards.
 """
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
@@ -21,7 +21,14 @@ class OrderItemInline(admin.TabularInline):
     
     def subtotal_display(self, obj):
         """Display item subtotal."""
-        return format_html('NT$ {:,}', obj.get_subtotal())
+        try:
+            subtotal = obj.get_subtotal()
+            if subtotal is not None:
+                return format_html('NT$ {:.0f}', subtotal)
+            else:
+                return format_html('NT$ 0')
+        except (ValueError, TypeError, AttributeError):
+            return format_html('NT$ 0')
     subtotal_display.short_description = 'Subtotal'
 
 
@@ -198,10 +205,21 @@ class OrderAdmin(admin.ModelAdmin):
     
     def total_display(self, obj):
         """Display total amount prominently."""
-        return format_html(
-            '<span style="font-size: 1.2em; font-weight: bold; color: #059669;">NT$ {:,}</span>',
-            obj.total_amount
-        )
+        try:
+            total = obj.total_amount
+            if total is not None:
+                return format_html(
+                    '<span style="font-size: 1.2em; font-weight: bold; color: #059669;">NT$ {:.0f}</span>',
+                    total
+                )
+            else:
+                return format_html(
+                    '<span style="font-size: 1.2em; font-weight: bold; color: #059669;">NT$ 0</span>'
+                )
+        except (ValueError, TypeError, AttributeError):
+            return format_html(
+                '<span style="font-size: 1.2em; font-weight: bold; color: #dc2626;">Error</span>'
+            )
     total_display.short_description = 'Total'
     
     def payment_method_display(self, obj):
@@ -245,10 +263,13 @@ class OrderAdmin(admin.ModelAdmin):
         
         for item in items:
             html += '<tr style="border-bottom: 1px solid #e5e7eb;">'
-            html += f'<td style="padding: 8px;">{item.product.name_en}</td>'
+            product_name = item.product.name if item.product else item.product_name
+            html += f'<td style="padding: 8px;">{product_name}</td>'
             html += f'<td style="padding: 8px; text-align: right;">× {item.quantity}</td>'
-            html += f'<td style="padding: 8px; text-align: right;">NT$ {item.price_at_purchase:,}</td>'
-            html += f'<td style="padding: 8px; text-align: right; font-weight: bold;">NT$ {item.get_subtotal():,}</td>'
+            price_formatted = f"{item.price_at_purchase:.0f}" if item.price_at_purchase else "0"
+            subtotal_formatted = f"{item.get_subtotal():.0f}" if item.get_subtotal() else "0"
+            html += f'<td style="padding: 8px; text-align: right;">NT$ {price_formatted}</td>'
+            html += f'<td style="padding: 8px; text-align: right; font-weight: bold;">NT$ {subtotal_formatted}</td>'
             html += '</tr>'
         
         html += '</table>'
@@ -346,15 +367,29 @@ class OrderItemAdmin(admin.ModelAdmin):
     
     def price_display(self, obj):
         """Display unit price."""
-        return format_html('NT$ {:,}', obj.price_at_purchase)
+        try:
+            price = obj.price_at_purchase
+            if price is not None:
+                return format_html('NT$ {:.0f}', price)
+            else:
+                return format_html('NT$ 0')
+        except (ValueError, TypeError, AttributeError):
+            return format_html('NT$ 0')
     price_display.short_description = 'Price'
     
     def subtotal_display(self, obj):
         """Display subtotal."""
-        return format_html(
-            '<span style="font-weight: bold;">NT$ {:,}</span>',
-            obj.get_subtotal()
-        )
+        try:
+            subtotal = obj.get_subtotal()
+            if subtotal is not None:
+                return format_html(
+                    '<span style="font-weight: bold;">NT$ {:.0f}</span>',
+                    subtotal
+                )
+            else:
+                return format_html('<span style="font-weight: bold;">NT$ 0</span>')
+        except (ValueError, TypeError, AttributeError):
+            return format_html('<span style="font-weight: bold; color: #dc2626;">Error</span>')
     subtotal_display.short_description = 'Subtotal'
 
 

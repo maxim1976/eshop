@@ -5,7 +5,7 @@
 
 ## 🎉 MAJOR ACHIEVEMENT: Complete Web Interface
 
-Your EShop authentication system now has **both API and web interface** fully operational!
+Your 日日鮮肉品專賣 authentication system now has **both API and web interface** fully operational!
 
 ---
 
@@ -389,7 +389,7 @@ You now have a **production-ready, dual-interface authentication system**:
 - ✅ Profile management ready
 - ✅ Messages and error handling polished
 
-**Your EShop authentication system is now fully operational and ready for users!** 🚀🇹🇼
+**Your 日日鮮肉品專賣 authentication system is now fully operational and ready for users!** 🚀🇹🇼
 
 ---
 
@@ -397,7 +397,7 @@ You now have a **production-ready, dual-interface authentication system**:
 
 ### **Start Development Server**
 ```powershell
-python manage.py runserver --settings=eshop.settings.development
+python manage.py runserver --settings=日日鮮肉品專賣.settings.development
 ```
 
 ### **Access Points**
@@ -407,17 +407,17 @@ python manage.py runserver --settings=eshop.settings.development
 
 ### **Test User Creation**
 ```powershell
-python manage.py createsuperuser --settings=eshop.settings.development
+python manage.py createsuperuser --settings=日日鮮肉品專賣.settings.development
 ```
 
 ### **Check Migrations**
 ```powershell
-python manage.py showmigrations --settings=eshop.settings.development
+python manage.py showmigrations --settings=日日鮮肉品專賣.settings.development
 ```
 
 ### **Run Tests**
 ```powershell
-pytest --ds=eshop.settings.development
+pytest --ds=日日鮮肉品專賣.settings.development
 ```
 
 ---

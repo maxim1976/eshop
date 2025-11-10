@@ -1,5 +1,5 @@
 """
-Production settings for eshop project - Railway.com deployment.
+Production settings for 日日鮮肉品專賣 project - Railway.com deployment.
 """
 
 from .base import *
@@ -11,10 +11,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Database - Railway.com PostgreSQL
+# Using the new Railway PostgreSQL connection string provided
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': dj_database_url.parse(config('DATABASE_URL', default='postgresql://postgres:GTXmeZStEhDuOPTsqlljirnfwXwSuWIA@postgres.railway.internal:5432/railway'))
 }
 
 # Email Backend for production

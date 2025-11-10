@@ -1,31 +1,25 @@
 {% extends 'base.html' %}
-{% load i18n %}
 {% load widget_tweaks %}
-
-{% block title %}{% trans "結帳 / Checkout" %}{% endblock %}
-
+{% block title %}結帳 / Checkout{% endblock %}
 {% block content %}
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-6xl mx-auto">
         <!-- Header -->
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">{% trans "結帳 / Checkout" %}</h1>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">結帳 / Checkout</h1>
             <div class="flex items-center text-sm text-gray-600">
-                <a href="{% url 'cart:cart' %}" class="hover:text-blue-600">{% trans "購物車 / Cart" %}</a>
+                <a href="{% url 'cart:cart' %}" class="hover:text-blue-600">購物車 / Cart</a>
                 <svg class="w-4 h-4 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <span class="text-blue-600 font-semibold">{% trans "結帳 / Checkout" %}</span>
+                <span class="text-blue-600 font-semibold">結帳 / Checkout</span>
             </div>
         </div>
-
         <form method="post" id="checkout-form">
             {% csrf_token %}
-            
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Checkout Form -->
                 <div class="lg:col-span-2 space-y-8">
-                    
                     <!-- Shipping Information -->
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
@@ -33,9 +27,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
-                            {% trans "配送資訊 / Shipping Information" %}
+                            配送資訊 / Shipping Information
                         </h2>
-                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -46,7 +39,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ form.recipient_name.errors.0 }}</p>
                                 {% endif %}
                             </div>
-                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
                                     {{ form.recipient_phone.label }}
@@ -56,7 +48,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ form.recipient_phone.errors.0 }}</p>
                                 {% endif %}
                             </div>
-                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
                                     {{ form.postal_code.label }}
@@ -66,7 +57,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ form.postal_code.errors.0 }}</p>
                                 {% endif %}
                             </div>
-                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
                                     {{ form.city.label }}
@@ -76,7 +66,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ form.city.errors.0 }}</p>
                                 {% endif %}
                             </div>
-                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
                                     {{ form.district.label }}
@@ -86,7 +75,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ form.district.errors.0 }}</p>
                                 {% endif %}
                             </div>
-                            
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
                                     {{ form.address.label }}
@@ -98,16 +86,14 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Shipping Method -->
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
                             </svg>
-                            {% trans "配送方式 / Shipping Method" %}
+                            配送方式 / Shipping Method
                         </h2>
-                        
                         <div class="space-y-4">
                             {% for choice in form.shipping_method %}
                             <label class="shipping-option block cursor-pointer">
@@ -117,26 +103,26 @@
                                         <div class="ml-3 flex-1">
                                             <div class="font-medium text-gray-900">
                                                 {% if choice.choice_value == 'home_delivery' %}
-                                                    {% trans "宅配 / Home Delivery" %}
+                                                    宅配 / Home Delivery
                                                 {% elif choice.choice_value == 'seven_eleven' %}
-                                                    {% trans "7-11 取貨 / 7-11 Pickup" %}
+                                                    7-11 取貨 / 7-11 Pickup
                                                 {% elif choice.choice_value == 'family_mart' %}
-                                                    {% trans "全家取貨 / FamilyMart Pickup" %}
+                                                    全家取貨 / FamilyMart Pickup
                                                 {% else %}
                                                     {{ choice.choice_label }}
                                                 {% endif %}
                                             </div>
                                             <div class="text-sm text-gray-500">
                                                 {% if choice.choice_value == 'home_delivery' %}
-                                                    {% trans "直接送達指定地址 / Direct delivery to specified address" %}
+                                                    直接送達指定地址 / Direct delivery to specified address
                                                 {% else %}
-                                                    {% trans "到超商取貨 / Pickup at convenience store" %}
+                                                    到超商取貨 / Pickup at convenience store
                                                 {% endif %}
                                             </div>
                                         </div>
                                         <div class="text-sm font-medium text-green-600">
                                             {% if shipping_fee == 0 %}
-                                                {% trans "免費 / Free" %}
+                                                免費 / Free
                                             {% else %}
                                                 NT$ {{ shipping_fee|floatformat:0 }}
                                             {% endif %}
@@ -150,16 +136,14 @@
                             <p class="text-red-600 text-sm mt-2">{{ form.shipping_method.errors.0 }}</p>
                         {% endif %}
                     </div>
-
                     <!-- Payment Method -->
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
                             </svg>
-                            {% trans "付款方式 / Payment Method" %}
+                            付款方式 / Payment Method
                         </h2>
-                        
                         <div class="space-y-4">
                             {% for choice in form.payment_method %}
                             <label class="payment-option block cursor-pointer">
@@ -172,11 +156,11 @@
                                             </div>
                                             <div class="text-sm text-gray-500">
                                                 {% if choice.choice_value == 'credit_card' %}
-                                                    {% trans "支援 Visa、MasterCard、JCB / Supports Visa, MasterCard, JCB" %}
+                                                    支援 Visa、MasterCard、JCB / Supports Visa, MasterCard, JCB
                                                 {% elif choice.choice_value == 'atm' %}
-                                                    {% trans "ATM 轉帳或網路銀行 / ATM transfer or online banking" %}
+                                                    ATM 轉帳或網路銀行 / ATM transfer or online banking
                                                 {% elif choice.choice_value == 'cvs_code' %}
-                                                    {% trans "超商代碼繳費 / Convenience store code payment" %}
+                                                    超商代碼繳費 / Convenience store code payment
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -189,30 +173,26 @@
                             <p class="text-red-600 text-sm mt-2">{{ form.payment_method.errors.0 }}</p>
                         {% endif %}
                     </div>
-
                     <!-- Notes -->
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
                             <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
                             </svg>
-                            {% trans "備註 / Notes" %}
+                            備註 / Notes
                         </h2>
-                        
                         {{ form.notes }}
                         {% if form.notes.errors %}
                             <p class="text-red-600 text-sm mt-2">{{ form.notes.errors.0 }}</p>
                         {% endif %}
                     </div>
                 </div>
-
                 <!-- Order Summary -->
                 <div class="lg:col-span-1">
                     <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
                         <h2 class="text-xl font-semibold text-gray-900 mb-6">
-                            {% trans "訂單摘要 / Order Summary" %}
+                            訂單摘要 / Order Summary
                         </h2>
-                        
                         <!-- Cart Items -->
                         <div class="space-y-4 mb-6 pb-6 border-b">
                             {% for item in cart_items %}
@@ -243,46 +223,42 @@
                             </div>
                             {% endfor %}
                         </div>
-                        
                         <!-- Totals -->
                         <div class="space-y-3 mb-6">
                             <div class="flex justify-between text-gray-700">
-                                <span>{% trans "商品小計 / Subtotal" %} ({{ item_count }} {% trans "件 / items" %})</span>
+                                <span>商品小計 / Subtotal ({{ item_count }} 件 / items)</span>
                                 <span>NT$ {{ subtotal|floatformat:0 }}</span>
                             </div>
                             <div class="flex justify-between text-gray-700">
-                                <span>{% trans "運費 / Shipping" %}</span>
+                                <span>運費 / Shipping</span>
                                 <span>
                                     {% if shipping_fee == 0 %}
-                                        <span class="text-green-600 font-medium">{% trans "免費 / Free" %}</span>
+                                        <span class="text-green-600 font-medium">免費 / Free</span>
                                     {% else %}
                                         NT$ {{ shipping_fee|floatformat:0 }}
                                     {% endif %}
                                 </span>
                             </div>
                             <div class="flex justify-between text-xl font-bold text-gray-900 pt-3 border-t">
-                                <span>{% trans "總計 / Total" %}</span>
+                                <span>總計 / Total</span>
                                 <span>NT$ {{ total|floatformat:0 }}</span>
                             </div>
                         </div>
-                        
                         <!-- Action Buttons -->
                         <div class="space-y-3">
                             <button type="submit" 
                                     class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
-                                {% trans "確認訂單並付款 / Confirm Order & Pay" %}
+                                確認訂單並付款 / Confirm Order & Pay
                             </button>
-                            
                             <a href="{% url 'cart:cart' %}" 
                                class="block w-full text-center border border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200">
-                                {% trans "返回購物車 / Back to Cart" %}
+                                返回購物車 / Back to Cart
                             </a>
                         </div>
-                        
                         <!-- Security Notice -->
                         <div class="mt-6 text-xs text-gray-500 text-center">
-                            <p>🔒 {% trans "您的付款資訊將被安全加密處理" %}</p>
-                            <p>🔒 {% trans "Your payment information will be securely encrypted" %}</p>
+                            <p>🔒 您的付款資訊將被安全加密處理</p>
+                            <p>🔒 Your payment information will be securely encrypted</p>
                         </div>
                     </div>
                 </div>
@@ -290,7 +266,6 @@
         </form>
     </div>
 </div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Handle shipping method selection
@@ -301,13 +276,11 @@ document.addEventListener('DOMContentLoaded', function() {
             shippingOptions.forEach(opt => {
                 opt.querySelector('.shipping-option-card').classList.remove('border-blue-500', 'bg-blue-50');
             });
-            
             // Select current option
             const card = this.querySelector('.shipping-option-card');
             card.classList.add('border-blue-500', 'bg-blue-50');
         });
     });
-    
     // Handle payment method selection
     const paymentOptions = document.querySelectorAll('.payment-option');
     paymentOptions.forEach(option => {
@@ -316,21 +289,18 @@ document.addEventListener('DOMContentLoaded', function() {
             paymentOptions.forEach(opt => {
                 opt.querySelector('.payment-option-card').classList.remove('border-blue-500', 'bg-blue-50');
             });
-            
             // Select current option
             const card = this.querySelector('.payment-option-card');
             card.classList.add('border-blue-500', 'bg-blue-50');
         });
     });
-    
     // Form submission
     const form = document.getElementById('checkout-form');
     form.addEventListener('submit', function(e) {
         const submitBtn = form.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="inline-block animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span>{% trans "處理中... / Processing..." %}';
+        submitBtn.innerHTML = '<span class="inline-block animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span>處理中... / Processing...';
     });
-    
     // Initialize first options as selected
     if (shippingOptions.length > 0) {
         shippingOptions[0].querySelector('.shipping-option-card').classList.add('border-blue-500', 'bg-blue-50');

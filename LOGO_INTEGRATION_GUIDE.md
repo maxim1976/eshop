@@ -1,8 +1,8 @@
-# EShop Logo Integration Guide
+# 日日鮮肉品專賣 Logo Integration Guide
 
 ## 🎨 **Logo Successfully Integrated**
 
-Your logo `media/pictures/logo-2-cs6ol-03.png` has been professionally integrated into the EShop frontend with full responsiveness and fallback support.
+Your logo `media/pictures/logo-2-cs6ol-03.png` has been professionally integrated into the 日日鮮肉品專賣 frontend with full responsiveness and fallback support.
 
 ## 📍 **Where Your Logo Appears**
 
@@ -20,7 +20,7 @@ Your logo `media/pictures/logo-2-cs6ol-03.png` has been professionally integrate
 
 ### ✅ **Responsive Behavior**
 - **Mobile**: Logo only (saves space)
-- **Tablet/Desktop**: Logo + "EShop" text
+- **Tablet/Desktop**: Logo + "日日鮮肉品專賣" text
 - **All sizes**: Optimized for different screen densities
 
 ## 🛠️ **Implementation Details**
@@ -39,7 +39,7 @@ Your logo `media/pictures/logo-2-cs6ol-03.png` has been professionally integrate
 - **`large`**: 48px height - for hero sections and prominent display
 
 ### **3. Smart Fallbacks**
-- **Image loading error**: Automatically shows "EShop" text
+- **Image loading error**: Automatically shows "日日鮮肉品專賣" text
 - **Slow connections**: Graceful loading with animation
 - **High contrast mode**: Optimized visibility
 - **Print friendly**: Smaller size for printing
@@ -93,7 +93,7 @@ Your logo `media/pictures/logo-2-cs6ol-03.png` has been professionally integrate
 <!-- For email newsletters -->
 <div style="text-align: center; margin-bottom: 20px;">
     <img src="{{ site_url }}{{ MEDIA_URL }}pictures/logo-2-cs6ol-03.png" 
-         alt="EShop" style="height: 40px; width: auto;">
+         alt="日日鮮肉品專賣" style="height: 40px; width: auto;">
 </div>
 ```
 
@@ -116,7 +116,7 @@ Create themed versions for holidays or special events:
 ```html
 <!-- Christmas theme example -->
 <img src="{{ MEDIA_URL }}pictures/logo-christmas.png" 
-     alt="EShop Holiday" 
+     alt="日日鮮肉品專賣 Holiday" 
      class="h-8 w-auto holiday-logo">
 ```
 
@@ -155,6 +155,6 @@ The logo implementation maintains consistent branding:
 
 ---
 
-**Your EShop now has professional logo branding throughout the entire platform!** 🎉
+**Your 日日鮮肉品專賣 now has professional logo branding throughout the entire platform!** 🎉
 
 The logo enhances your brand identity and provides a polished, professional appearance that will help build customer trust and recognition.

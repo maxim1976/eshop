@@ -37,7 +37,7 @@ python manage.py runserver
 ```
 DEBUG=True
 SECRET_KEY=your-secret-key-here
-DATABASE_URL=postgresql://user:pass@localhost:5432/eshop
+DATABASE_URL=postgresql://user:pass@localhost:5432/日日鮮肉品專賣
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587

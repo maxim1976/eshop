@@ -49,7 +49,7 @@ pip install Pillow
 
 ### **Step 2: Add to INSTALLED_APPS**
 
-Edit `eshop/settings/base.py`:
+Edit `日日鮮肉品專賣/settings/base.py`:
 
 ```python
 INSTALLED_APPS = [

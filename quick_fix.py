@@ -2,7 +2,7 @@
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'eshop.settings.development')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '日日鮮肉品專賣.settings.development')
 django.setup()
 
 from django.db import connection

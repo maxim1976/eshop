@@ -206,7 +206,7 @@ If all tests above work correctly, you have a **fully functional authentication 
 
 ### Server Not Running?
 ```powershell
-python manage.py runserver --settings=eshop.settings.development
+python manage.py runserver --settings=日日鮮肉品專賣.settings.development
 ```
 
 ### Can't See Emails?
