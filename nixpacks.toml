@@ -1,13 +1,2 @@
-# Nixpacks configuration for Django app
-[phases.setup]
-nixPkgs = ["python310", "nodejs_18"]
-nixLibs = ["zlib", "libjpeg", "libwebp"]
-
-[phases.install]
-cmds = ["pip install -r requirements.txt"]
-
-[phases.build]
-cmds = ["python manage.py collectstatic --noinput"]
-
 [start]
-cmd = "python manage.py migrate && gunicorn eshop.wsgi --bind 0.0.0.0:$PORT"
+cmd = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn eshop.wsgi --bind 0.0.0.0:$PORT"
