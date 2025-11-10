@@ -13,8 +13,9 @@ db.sqlite3-journal
 .env.development
 .env.production
 
-# Media files (user uploads)
-media/
+# Media files (user uploads) - Allow sample images but ignore user uploads
+media/uploads/
+!media/pictures/
 !media/.gitkeep
 
 # Static files (collected)
